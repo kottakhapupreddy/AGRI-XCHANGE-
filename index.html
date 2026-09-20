@@ -529,7 +529,118 @@ function submitProblem(){
 
 }
 
-</script>
+<script type="module">
 
-</body>
-</html>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
+  authDomain: "agrixchange-175d0.firebaseapp.com",
+  projectId: "agrixchange-175d0",
+  storageBucket: "agrixchange-175d0.firebasestorage.app",
+  messagingSenderId: "1033959694049",
+  appId: "1:1033959694049:web:4eaa141cafda31c3ffa1a0"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+window.submitProblem = async function(){
+
+  const farmer =
+    document.getElementById("farmerName").value.trim();
+
+  const crop =
+    document.getElementById("crop").value.trim();
+
+  const problem =
+    document.getElementById("problemText").value.trim();
+
+  const phoneInput =
+    document.querySelector('input[type="tel"]');
+
+  const phone =
+    phoneInput ? phoneInput.value.trim() : "";
+
+  const consent =
+    document.getElementById("consent").checked;
+
+  const voiceFile =
+    document.querySelector('input[type="file"][accept="audio/*"]');
+
+  const photoFile =
+    document.querySelector('input[type="file"][accept="image/*"]');
+
+
+  if(farmer === "" || crop === ""){
+
+    alert("Please enter Farmer Name and Crop.");
+
+    return;
+  }
+
+
+  if(problem === "" && (!voiceFile || voiceFile.files.length === 0)){
+
+    alert("Please describe the problem using text or voice.");
+
+    return;
+  }
+
+
+  if(!consent){
+
+    alert("Please provide consent before submitting.");
+
+    return;
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db, "cropReports"),
+      {
+        farmerName: farmer,
+        crop: crop,
+        problemDescription: problem,
+        phoneNumber: phone,
+        status: "Pending",
+        createdAt: serverTimestamp(),
+        hasVoiceDescription:
+          voiceFile ? voiceFile.files.length > 0 : false,
+        hasProblemPhoto:
+          photoFile ? photoFile.files.length > 0 : false
+      }
+    );
+
+
+    document.getElementById("successMessage").style.display =
+      "block";
+
+
+    alert("✅ Crop problem submitted successfully!");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert("❌ Submission failed. Please try again.");
+
+  }
+
+};
+
+</script>
