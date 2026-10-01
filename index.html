@@ -265,6 +265,50 @@ footer{
 </section>
 
 
+<!-- STUDENT SOLUTION -->
+
+<section id="student">
+
+  <div class="title">
+    <h2>🎓 Student Solution</h2>
+    <p>
+      Students can view farmer problems and suggest agriculture-related solutions.
+    </p>
+  </div>
+  <div class="form-box">
+
+  <label>Student Name</label>
+  <input
+    type="text"
+    id="studentName"
+    placeholder="Enter your name"
+  >
+
+  <label>Problem ID</label>
+  <input
+    type="text"
+    id="problemId"
+    placeholder="Enter Problem ID"
+  >
+
+  <label>Proposed Solution</label>
+  <textarea
+    id="solutionText"
+    placeholder="Explain your solution..."
+  ></textarea>
+
+  <button class="btn" onclick="submitSolution()">
+    Submit Solution
+  </button>
+
+  </div>
+
+</section>
+
+
+<!-- PROBLEM FORM -->
+
+
 <!-- PROBLEM FORM -->
 
 <section id="problem">
@@ -641,8 +685,37 @@ window.submitProblem = async function(){
   }
 
 };
+ 
+ 
+window.submitSolution = async function(){
 
+  const studentName = document.getElementById("studentName").value.trim();
+const problemId = document.getElementById("problemId").value.trim();
+const solutionText = document.getElementById("solutionText").value.trim();
+ if (!studentName || !problemId || !solutionText) {
+  alert("Please fill all fields.");
+  return;
+  }try {
+
+  await addDoc(collection(db, "solutions"), {
+    studentName: studentName,
+    problemId: problemId,
+    solutionText: solutionText,
+    status: "Pending",
+    createdAt: serverTimestamp()
+  });
+   } catch (error) {
+
+  console.error(error);
+  alert("Solution submission failed. Please try again.");
+
+  }
+};
+ 
+ 
 </script>
+
+
     
 </body>
 </html>
