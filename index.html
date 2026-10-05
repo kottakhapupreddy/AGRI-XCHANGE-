@@ -203,7 +203,6 @@ footer{
   </nav>
 </header>
 
-
 <!-- HOME -->
 
 <section class="hero" id="home">
@@ -217,11 +216,10 @@ footer{
   </p>
 
   <a href="#problem">
-    <button class="btn">Report a Crop Problem</button>
+    <button class="btn" type="button">Report a Crop Problem</button>
   </a>
 
 </section>
-
 
 <!-- USERS -->
 
@@ -229,6 +227,7 @@ footer{
 
   <div class="title">
     <h2>Who Can Use AGRI-XCHANGE?</h2>
+
     <p class="small">
       The core user roles of the AGRI-XCHANGE concept
     </p>
@@ -264,65 +263,86 @@ footer{
 
 </section>
 
-
 <!-- STUDENT SOLUTION -->
 
 <section id="student">
 
   <div class="title">
+
     <h2>🎓 Student Solution</h2>
+
     <p>
-      Students can view farmer problems and suggest agriculture-related solutions.
+      Students can view farmer problems and suggest
+      agriculture-related solutions.
     </p>
+
   </div>
+
   <div class="form-box">
 
-  <label>Student Name</label>
-  <input
-    type="text"
-    id="studentName"
-    placeholder="Enter your name"
-  >
+    <label>Student Name</label>
 
-  <label>Problem ID</label>
-  <input
-    type="text"
-    id="problemId"
-    placeholder="Enter Problem ID"
-  >
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Enter your name"
+    >
 
-  <label>Proposed Solution</label>
-  <textarea
-    id="solutionText"
-    placeholder="Explain your solution..."
-  ></textarea>
+    <label>Problem ID</label>
 
-  <button class="btn" onclick="alert('Button working'); submitSolution()">
-    Submit Solution
-  </button>
+    <input
+      type="text"
+      id="problemId"
+      placeholder="Enter Problem ID"
+    >
+
+    <label>Proposed Solution</label>
+
+    <textarea
+      id="solutionText"
+      placeholder="Explain your solution..."
+    ></textarea>
+
+    <button
+      class="btn"
+      type="button"
+      onclick="submitSolution()"
+    >
+      Submit Solution
+    </button>
+
+    <div class="success" id="solutionSuccessMessage">
+
+      ✅ Solution submitted successfully!
+
+      <br>
+
+      Your solution is now pending review.
+
+    </div>
 
   </div>
 
 </section>
 
-
-<!-- PROBLEM FORM -->
-
-
-<!-- PROBLEM FORM -->
+<!-- FARMER PROBLEM -->
 
 <section id="problem">
 
   <div class="title">
+
     <h2>🌾 Report a Crop Problem</h2>
+
     <p>
       Farmers can submit details about their agricultural problem.
     </p>
+
   </div>
 
   <div class="form-box">
 
     <label>Farmer Name</label>
+
     <input
       type="text"
       id="farmerName"
@@ -330,6 +350,7 @@ footer{
     >
 
     <label>Crop</label>
+
     <input
       type="text"
       id="crop"
@@ -337,143 +358,194 @@ footer{
     >
 
     <label>Describe the Problem</label>
+
     <textarea
       id="problemText"
       placeholder="Explain what is happening to your crop..."
     ></textarea>
 
     <label>Voice Description</label>
-    <input type="file" accept="audio/*">
+
+    <input
+      type="file"
+      id="voiceFile"
+      accept="audio/*"
+    >
 
     <label>Problem Photo</label>
-    <input type="file" accept="image/*">
+
+    <input
+      type="file"
+      id="photoFile"
+      accept="image/*"
+    >
 
     <label>Phone Number</label>
+
     <input
       type="tel"
+      id="phoneNumber"
       placeholder="Phone number"
     >
 
     <label>
+
       <input
         type="checkbox"
         id="consent"
         style="width:auto;margin-right:8px;"
       >
+
       I give consent to share the submitted information.
+
     </label>
 
     <div class="note">
+
       ⚠️ Do not share phone numbers publicly without consent.
+
     </div>
 
-    <button class="btn" onclick="submitProblem()">
+    <button
+      class="btn"
+      type="button"
+      onclick="submitProblem()"
+    >
       Submit Problem
     </button>
 
     <div class="success" id="successMessage">
+
       ✅ Problem submitted successfully!
+
       <br>
+
       Your problem can now move to the solution stage.
+
     </div>
 
   </div>
 
 </section>
-
 
 <!-- HOW IT WORKS -->
 
 <section id="flow">
 
   <div class="title">
+
     <h2>🔄 How AGRI-XCHANGE Works</h2>
+
   </div>
 
   <div class="flow">
 
     <div class="flow-step">
+
       <strong>1️⃣ Farmer Reports Problem</strong>
+
       <p>
         Farmer enters crop details, problem description,
         voice information and photo.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>2️⃣ Problem Gets an ID</strong>
+
       <p>
-        Each submitted problem can be identified using a
-        unique problem ID.
+        Each submitted problem can be identified using
+        a unique problem ID.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>3️⃣ Students Contribute Solutions</strong>
+
       <p>
         Students can provide possible solutions related
         to the reported problem.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>4️⃣ Evidence Can Be Added</strong>
+
       <p>
         Field photos and bill photos can support the
         submitted solution.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>5️⃣ Farmer Rating & Student Votes</strong>
+
       <p>
         Community feedback can help evaluate submitted
         solutions.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>6️⃣ Professor Verification</strong>
+
       <p>
         A professor can review the solution and provide
         verification.
       </p>
+
     </div>
 
     <div class="flow-step">
+
       <strong>7️⃣ Final Status</strong>
+
       <p>
         After the review process, the solution can receive
         its final status.
       </p>
+
     </div>
 
   </div>
 
 </section>
 
-
 <!-- PROFESSOR -->
 
 <section class="professor">
 
   <div class="title">
+
     <h2>👨‍🏫 Professor Verification</h2>
 
     <p>
       Solutions can be reviewed before receiving final status.
     </p>
+
   </div>
 
   <div class="form-box">
 
     <label>Problem ID</label>
+
     <input
       type="text"
       placeholder="Enter problem ID"
     >
 
     <label>Solution ID</label>
+
     <input
       type="text"
       placeholder="Enter solution ID"
@@ -482,10 +554,15 @@ footer{
     <label>Verification Status</label>
 
     <select>
+
       <option>Select status</option>
+
       <option>Verified</option>
+
       <option>Needs Review</option>
+
       <option>Not Verified</option>
+
     </select>
 
     <label>Professor Note</label>
@@ -494,14 +571,16 @@ footer{
       placeholder="Enter verification note..."
     ></textarea>
 
-    <button class="btn">
+    <button
+      class="btn"
+      type="button"
+    >
       Submit Verification
     </button>
 
   </div>
 
 </section>
-
 
 <!-- DISCLAIMER -->
 
@@ -512,16 +591,17 @@ footer{
     <strong>⚠️ Important Disclaimer</strong>
 
     <p style="margin-top:8px;">
+
       This is a student project. Information shared by
       farmers and students is community experience, not
       professional advice. Please verify with a local
       agriculture officer before use.
+
     </p>
 
   </div>
 
 </section>
-
 
 <footer>
 
@@ -533,48 +613,13 @@ footer{
 
 </footer>
 
+<!-- FIREBASE -->
 
-<script>
-
-function oldSubmitProblem(){
-  const farmer =
-    document.getElementById("farmerName").value;
-
-  const crop =
-    document.getElementById("crop").value;
-
-  const problem =
-    document.getElementById("problemText").value;
-
-  const consent =
-    document.getElementById("consent").checked;
-
-  if(
-    farmer === "" ||
-    crop === "" ||
-    problem === ""
-  ){
-
-    alert("Please fill Farmer Name, Crop and Problem.");
-
-    return;
-  }
-
-  if(!consent){
-
-    alert("Please provide consent before submitting.");
-
-    return;
-  }
-
-  document.getElementById("successMessage").style.display =
-    "block";
-
-}
-</script>
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
   getFirestore,
@@ -585,12 +630,25 @@ import {
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
-  authDomain: "agrixchange-175d0.firebaseapp.com",
-  projectId: "agrixchange-175d0",
-  storageBucket: "agrixchange-175d0.firebasestorage.app",
-  messagingSenderId: "1033959694049",
-  appId: "1:1033959694049:web:4eaa141cafda31c3ffa1a0"
+
+  apiKey:
+    "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
+
+  authDomain:
+    "agrixchange-175d0.firebaseapp.com",
+
+  projectId:
+    "agrixchange-175d0",
+
+  storageBucket:
+    "agrixchange-175d0.firebasestorage.app",
+
+  messagingSenderId:
+    "1033959694049",
+
+  appId:
+    "1:1033959694049:web:4eaa141cafda31c3ffa1a0"
+
 };
 
 
@@ -599,44 +657,58 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
+/* =========================
+   FARMER PROBLEM SUBMISSION
+   ========================= */
+
 window.submitProblem = async function(){
 
   const farmer =
-    document.getElementById("farmerName").value.trim();
+    document.getElementById("farmerName")
+      .value.trim();
 
   const crop =
-    document.getElementById("crop").value.trim();
+    document.getElementById("crop")
+      .value.trim();
 
   const problem =
-    document.getElementById("problemText").value.trim();
-
-  const phoneInput =
-    document.querySelector('input[type="tel"]');
+    document.getElementById("problemText")
+      .value.trim();
 
   const phone =
-    phoneInput ? phoneInput.value.trim() : "";
+    document.getElementById("phoneNumber")
+      .value.trim();
 
   const consent =
-    document.getElementById("consent").checked;
+    document.getElementById("consent")
+      .checked;
 
   const voiceFile =
-    document.querySelector('input[type="file"][accept="audio/*"]');
+    document.getElementById("voiceFile");
 
   const photoFile =
-    document.querySelector('input[type="file"][accept="image/*"]');
+    document.getElementById("photoFile");
 
 
-  if(farmer === "" || crop === ""){
+  if(!farmer || !crop){
 
-    alert("Please enter Farmer Name and Crop.");
+    alert(
+      "Please enter Farmer Name and Crop."
+    );
 
     return;
   }
 
 
-  if(problem === "" && (!voiceFile || voiceFile.files.length === 0)){
+  if(
+    !problem &&
+    (!voiceFile ||
+     voiceFile.files.length === 0)
+  ){
 
-    alert("Please describe the problem using text or voice.");
+    alert(
+      "Please describe the problem using text or voice."
+    );
 
     return;
   }
@@ -644,7 +716,9 @@ window.submitProblem = async function(){
 
   if(!consent){
 
-    alert("Please provide consent before submitting.");
+    alert(
+      "Please provide consent before submitting."
+    );
 
     return;
   }
@@ -655,68 +729,154 @@ window.submitProblem = async function(){
     await addDoc(
       collection(db, "cropReports"),
       {
+
         farmerName: farmer,
+
         crop: crop,
+
         problemDescription: problem,
+
         phoneNumber: phone,
+
         status: "Pending",
+
         createdAt: serverTimestamp(),
+
         hasVoiceDescription:
-          voiceFile ? voiceFile.files.length > 0 : false,
+          voiceFile.files.length > 0,
+
         hasProblemPhoto:
-          photoFile ? photoFile.files.length > 0 : false
+          photoFile.files.length > 0
+
       }
     );
 
 
-    document.getElementById("successMessage").style.display =
-      "block";
+    document.getElementById(
+      "successMessage"
+    ).style.display = "block";
 
 
-    alert("✅ Crop problem submitted successfully!");
+    alert(
+      "✅ Crop problem submitted successfully!"
+    );
 
 
   }catch(error){
 
     console.error(error);
 
-    alert("❌ Submission failed. Please try again.");
+    alert(
+      "❌ Problem submission failed: " +
+      error.message
+    );
 
   }
 
 };
- 
- 
+
+
+/* =========================
+   STUDENT SOLUTION SUBMISSION
+   ========================= */
+
 window.submitSolution = async function(){
 
-  const studentName = document.getElementById("studentName").value.trim();
-const problemId = document.getElementById("problemId").value.trim();
-const solutionText = document.getElementById("solutionText").value.trim();
- if (!studentName || !problemId || !solutionText) {
-  alert("Please fill all fields.");
-  return;
-  }try {
-alert("Firebase started");
-  await addDoc(collection(db, "solutions"), {
-    studentName: studentName,
-    problemId: problemId,
-    solutionText: solutionText,
-    status: "Pending",
-    createdAt: serverTimestamp()
-  });
-   alert("After addDoc");
-   } catch (error) {
+  const studentName =
+    document.getElementById("studentName")
+      .value.trim();
 
-  console.error(error);
-  alert("Solution submission failed: " + error.message);
-  
+  const problemId =
+    document.getElementById("problemId")
+      .value.trim();
+
+  const solutionText =
+    document.getElementById("solutionText")
+      .value.trim();
+
+
+  if(
+    !studentName ||
+    !problemId ||
+    !solutionText
+  ){
+
+    alert(
+      "Please fill all fields."
+    );
+
+    return;
   }
+
+
+  try{
+
+    const solutionRef =
+      await addDoc(
+        collection(db, "solutions"),
+        {
+
+          studentName: studentName,
+
+          problemId: problemId,
+
+          solutionText: solutionText,
+
+          status: "Pending",
+
+          createdAt: serverTimestamp()
+
+        }
+      );
+
+
+    console.log(
+      "Solution ID:",
+      solutionRef.id
+    );
+
+
+    document.getElementById(
+      "solutionSuccessMessage"
+    ).style.display = "block";
+
+
+    alert(
+      "✅ Solution submitted successfully!"
+    );
+
+
+    document.getElementById(
+      "studentName"
+    ).value = "";
+
+    document.getElementById(
+      "problemId"
+    ).value = "";
+
+    document.getElementById(
+      "solutionText"
+    ).value = "";
+
+
+  }catch(error){
+
+    console.error(
+      "Student solution error:",
+      error
+    );
+
+
+    alert(
+      "❌ Solution submission failed: " +
+      error.message
+    );
+
+  }
+
 };
- 
- 
+
 </script>
 
-
-    
 </body>
-</html>
+  </html>
