@@ -7,647 +7,797 @@
 <title>AGRI-XCHANGE</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
+  font-family:Arial, sans-serif;
 }
 
 body{
   background:#f4f8f3;
-  color:#17351d;
+  color:#222;
+  line-height:1.6;
 }
 
 header{
-  background:#14532d;
+  background:#176b2c;
   color:white;
-  padding:18px 6%;
+  padding:15px 20px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+nav{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
-  gap:15px;
+  gap:10px;
 }
 
 .logo{
-  font-size:25px;
+  font-size:24px;
   font-weight:bold;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin:0 8px;
+  margin:5px 8px;
+  font-weight:bold;
 }
 
 .hero{
+  background:linear-gradient(135deg,#dff5df,#f8fff6);
   text-align:center;
-  padding:65px 7%;
-  background:linear-gradient(135deg,#dff5df,#ffffff);
+  padding:65px 20px;
 }
 
 .hero h1{
+  color:#176b2c;
   font-size:42px;
-  color:#14532d;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 
 .hero p{
-  max-width:750px;
+  max-width:800px;
   margin:auto;
   font-size:18px;
-  color:#4b6350;
 }
 
-.btn{
-  border:0;
-  padding:12px 22px;
-  border-radius:8px;
-  background:#16a34a;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:18px;
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
 }
 
-.btn:hover{
-  background:#15803d;
+h2{
+  color:#176b2c;
+  margin-bottom:20px;
 }
 
-section{
-  padding:50px 7%;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.title h2{
-  color:#14532d;
-  font-size:30px;
-}
-
-.roles{
+.card-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
 }
 
 .card{
   background:white;
   padding:25px;
-  border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-  text-align:center;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.08);
 }
 
 .card h3{
-  color:#166534;
+  color:#176b2c;
   margin-bottom:10px;
 }
 
 .form-box{
-  max-width:700px;
-  margin:auto;
   background:white;
-  padding:28px;
-  border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom:30px;
 }
 
 label{
   display:block;
-  margin-top:15px;
   font-weight:bold;
+  margin-top:15px;
+  margin-bottom:5px;
 }
 
-input,select,textarea{
+input,
+textarea,
+select{
   width:100%;
   padding:12px;
-  margin-top:7px;
-  border:1px solid #cbd5cb;
-  border-radius:7px;
+  border:1px solid #bbb;
+  border-radius:8px;
   font-size:15px;
 }
 
 textarea{
-  min-height:120px;
+  min-height:110px;
   resize:vertical;
 }
 
-.note{
-  background:#fff8db;
-  border-left:5px solid #d4a800;
-  padding:15px;
-  margin-top:20px;
-  border-radius:7px;
-  font-size:14px;
+.btn{
+  background:#176b2c;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  margin-top:18px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.btn:hover{
+  background:#0f5120;
+}
+
+.btn-danger{
+  background:#c62828;
+}
+
+.btn-blue{
+  background:#1565c0;
+}
+
+.btn-orange{
+  background:#ef6c00;
 }
 
 .success{
   display:none;
-  margin-top:20px;
-  background:#dcfce7;
-  color:#166534;
+  background:#e0f5e4;
+  color:#176b2c;
   padding:15px;
   border-radius:8px;
+  margin-top:15px;
   font-weight:bold;
 }
 
-.flow{
-  max-width:800px;
-  margin:auto;
-}
-
-.flow-step{
+.problem-card,
+.solution-card{
   background:white;
-  padding:20px;
-  margin:12px 0;
-  border-left:5px solid #16a34a;
+  border-left:5px solid #176b2c;
+  padding:18px;
+  margin:15px 0;
   border-radius:8px;
-  box-shadow:0 3px 10px rgba(0,0,0,.05);
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
 }
 
-.professor{
-  background:#eaf6ea;
+.problem-id{
+  color:#176b2c;
+  font-weight:bold;
+  font-size:18px;
 }
 
-footer{
-  background:#0b2e18;
-  color:white;
-  text-align:center;
-  padding:25px;
-  font-size:14px;
+.status{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:#fff3cd;
+  color:#856404;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.status.verified{
+  background:#d4edda;
+  color:#155724;
+}
+
+.status.rejected{
+  background:#f8d7da;
+  color:#721c24;
 }
 
 .small{
-  font-size:13px;
-  color:#647567;
-  margin-top:8px;
+  color:#666;
+  font-size:14px;
 }
+
+.hidden{
+  display:none;
+}
+
+.role-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.rating{
+  display:flex;
+  gap:5px;
+  margin-top:10px;
+}
+
+.rating button{
+  border:none;
+  background:#ffd54f;
+  padding:7px 12px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+footer{
+  background:#123d1d;
+  color:white;
+  text-align:center;
+  padding:30px 20px;
+  margin-top:30px;
+}
+
+hr{
+  margin:25px 0;
+  border:0;
+  border-top:1px solid #ddd;
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  nav{
+    justify-content:center;
+  }
+
+  nav a{
+    font-size:13px;
+  }
+
+  .container{
+    padding:30px 15px;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🌱 AGRI-XCHANGE</div>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#problem">Report Problem</a>
-    <a href="#flow">How It Works</a>
-    <a href="#roles">Users</a>
-  </nav>
+<nav>
+
+<div class="logo">🌱 AGRI-XCHANGE</div>
+
+<div>
+<a href="#home">Home</a>
+<a href="#farmer">Farmer</a>
+<a href="#student">Student</a>
+<a href="#professor">Professor</a>
+<a href="#how">How It Works</a>
+</div>
+
+</nav>
+
 </header>
+
 
 <!-- HOME -->
 
 <section class="hero" id="home">
 
-  <h1>AGRI-XCHANGE</h1>
+<h1>AGRI-XCHANGE</h1>
 
-  <p>
-    A community-based agriculture platform where farmers can
-    share crop problems and receive solutions from students,
-    with professor verification and community feedback.
-  </p>
-
-  <a href="#problem">
-    <button class="btn" type="button">Report a Crop Problem</button>
-  </a>
+<p>
+A collaborative agriculture platform where farmers share crop problems,
+students provide possible solutions, and professors verify the solutions
+before they are considered final.
+</p>
 
 </section>
 
-<!-- USERS -->
 
-<section id="roles">
+<!-- USER ROLES -->
 
-  <div class="title">
-    <h2>Who Can Use AGRI-XCHANGE?</h2>
+<section class="container">
 
-    <p class="small">
-      The core user roles of the AGRI-XCHANGE concept
-    </p>
-  </div>
+<div class="section-title">
 
-  <div class="roles">
+<h2>Our Users</h2>
 
-    <div class="card">
-      <h3>👨‍🌾 Farmer</h3>
-      <p>
-        Shares crop problems, photos and relevant information
-        and can provide feedback on solutions.
-      </p>
-    </div>
+</div>
 
-    <div class="card">
-      <h3>🎓 Student</h3>
-      <p>
-        Can contribute agriculture-related solutions and
-        participate through community voting.
-      </p>
-    </div>
+<div class="card-grid">
 
-    <div class="card">
-      <h3>👨‍🏫 Professor</h3>
-      <p>
-        Reviews submitted solutions and provides verification
-        before a solution receives final status.
-      </p>
-    </div>
+<div class="card">
 
-  </div>
+<h3>👨‍🌾 Farmer</h3>
 
-</section>
+<p>
+Farmers can report crop problems using text, voice description and
+problem photographs.
+</p>
 
-<!-- STUDENT SOLUTION -->
+</div>
 
-<section id="student">
+<div class="card">
 
-  <div class="title">
+<h3>🎓 Student</h3>
 
-    <h2>🎓 Student Solution</h2>
+<p>
+Students can view farmer problems and submit agricultural solutions
+based on their knowledge.
+</p>
 
-    <p>
-      Students can view farmer problems and suggest
-      agriculture-related solutions.
-    </p>
+</div>
 
-  </div>
+<div class="card">
 
-  <div class="form-box">
+<h3>👨‍🏫 Professor</h3>
 
-    <label>Student Name</label>
+<p>
+Professors can review submitted problems and student solutions and
+verify or reject solutions.
+</p>
 
-    <input
-      type="text"
-      id="studentName"
-      placeholder="Enter your name"
-    >
+</div>
 
-    <label>Problem ID</label>
-
-    <input
-      type="text"
-      id="problemId"
-      placeholder="Enter Problem ID"
-    >
-
-    <label>Proposed Solution</label>
-
-    <textarea
-      id="solutionText"
-      placeholder="Explain your solution..."
-    ></textarea>
-
-    <button
-      class="btn"
-      type="button"
-      onclick="submitSolution()"
-    >
-      Submit Solution
-    </button>
-
-    <div class="success" id="solutionSuccessMessage">
-
-      ✅ Solution submitted successfully!
-
-      <br>
-
-      Your solution is now pending review.
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<!-- FARMER PROBLEM -->
 
-<section id="problem">
+<!-- FARMER -->
 
-  <div class="title">
+<section class="container" id="farmer">
 
-    <h2>🌾 Report a Crop Problem</h2>
+<h2 class="section-title">👨‍🌾 Farmer Section</h2>
 
-    <p>
-      Farmers can submit details about their agricultural problem.
-    </p>
+<div class="form-box">
 
-  </div>
+<h3>Report a Crop Problem</h3>
 
-  <div class="form-box">
+<label>Farmer Name</label>
 
-    <label>Farmer Name</label>
+<input
+type="text"
+id="farmerName"
+placeholder="Enter your name">
 
-    <input
-      type="text"
-      id="farmerName"
-      placeholder="Enter your name"
-    >
 
-    <label>Crop</label>
+<label>Crop</label>
 
-    <input
-      type="text"
-      id="crop"
-      placeholder="Example: Paddy, Cotton, Maize"
-    >
+<input
+type="text"
+id="crop"
+placeholder="Example: Rice, Cotton, Maize">
 
-    <label>Describe the Problem</label>
 
-    <textarea
-      id="problemText"
-      placeholder="Explain what is happening to your crop..."
-    ></textarea>
+<label>Problem Description</label>
 
-    <label>Voice Description</label>
+<textarea
+id="problemText"
+placeholder="Describe your crop problem"></textarea>
 
-    <input
-      type="file"
-      id="voiceFile"
-      accept="audio/*"
-    >
 
-    <label>Problem Photo</label>
+<label>Voice Description</label>
 
-    <input
-      type="file"
-      id="photoFile"
-      accept="image/*"
-    >
+<input
+type="file"
+id="voiceFile"
+accept="audio/*">
 
-    <label>Phone Number</label>
 
-    <input
-      type="tel"
-      id="phoneNumber"
-      placeholder="Phone number"
-    >
+<label>Problem Photo</label>
 
-    <label>
+<input
+type="file"
+id="photoFile"
+accept="image/*">
 
-      <input
-        type="checkbox"
-        id="consent"
-        style="width:auto;margin-right:8px;"
-      >
 
-      I give consent to share the submitted information.
+<label>Phone Number</label>
 
-    </label>
+<input
+type="tel"
+id="phoneNumber"
+placeholder="Enter phone number">
 
-    <div class="note">
 
-      ⚠️ Do not share phone numbers publicly without consent.
+<label>
 
-    </div>
+<input
+type="checkbox"
+id="consent"
+style="width:auto">
 
-    <button
-      class="btn"
-      type="button"
-      onclick="submitProblem()"
-    >
-      Submit Problem
-    </button>
+I agree to submit this information for agricultural guidance.
 
-    <div class="success" id="successMessage">
+</label>
 
-      ✅ Problem submitted successfully!
 
-      <br>
+<button
+class="btn"
+type="button"
+onclick="submitProblem()">
 
-      Your problem can now move to the solution stage.
+Submit Crop Problem
 
-    </div>
+</button>
 
-  </div>
+
+<div
+class="success"
+id="successMessage">
+
+✅ Crop problem submitted successfully!
+
+<br><br>
+
+<strong>Your Problem ID:</strong>
+
+<span id="newProblemId"></span>
+
+<br>
+
+Please save this Problem ID.
+
+</div>
+
+</div>
+
+
+<!-- FARMER SEARCH -->
+
+<div class="form-box">
+
+<h3>🔎 Check My Submitted Problems</h3>
+
+<p class="small">
+Enter the phone number used while submitting your problem.
+</p>
+
+<input
+type="tel"
+id="farmerSearchPhone"
+placeholder="Enter phone number">
+
+<button
+class="btn btn-blue"
+type="button"
+onclick="loadFarmerProblems()">
+
+View My Problems
+
+</button>
+
+<div id="farmerProblems"></div>
+
+</div>
 
 </section>
 
-<!-- HOW IT WORKS -->
 
-<section id="flow">
+<!-- STUDENT -->
 
-  <div class="title">
+<section class="container" id="student">
 
-    <h2>🔄 How AGRI-XCHANGE Works</h2>
+<h2 class="section-title">🎓 Student Section</h2>
 
-  </div>
 
-  <div class="flow">
+<div class="form-box">
 
-    <div class="flow-step">
+<h3>📋 Farmer Problems</h3>
 
-      <strong>1️⃣ Farmer Reports Problem</strong>
+<p class="small">
+Students can view submitted farmer problems and choose a problem
+to provide a solution.
+</p>
 
-      <p>
-        Farmer enters crop details, problem description,
-        voice information and photo.
-      </p>
+<button
+class="btn btn-blue"
+type="button"
+onclick="loadProblemsForStudents()">
 
-    </div>
+Load Farmer Problems
 
-    <div class="flow-step">
+</button>
 
-      <strong>2️⃣ Problem Gets an ID</strong>
+<div id="studentProblems"></div>
 
-      <p>
-        Each submitted problem can be identified using
-        a unique problem ID.
-      </p>
+</div>
 
-    </div>
 
-    <div class="flow-step">
+<div class="form-box">
 
-      <strong>3️⃣ Students Contribute Solutions</strong>
+<h3>💡 Submit Student Solution</h3>
 
-      <p>
-        Students can provide possible solutions related
-        to the reported problem.
-      </p>
+<label>Student Name</label>
 
-    </div>
+<input
+type="text"
+id="studentName"
+placeholder="Enter your name">
 
-    <div class="flow-step">
 
-      <strong>4️⃣ Evidence Can Be Added</strong>
+<label>Problem ID</label>
 
-      <p>
-        Field photos and bill photos can support the
-        submitted solution.
-      </p>
+<input
+type="text"
+id="problemId"
+placeholder="Enter Problem ID">
 
-    </div>
 
-    <div class="flow-step">
+<label>Your Solution</label>
 
-      <strong>5️⃣ Farmer Rating & Student Votes</strong>
+<textarea
+id="solutionText"
+placeholder="Explain your agricultural solution"></textarea>
 
-      <p>
-        Community feedback can help evaluate submitted
-        solutions.
-      </p>
 
-    </div>
+<button
+class="btn"
+type="button"
+onclick="submitSolution()">
 
-    <div class="flow-step">
+Submit Solution
 
-      <strong>6️⃣ Professor Verification</strong>
+</button>
 
-      <p>
-        A professor can review the solution and provide
-        verification.
-      </p>
 
-    </div>
+<div
+class="success"
+id="solutionSuccessMessage">
 
-    <div class="flow-step">
+✅ Solution submitted successfully!
 
-      <strong>7️⃣ Final Status</strong>
+<br>
 
-      <p>
-        After the review process, the solution can receive
-        its final status.
-      </p>
+Your solution is now pending professor review.
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+
+<div class="form-box">
+
+<h3>📚 Submitted Solutions</h3>
+
+<button
+class="btn btn-blue"
+type="button"
+onclick="loadSolutionsForStudents()">
+
+View Solutions
+
+</button>
+
+<div id="studentSolutions"></div>
+
+</div>
 
 </section>
+
 
 <!-- PROFESSOR -->
 
-<section class="professor">
+<section class="container" id="professor">
 
-  <div class="title">
+<h2 class="section-title">👨‍🏫 Professor Section</h2>
 
-    <h2>👨‍🏫 Professor Verification</h2>
 
-    <p>
-      Solutions can be reviewed before receiving final status.
-    </p>
+<div class="form-box">
 
-  </div>
+<h3>Professor Access</h3>
 
-  <div class="form-box">
+<p class="small">
 
-    <label>Problem ID</label>
+This section is provided for the prototype demonstration.
+In the future, professor authentication can be added.
 
-    <input
-      type="text"
-      placeholder="Enter problem ID"
-    >
+</p>
 
-    <label>Solution ID</label>
+<label>Professor Name</label>
 
-    <input
-      type="text"
-      placeholder="Enter solution ID"
-    >
+<input
+type="text"
+id="professorName"
+placeholder="Enter professor name">
 
-    <label>Verification Status</label>
+</div>
 
-    <select>
 
-      <option>Select status</option>
+<!-- PROFESSOR PROBLEMS -->
 
-      <option>Verified</option>
+<div class="form-box">
 
-      <option>Needs Review</option>
+<h3>📋 Review Farmer Problems</h3>
 
-      <option>Not Verified</option>
+<button
+class="btn btn-blue"
+type="button"
+onclick="loadProfessorProblems()">
 
-    </select>
+Load Farmer Problems
 
-    <label>Professor Note</label>
+</button>
 
-    <textarea
-      placeholder="Enter verification note..."
-    ></textarea>
+<div id="professorProblems"></div>
 
-    <button
-      class="btn"
-      type="button"
-    >
-      Submit Verification
-    </button>
+</div>
 
-  </div>
+
+<!-- PROFESSOR SOLUTIONS -->
+
+<div class="form-box">
+
+<h3>✅ Verify Student Solutions</h3>
+
+<button
+class="btn btn-blue"
+type="button"
+onclick="loadProfessorSolutions()">
+
+Load Student Solutions
+
+</button>
+
+<div id="professorSolutions"></div>
+
+</div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="container" id="how">
+
+<h2 class="section-title">How AGRI-XCHANGE Works</h2>
+
+<div class="card-grid">
+
+<div class="card">
+
+<h3>1️⃣ Farmer Reports</h3>
+
+<p>
+Farmer submits crop name and problem details.
+A unique Problem ID is generated automatically.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>2️⃣ Students View</h3>
+
+<p>
+Students can view available farmer problems and select a problem
+using its Problem ID.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>3️⃣ Students Suggest</h3>
+
+<p>
+Students submit possible agricultural solutions.
+Each solution is stored separately.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>4️⃣ Professor Reviews</h3>
+
+<p>
+Professor checks the farmer problem and submitted student solutions.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>5️⃣ Verification</h3>
+
+<p>
+Professor can verify or reject a student solution.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>6️⃣ Farmer Feedback</h3>
+
+<p>
+Verified solutions can later be used for farmer feedback and rating.
+</p>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- DISCLAIMER -->
-
-<section>
-
-  <div class="note">
-
-    <strong>⚠️ Important Disclaimer</strong>
-
-    <p style="margin-top:8px;">
-
-      This is a student project. Information shared by
-      farmers and students is community experience, not
-      professional advice. Please verify with a local
-      agriculture officer before use.
-
-    </p>
-
-  </div>
-
-</section>
 
 <footer>
 
-  <p>© 2026 AGRI-XCHANGE</p>
+<h3>🌱 AGRI-XCHANGE</h3>
 
-  <p style="margin-top:6px;">
-    Smart Community Agriculture Platform
-  </p>
+<p>
+Connecting Farmers, Students and Agricultural Experts.
+</p>
+
+<p>
+Prototype developed for agricultural problem solving and knowledge sharing.
+</p>
 
 </footer>
 
-<!-- FIREBASE -->
 
 <script type="module">
 
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+getFirestore,
+collection,
+addDoc,
+getDocs,
+query,
+where,
+orderBy,
+serverTimestamp,
+doc,
+updateDoc
+
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
-  apiKey:
-    "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
+apiKey:
+"AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
 
-  authDomain:
-    "agrixchange-175d0.firebaseapp.com",
+authDomain:
+"agrixchange-175d0.firebaseapp.com",
 
-  projectId:
-    "agrixchange-175d0",
+projectId:
+"agrixchange-175d0",
 
-  storageBucket:
-    "agrixchange-175d0.firebasestorage.app",
+storageBucket:
+"agrixchange-175d0.firebasestorage.app",
 
-  messagingSenderId:
-    "1033959694049",
+messagingSenderId:
+"1033959694049",
 
-  appId:
-    "1:1033959694049:web:4eaa141cafda31c3ffa1a0"
+appId:
+"1:1033959694049:web:4eaa141cafda31c3ffa1a0"
 
 };
 
@@ -657,226 +807,954 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-/* =========================
-   FARMER PROBLEM SUBMISSION
-   ========================= */
+/* GENERATE PROBLEM ID */
+
+function generateProblemId(){
+
+const random =
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
+
+return "AGRI-" + random;
+
+}
+
+
+/* FARMER SUBMIT */
 
 window.submitProblem = async function(){
 
-  const farmer =
-    document.getElementById("farmerName")
-      .value.trim();
+const farmer =
+document.getElementById("farmerName")
+.value
+.trim();
 
-  const crop =
-    document.getElementById("crop")
-      .value.trim();
+const crop =
+document.getElementById("crop")
+.value
+.trim();
 
-  const problem =
-    document.getElementById("problemText")
-      .value.trim();
+const problem =
+document.getElementById("problemText")
+.value
+.trim();
 
-  const phone =
-    document.getElementById("phoneNumber")
-      .value.trim();
+const phone =
+document.getElementById("phoneNumber")
+.value
+.trim();
 
-  const consent =
-    document.getElementById("consent")
-      .checked;
+const consent =
+document.getElementById("consent")
+.checked;
 
-  const voiceFile =
-    document.getElementById("voiceFile");
+const voiceFile =
+document.getElementById("voiceFile");
 
-  const photoFile =
-    document.getElementById("photoFile");
-
-
-  if(!farmer || !crop){
-
-    alert(
-      "Please enter Farmer Name and Crop."
-    );
-
-    return;
-  }
+const photoFile =
+document.getElementById("photoFile");
 
 
-  if(
-    !problem &&
-    (!voiceFile ||
-     voiceFile.files.length === 0)
-  ){
+if(!farmer || !crop){
 
-    alert(
-      "Please describe the problem using text or voice."
-    );
+alert("Please enter Farmer Name and Crop.");
 
-    return;
-  }
+return;
+
+}
 
 
-  if(!consent){
+if(
+!problem &&
+(!voiceFile || voiceFile.files.length === 0)
+){
 
-    alert(
-      "Please provide consent before submitting."
-    );
+alert("Please describe the problem using text or voice.");
 
-    return;
-  }
+return;
 
-
-  try{
-
-    await addDoc(
-      collection(db, "cropReports"),
-      {
-
-        farmerName: farmer,
-
-        crop: crop,
-
-        problemDescription: problem,
-
-        phoneNumber: phone,
-
-        status: "Pending",
-
-        createdAt: serverTimestamp(),
-
-        hasVoiceDescription:
-          voiceFile.files.length > 0,
-
-        hasProblemPhoto:
-          photoFile.files.length > 0
-
-      }
-    );
+}
 
 
-    document.getElementById(
-      "successMessage"
-    ).style.display = "block";
+if(!consent){
+
+alert("Please provide consent before submitting.");
+
+return;
+
+}
 
 
-    alert(
-      "✅ Crop problem submitted successfully!"
-    );
+const problemId =
+generateProblemId();
 
 
-  }catch(error){
+try{
 
-    console.error(error);
+await addDoc(
+collection(db,"cropReports"),
+{
 
-    alert(
-      "❌ Problem submission failed: " +
-      error.message
-    );
+problemId:problemId,
 
-  }
+farmerName:farmer,
+
+crop:crop,
+
+problemDescription:problem,
+
+phoneNumber:phone,
+
+status:"Pending",
+
+createdAt:serverTimestamp(),
+
+hasVoiceDescription:
+voiceFile.files.length > 0,
+
+hasProblemPhoto:
+photoFile.files.length > 0
+
+}
+);
+
+
+document
+.getElementById("successMessage")
+.style.display="block";
+
+
+document
+.getElementById("newProblemId")
+.textContent=problemId;
+
+
+alert(
+"✅ Crop problem submitted successfully!\nProblem ID: "
++
+problemId
+);
+
+
+document
+.getElementById("farmerName")
+.value="";
+
+document
+.getElementById("crop")
+.value="";
+
+document
+.getElementById("problemText")
+.value="";
+
+document
+.getElementById("phoneNumber")
+.value="";
+
+document
+.getElementById("consent")
+.checked=false;
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ Problem submission failed: "
++
+error.message
+);
+
+}
 
 };
 
 
-/* =========================
-   STUDENT SOLUTION SUBMISSION
-   ========================= */
+/* LOAD FARMER PROBLEMS */
+
+window.loadFarmerProblems = async function(){
+
+const phone =
+document
+.getElementById("farmerSearchPhone")
+.value
+.trim();
+
+const output =
+document
+.getElementById("farmerProblems");
+
+
+if(!phone){
+
+alert("Please enter your phone number.");
+
+return;
+
+}
+
+
+output.innerHTML=
+"<p>Loading...</p>";
+
+
+try{
+
+const q =
+query(
+collection(db,"cropReports"),
+where("phoneNumber","==",phone)
+);
+
+
+const snapshot =
+await getDocs(q);
+
+
+if(snapshot.empty){
+
+output.innerHTML=
+"<p>No problems found.</p>";
+
+return;
+
+}
+
+
+output.innerHTML="";
+
+
+snapshot.forEach((item)=>{
+
+const data=item.data();
+
+const statusClass =
+data.status==="Verified"
+?
+"verified"
+:
+data.status==="Rejected"
+?
+"rejected"
+:
+"";
+
+
+output.innerHTML += `
+
+<div class="problem-card">
+
+<div class="problem-id">
+
+Problem ID:
+${data.problemId || item.id}
+
+</div>
+
+<p>
+<strong>Crop:</strong>
+${data.crop || ""}
+</p>
+
+<p>
+<strong>Problem:</strong>
+${data.problemDescription || "Voice description provided"}
+</p>
+
+<p>
+
+<strong>Status:</strong>
+
+<span class="status ${statusClass}">
+${data.status || "Pending"}
+</span>
+
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load problems.</p>";
+
+}
+
+};
+
+
+/* STUDENT LOAD PROBLEMS */
+
+window.loadProblemsForStudents = async function(){
+
+const output =
+document.getElementById("studentProblems");
+
+output.innerHTML=
+"<p>Loading farmer problems...</p>";
+
+
+try{
+
+const q =
+query(
+collection(db,"cropReports"),
+orderBy("createdAt","desc")
+);
+
+
+const snapshot =
+await getDocs(q);
+
+
+if(snapshot.empty){
+
+output.innerHTML=
+"<p>No farmer problems available.</p>";
+
+return;
+
+}
+
+
+output.innerHTML="";
+
+
+snapshot.forEach((item)=>{
+
+const data=item.data();
+
+output.innerHTML += `
+
+<div class="problem-card">
+
+<div class="problem-id">
+
+Problem ID:
+${data.problemId || item.id}
+
+</div>
+
+<p>
+<strong>Crop:</strong>
+${data.crop || ""}
+</p>
+
+<p>
+<strong>Problem:</strong>
+${data.problemDescription || "Voice description provided"}
+</p>
+
+<p>
+<strong>Status:</strong>
+<span class="status">
+${data.status || "Pending"}
+</span>
+</p>
+
+<button
+class="btn"
+onclick="selectProblem('${data.problemId || item.id}')">
+
+Solve This Problem
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load farmer problems.</p>";
+
+}
+
+};
+
+
+/* SELECT PROBLEM */
+
+window.selectProblem = function(problemId){
+
+document
+.getElementById("problemId")
+.value=problemId;
+
+document
+.getElementById("solutionText")
+.focus();
+
+window.location.hash="student";
+
+};
+
+
+/* STUDENT SUBMIT SOLUTION */
 
 window.submitSolution = async function(){
 
-  const studentName =
-    document.getElementById("studentName")
-      .value.trim();
+const studentName =
+document
+.getElementById("studentName")
+.value
+.trim();
 
-  const problemId =
-    document.getElementById("problemId")
-      .value.trim();
+const problemId =
+document
+.getElementById("problemId")
+.value
+.trim();
 
-  const solutionText =
-    document.getElementById("solutionText")
-      .value.trim();
-
-
-  if(
-    !studentName ||
-    !problemId ||
-    !solutionText
-  ){
-
-    alert(
-      "Please fill all fields."
-    );
-
-    return;
-  }
+const solutionText =
+document
+.getElementById("solutionText")
+.value
+.trim();
 
 
-  try{
+if(
+!studentName ||
+!problemId ||
+!solutionText
+){
 
-    const solutionRef =
-      await addDoc(
-        collection(db, "solutions"),
-        {
+alert("Please fill all fields.");
 
-          studentName: studentName,
+return;
 
-          problemId: problemId,
-
-          solutionText: solutionText,
-
-          status: "Pending",
-
-          createdAt: serverTimestamp()
-
-        }
-      );
+}
 
 
-    console.log(
-      "Solution ID:",
-      solutionRef.id
-    );
+try{
+
+await addDoc(
+collection(db,"solutions"),
+{
+
+studentName:studentName,
+
+problemId:problemId,
+
+solutionText:solutionText,
+
+status:"Pending",
+
+createdAt:serverTimestamp()
+
+}
+);
 
 
-    document.getElementById(
-      "solutionSuccessMessage"
-    ).style.display = "block";
+document
+.getElementById("solutionSuccessMessage")
+.style.display="block";
 
 
-    alert(
-      "✅ Solution submitted successfully!"
-    );
+alert(
+"✅ Solution submitted successfully!"
+);
 
 
-    document.getElementById(
-      "studentName"
-    ).value = "";
+document
+.getElementById("studentName")
+.value="";
 
-    document.getElementById(
-      "problemId"
-    ).value = "";
+document
+.getElementById("problemId")
+.value="";
 
-    document.getElementById(
-      "solutionText"
-    ).value = "";
+document
+.getElementById("solutionText")
+.value="";
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ Solution submission failed: "
++
+error.message
+);
+
+}
+
+};
 
 
-  }catch(error){
+/* LOAD STUDENT SOLUTIONS */
 
-    console.error(
-      "Student solution error:",
-      error
-    );
+window.loadSolutionsForStudents = async function(){
+
+const output =
+document.getElementById("studentSolutions");
+
+output.innerHTML=
+"<p>Loading solutions...</p>";
 
 
-    alert(
-      "❌ Solution submission failed: " +
-      error.message
-    );
+try{
 
-  }
+const snapshot =
+await getDocs(
+collection(db,"solutions")
+);
+
+
+if(snapshot.empty){
+
+output.innerHTML=
+"<p>No solutions found.</p>";
+
+return;
+
+}
+
+
+output.innerHTML="";
+
+
+snapshot.forEach((item)=>{
+
+const data=item.data();
+
+output.innerHTML += `
+
+<div class="solution-card">
+
+<p>
+<strong>Problem ID:</strong>
+${data.problemId || ""}
+</p>
+
+<p>
+<strong>Student:</strong>
+${data.studentName || ""}
+</p>
+
+<p>
+<strong>Solution:</strong>
+${data.solutionText || ""}
+</p>
+
+<p>
+
+<strong>Status:</strong>
+
+<span class="status
+${data.status==="Verified" ? "verified" :
+data.status==="Rejected" ? "rejected" : ""}">
+
+${data.status || "Pending"}
+
+</span>
+
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load solutions.</p>";
+
+}
+
+};
+
+
+/* PROFESSOR LOAD PROBLEMS */
+
+window.loadProfessorProblems = async function(){
+
+const output =
+document.getElementById("professorProblems");
+
+output.innerHTML=
+"<p>Loading...</p>";
+
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"cropReports")
+);
+
+
+if(snapshot.empty){
+
+output.innerHTML=
+"<p>No farmer problems.</p>";
+
+return;
+
+}
+
+
+output.innerHTML="";
+
+
+snapshot.forEach((item)=>{
+
+const data=item.data();
+
+output.innerHTML += `
+
+<div class="problem-card">
+
+<div class="problem-id">
+
+Problem ID:
+${data.problemId || item.id}
+
+</div>
+
+<p>
+<strong>Farmer:</strong>
+${data.farmerName || ""}
+</p>
+
+<p>
+<strong>Crop:</strong>
+${data.crop || ""}
+</p>
+
+<p>
+<strong>Problem:</strong>
+${data.problemDescription || "Voice description provided"}
+</p>
+
+<p>
+<strong>Phone:</strong>
+${data.phoneNumber || "Not provided"}
+</p>
+
+<p>
+
+<strong>Status:</strong>
+
+<span class="status
+${data.status==="Verified" ? "verified" :
+data.status==="Rejected" ? "rejected" : ""}">
+
+${data.status || "Pending"}
+
+</span>
+
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load problems.</p>";
+
+}
+
+};
+
+
+/* PROFESSOR LOAD SOLUTIONS */
+
+window.loadProfessorSolutions = async function(){
+
+const output =
+document.getElementById("professorSolutions");
+
+output.innerHTML=
+"<p>Loading student solutions...</p>";
+
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"solutions")
+);
+
+
+if(snapshot.empty){
+
+output.innerHTML=
+"<p>No student solutions found.</p>";
+
+return;
+
+}
+
+
+output.innerHTML="";
+
+
+snapshot.forEach((item)=>{
+
+const data=item.data();
+
+const currentStatus =
+data.status || "Pending";
+
+
+output.innerHTML += `
+
+<div class="solution-card">
+
+<p>
+<strong>Problem ID:</strong>
+${data.problemId || ""}
+</p>
+
+<p>
+<strong>Student:</strong>
+${data.studentName || ""}
+</p>
+
+<p>
+<strong>Solution:</strong>
+${data.solutionText || ""}
+</p>
+
+<p>
+
+<strong>Status:</strong>
+
+<span class="status
+${currentStatus==="Verified" ? "verified" :
+currentStatus==="Rejected" ? "rejected" : ""}">
+
+${currentStatus}
+
+</span>
+
+</p>
+
+
+${
+currentStatus==="Pending"
+
+?
+
+`
+
+<button
+class="btn"
+onclick="verifySolution('${item.id}')">
+
+✅ Verify Solution
+
+</button>
+
+<button
+class="btn btn-danger"
+onclick="rejectSolution('${item.id}')">
+
+❌ Reject Solution
+
+</button>
+
+`
+
+:
+
+`
+
+<p class="small">
+This solution has already been reviewed.
+</p>
+
+`
+
+}
+
+</div>
+
+`;
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load student solutions.</p>";
+
+}
+
+};
+
+
+/* VERIFY */
+
+window.verifySolution = async function(solutionId){
+
+const professor =
+document
+.getElementById("professorName")
+.value
+.trim();
+
+
+if(!professor){
+
+alert("Please enter Professor Name first.");
+
+return;
+
+}
+
+
+if(!confirm(
+"Verify this student solution?"
+)){
+
+return;
+
+}
+
+
+try{
+
+await updateDoc(
+doc(db,"solutions",solutionId),
+{
+
+status:"Verified",
+
+verifiedBy:professor,
+
+verifiedAt:serverTimestamp()
+
+}
+);
+
+
+alert(
+"✅ Solution verified successfully!"
+);
+
+
+loadProfessorSolutions();
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ Verification failed: "
++
+error.message
+);
+
+}
+
+};
+
+
+/* REJECT */
+
+window.rejectSolution = async function(solutionId){
+
+const professor =
+document
+.getElementById("professorName")
+.value
+.trim();
+
+
+if(!professor){
+
+alert("Please enter Professor Name first.");
+
+return;
+
+}
+
+
+if(!confirm(
+"Reject this student solution?"
+)){
+
+return;
+
+}
+
+
+try{
+
+await updateDoc(
+doc(db,"solutions",solutionId),
+{
+
+status:"Rejected",
+
+verifiedBy:professor,
+
+verifiedAt:serverTimestamp()
+
+}
+);
+
+
+alert(
+"❌ Solution rejected."
+);
+
+
+loadProfessorSolutions();
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"❌ Rejection failed: "
++
+error.message
+);
+
+}
 
 };
 
 </script>
 
 </body>
-  </html>
+</html>
