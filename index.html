@@ -696,7 +696,7 @@ const solutionText = document.getElementById("solutionText").value.trim();
   alert("Please fill all fields.");
   return;
   }try {
-
+alert("Firebase started");
   await addDoc(collection(db, "solutions"), {
     studentName: studentName,
     problemId: problemId,
