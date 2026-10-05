@@ -707,7 +707,7 @@ const solutionText = document.getElementById("solutionText").value.trim();
    } catch (error) {
 
   console.error(error);
-  alert("Solution submission failed. Please try again.");
+  alert("Solution submission failed: " + error.message);
   
   }
 };
