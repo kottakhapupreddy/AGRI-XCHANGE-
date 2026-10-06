@@ -7,173 +7,161 @@
 <title>AGRI-XCHANGE</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f4f8f3;
-  color:#222;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4fff5;
+  color:#183b20;
   line-height:1.6;
 }
 
 header{
-  background:#176b2c;
+  background:#16833b;
   color:white;
-  padding:15px 20px;
+  padding:14px 18px;
   position:sticky;
   top:0;
   z-index:1000;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
-nav{
+.header-inner{
   max-width:1150px;
   margin:auto;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-  font-size:24px;
+  font-size:22px;
   font-weight:bold;
+  white-space:nowrap;
+}
+
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin:5px 7px;
-  font-weight:bold;
+  padding:7px 10px;
+  border-radius:6px;
+  font-size:14px;
 }
 
-.nav-btn{
+nav a:hover{
+  background:#0f672e;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon-btn{
   position:relative;
-  display:inline-block;
+  background:white;
+  color:#16833b;
+  border:none;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  cursor:pointer;
+  font-size:20px;
 }
 
-.red-count{
+.badge{
   position:absolute;
-  top:-10px;
-  right:-8px;
+  right:-3px;
+  top:-3px;
   background:#e53935;
   color:white;
-  border-radius:50%;
-  min-width:20px;
-  height:20px;
+  min-width:19px;
+  height:19px;
+  border-radius:20px;
   font-size:11px;
-  display:none;
+  display:flex;
   align-items:center;
   justify-content:center;
   font-weight:bold;
+  border:2px solid white;
+}
+
+.badge.hidden{
+  display:none;
 }
 
 .hero{
-  background:linear-gradient(135deg,#dff5df,#f8fff6);
+  background:linear-gradient(135deg,#d9f7df,#effff1);
+  padding:55px 20px;
   text-align:center;
-  padding:65px 20px;
 }
 
 .hero h1{
-  color:#176b2c;
-  font-size:42px;
-  margin-bottom:12px;
-}
-
-.hero p{
-  max-width:800px;
-  margin:auto;
-  font-size:18px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-h2{
-  color:#176b2c;
-  margin-bottom:20px;
-}
-
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.card h3{
-  color:#176b2c;
+  color:#126b30;
+  font-size:40px;
   margin-bottom:10px;
 }
 
-.dashboard{
-  background:#ffffff;
-  border-radius:16px;
-  padding:25px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-  margin-bottom:30px;
+.hero p{
+  max-width:750px;
+  margin:auto;
+  font-size:17px;
 }
 
-.dashboard-title{
-  color:#176b2c;
-  font-size:25px;
-  margin-bottom:8px;
+.container{
+  width:92%;
+  max-width:1100px;
+  margin:30px auto;
 }
 
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:15px;
-  margin-top:20px;
-}
-
-.dashboard-item{
-  border:1px solid #d7e8d7;
-  background:#f7fff7;
-  border-radius:12px;
-  padding:18px;
-  text-align:center;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.dashboard-item:hover{
-  transform:translateY(-2px);
-  box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-
-.dashboard-item .icon{
-  font-size:30px;
-  display:block;
-  margin-bottom:6px;
-}
-
-.form-box{
+.section{
   background:white;
   padding:25px;
-  border-radius:15px;
+  border-radius:14px;
+  margin-bottom:25px;
   box-shadow:0 3px 12px rgba(0,0,0,.08);
-  margin-bottom:30px;
+}
+
+.section h2{
+  color:#16833b;
+  margin-bottom:15px;
+}
+
+.section h3{
+  color:#216b35;
+  margin:15px 0 8px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#f8fff9;
+  border:1px solid #cfead4;
+  border-radius:12px;
+  padding:20px;
 }
 
 label{
   display:block;
   font-weight:bold;
-  margin-top:15px;
+  margin-top:12px;
   margin-bottom:5px;
 }
 
@@ -181,10 +169,11 @@ input,
 textarea,
 select{
   width:100%;
-  padding:12px;
-  border:1px solid #bbb;
+  padding:11px;
+  border:1px solid #b8d8be;
   border-radius:8px;
   font-size:15px;
+  background:white;
 }
 
 textarea{
@@ -192,1084 +181,974 @@ textarea{
   resize:vertical;
 }
 
-.btn{
-  background:#176b2c;
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  border-color:#16833b;
+  box-shadow:0 0 0 2px rgba(22,131,59,.1);
+}
+
+button{
+  background:#16833b;
   color:white;
   border:none;
-  padding:12px 20px;
+  padding:11px 17px;
   border-radius:8px;
-  margin-top:18px;
   cursor:pointer;
-  font-size:16px;
   font-weight:bold;
+  margin-top:14px;
 }
 
-.btn:hover{
-  background:#0f5120;
+button:hover{
+  background:#0f672e;
 }
 
-.btn-danger{
+button.secondary{
+  background:#607d68;
+}
+
+button.danger{
   background:#c62828;
 }
 
-.btn-blue{
-  background:#1565c0;
+button.warning{
+  background:#e68900;
 }
 
-.btn-orange{
-  background:#ef6c00;
-}
-
-.success{
-  display:none;
-  background:#e0f5e4;
-  color:#176b2c;
-  padding:15px;
-  border-radius:8px;
-  margin-top:15px;
-  font-weight:bold;
-}
-
-.error{
-  background:#fde8e8;
-  color:#b71c1c;
-  padding:12px;
-  border-radius:8px;
-  margin-top:10px;
-}
-
-.problem-card,
-.solution-card{
-  background:white;
-  border-left:5px solid #176b2c;
-  padding:18px;
-  margin:15px 0;
-  border-radius:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,.07);
-}
-
-.problem-id{
-  color:#176b2c;
-  font-weight:bold;
-  font-size:18px;
-}
-
-.status{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:#fff3cd;
-  color:#856404;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.status.verified{
-  background:#d4edda;
-  color:#155724;
-}
-
-.status.rejected{
-  background:#f8d7da;
-  color:#721c24;
-}
-
-.small{
-  color:#666;
-  font-size:14px;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.language-box{
-  background:#eef8ee;
-  padding:15px;
-  border-radius:10px;
-  margin:15px 0;
-}
-
-.privacy-box{
-  background:#fff8e1;
-  border-left:5px solid #f9a825;
-  padding:15px;
-  border-radius:8px;
-  margin:15px 0;
-}
-
-.original{
-  background:#f5f5f5;
-  padding:10px;
-  border-radius:7px;
-  margin-top:8px;
-}
-
-.translated{
-  background:#e7f6ea;
-  padding:10px;
-  border-radius:7px;
-  margin-top:8px;
-}
-
-.media-preview{
-  max-width:100%;
-  max-height:250px;
-  margin-top:10px;
-  border-radius:8px;
-}
-
-audio{
-  width:100%;
-  margin-top:10px;
-}
-
-.notification{
-  background:white;
-  border-left:5px solid #176b2c;
-  padding:15px;
-  margin:10px 0;
-  border-radius:8px;
-  box-shadow:0 2px 7px rgba(0,0,0,.07);
-}
-
-.notification.unread{
-  background:#eef9ef;
-  border-left-color:#e53935;
-}
-
-.notification-time{
-  color:#777;
+button.small{
+  padding:7px 10px;
   font-size:12px;
   margin-top:5px;
 }
 
-.profile-box{
-  background:#eef8ee;
-  padding:18px;
+.radio-group{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.radio-group label{
+  font-weight:normal;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin:0;
+}
+
+.radio-group input{
+  width:auto;
+}
+
+.notice{
+  background:#fff8dd;
+  border-left:5px solid #e5a500;
+  padding:12px;
+  border-radius:6px;
+  margin-top:15px;
+}
+
+.success{
+  background:#e7f8eb;
+  border-left:5px solid #16833b;
+  padding:12px;
+  border-radius:6px;
+  margin-top:15px;
+}
+
+.error{
+  background:#ffe9e9;
+  border-left:5px solid #d32f2f;
+  padding:12px;
+  border-radius:6px;
+  margin-top:15px;
+}
+
+.problem-card,
+.solution-card{
+  border:1px solid #cfead4;
+  padding:17px;
   border-radius:10px;
+  margin:12px 0;
+  background:#fbfffc;
+}
+
+.problem-card strong,
+.solution-card strong{
+  color:#126b30;
+}
+
+.problem-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:8px;
+}
+
+.problem-actions button{
+  margin-top:5px;
+}
+
+.status{
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  background:#fff0c7;
+  color:#8b6200;
+}
+
+.status.verified{
+  background:#dff5e4;
+  color:#13702f;
+}
+
+.status.rejected{
+  background:#ffe0e0;
+  color:#a52222;
 }
 
 .hidden{
-  display:none;
+  display:none !important;
 }
 
-footer{
-  background:#123d1d;
+.footer{
+  background:#126b30;
   color:white;
   text-align:center;
-  padding:30px 20px;
-  margin-top:30px;
+  padding:25px;
+  margin-top:40px;
+}
+
+.small-text{
+  font-size:13px;
+  color:#607466;
+}
+
+.divider{
+  height:1px;
+  background:#d8eadb;
+  margin:20px 0;
+}
+
+.media-box{
+  margin-top:12px;
+}
+
+.media-box img{
+  max-width:100%;
+  max-height:300px;
+  border-radius:10px;
+  border:1px solid #d0e6d4;
+}
+
+audio{
+  width:100%;
+  margin-top:8px;
+}
+
+.loading{
+  color:#777;
+  padding:10px;
+}
+
+.top-user{
+  font-size:11px;
+  opacity:.9;
+}
+
+/* NOTIFICATION PANEL */
+
+.notification-panel{
+  position:fixed;
+  right:18px;
+  top:72px;
+  width:min(400px,92vw);
+  max-height:75vh;
+  background:white;
+  border-radius:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,.22);
+  z-index:3000;
+  overflow:hidden;
+  border:1px solid #cfe5d3;
+}
+
+.notification-header{
+  background:#16833b;
+  color:white;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.notification-header button{
+  margin:0;
+  background:transparent;
+  padding:3px 7px;
+  font-size:18px;
+}
+
+.notification-toolbar{
+  padding:10px;
+  display:flex;
+  gap:7px;
+  border-bottom:1px solid #e2eee4;
+}
+
+.notification-toolbar button{
+  margin:0;
+  font-size:12px;
+  padding:7px 9px;
+}
+
+.notification-list{
+  max-height:55vh;
+  overflow-y:auto;
+}
+
+.notification-item{
+  padding:13px;
+  border-bottom:1px solid #edf3ee;
+  cursor:pointer;
+}
+
+.notification-item:hover{
+  background:#f4fff5;
+}
+
+.notification-item.unread{
+  background:#edf9ef;
+  border-left:4px solid #16833b;
+}
+
+.notification-title{
+  font-weight:bold;
+  color:#126b30;
+}
+
+.notification-message{
+  font-size:13px;
+  margin-top:4px;
+}
+
+.notification-time{
+  font-size:11px;
+  color:#777;
+  margin-top:5px;
+}
+
+.empty-notifications{
+  padding:30px;
+  text-align:center;
+  color:#777;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:4000;
+  padding:20px;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  background:white;
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.modal-head h2{
+  color:#16833b;
+}
+
+.close-btn{
+  background:#eee;
+  color:#333;
+  margin:0;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  padding:0;
+}
+
+.settings-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid #e6eee7;
+}
+
+.settings-row input{
+  width:auto;
+}
+
+@media(max-width:850px){
+  .header-inner{
+    flex-wrap:wrap;
+  }
+
+  nav{
+    order:3;
+    width:100%;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
 }
 
 @media(max-width:600px){
+  .section{
+    padding:18px;
+  }
 
-.hero h1{
-  font-size:32px;
+  .hero{
+    padding:40px 15px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  nav a{
+    font-size:12px;
+    padding:6px 7px;
+  }
 }
-
-nav{
-  justify-content:center;
-}
-
-nav a{
-  font-size:12px;
-}
-
-.container{
-  padding:30px 15px;
-}
-
-.dashboard-grid{
-  grid-template-columns:repeat(2,1fr);
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
+  <div class="header-inner">
 
-<nav>
+    <div>
+      <div class="logo">🌱 AGRI-XCHANGE</div>
+      <div class="top-user" id="authStatus">Connecting...</div>
+    </div>
 
-<div class="logo">
-🌱 AGRI-XCHANGE
-</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#farmer">Farmer</a>
+      <a href="#student">Student</a>
+      <a href="#professor">Professor</a>
+      <a href="#how">How It Works</a>
+    </nav>
 
-<div>
+    <div class="header-actions">
 
-<a href="#home">Home</a>
+      <button
+        class="icon-btn"
+        title="Notifications"
+        onclick="openNotifications()">
+        🔔
+        <span id="notificationBadge" class="badge hidden">0</span>
+      </button>
 
-<a href="#farmer">Farmer</a>
+      <button
+        class="icon-btn"
+        title="Settings"
+        onclick="openSettings()">
+        ⚙️
+      </button>
 
-<a href="#student">Student</a>
+    </div>
 
-<a href="#professor">Professor</a>
-
-<a href="#notifications" class="nav-btn">
-🔔
-<span id="notificationCount" class="red-count">0</span>
-</a>
-
-<a href="#profile">👤</a>
-
-<a href="#settings">⚙️</a>
-
-</div>
-
-</nav>
-
+  </div>
 </header>
+
+
+<!-- NOTIFICATION PANEL -->
+
+<div id="notificationPanel" class="notification-panel hidden">
+
+  <div class="notification-header">
+    <strong>🔔 Notifications</strong>
+
+    <button onclick="closeNotifications()">✕</button>
+  </div>
+
+  <div class="notification-toolbar">
+
+    <button onclick="markAllNotificationsRead()">
+      Mark all read
+    </button>
+
+    <button
+      class="danger"
+      onclick="clearAllNotifications()">
+      Clear all
+    </button>
+
+  </div>
+
+  <div
+    id="notificationList"
+    class="notification-list">
+
+    <div class="empty-notifications">
+      No notifications yet.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SETTINGS MODAL -->
+
+<div
+  id="settingsModal"
+  class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <h2>⚙️ Settings</h2>
+
+      <button
+        class="close-btn"
+        onclick="closeSettings()">
+        ✕
+      </button>
+
+    </div>
+
+    <div class="settings-row">
+      <span>Notifications</span>
+
+      <input
+        type="checkbox"
+        id="notificationSetting"
+        checked>
+    </div>
+
+    <div class="settings-row">
+      <span>Current account</span>
+      <strong id="settingsAccount">Loading...</strong>
+    </div>
+
+    <div class="settings-row">
+      <span>App</span>
+      <strong>AGRI-XCHANGE</strong>
+    </div>
+
+    <p class="small-text" style="margin-top:15px;">
+      Notifications shown here are in-app notifications.
+      Browser background push notifications can be added later.
+    </p>
+
+    <button onclick="saveSettings()">
+      Save Settings
+    </button>
+
+  </div>
+</div>
 
 
 <!-- HOME -->
 
-<section class="hero" id="home">
+<section id="home" class="hero">
 
-<h1>AGRI-XCHANGE</h1>
+  <h1>AGRI-XCHANGE</h1>
 
-<p>
-A collaborative agriculture platform where farmers share crop problems,
-students provide possible solutions, and professors verify the solutions
-before they are considered final.
-</p>
-
-</section>
-
-
-<!-- ROLE DASHBOARD -->
-
-<section class="container">
-
-<div class="dashboard">
-
-<div class="dashboard-title">
-🌱 AGRI-XCHANGE Dashboard
-</div>
-
-<p class="small">
-Select your role to open the appropriate section.
-</p>
-
-<div class="dashboard-grid">
-
-<div
-class="dashboard-item"
-onclick="goToSection('farmer')">
-
-<span class="icon">👨‍🌾</span>
-
-<strong>Farmer</strong>
-
-<br>
-
-<span class="small">
-Report & Track
-</span>
-
-</div>
-
-
-<div
-class="dashboard-item"
-onclick="goToSection('student')">
-
-<span class="icon">🎓</span>
-
-<strong>Student</strong>
-
-<br>
-
-<span class="small">
-Problems & Solutions
-</span>
-
-</div>
-
-
-<div
-class="dashboard-item"
-onclick="goToSection('professor')">
-
-<span class="icon">👨‍🏫</span>
-
-<strong>Professor</strong>
-
-<br>
-
-<span class="small">
-Review & Verify
-</span>
-
-</div>
-
-
-<div
-class="dashboard-item"
-onclick="goToSection('notifications')">
-
-<span class="icon">🔔</span>
-
-<strong>Notifications</strong>
-
-<br>
-
-<span class="small">
-Updates
-</span>
-
-</div>
-
-</div>
-
-</div>
+  <p>
+    Connecting farmers, students and professors to solve
+    agricultural problems through knowledge, collaboration
+    and verified solutions.
+  </p>
 
 </section>
 
 
-<!-- USERS -->
+<div class="container">
 
-<section class="container">
+  <!-- USERS -->
 
-<div class="section-title">
-<h2>Our Users</h2>
-</div>
+  <section class="section">
 
-<div class="card-grid">
+    <h2>👥 AGRI-XCHANGE Users</h2>
 
-<div class="card">
+    <div class="cards">
 
-<h3>👨‍🌾 Farmer</h3>
+      <div class="card">
+        <h3>👨‍🌾 Farmer</h3>
+        <p>
+          Report crop problems using text, voice and photos.
+        </p>
+      </div>
 
-<p>
-Farmers can report crop problems using text, photo and voice description.
-</p>
+      <div class="card">
+        <h3>👨‍🎓 Student</h3>
+        <p>
+          Study farmer problems and submit agricultural solutions.
+        </p>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>👨‍🏫 Professor</h3>
+        <p>
+          Review, verify or reject student solutions.
+        </p>
+      </div>
 
+    </div>
 
-<div class="card">
+  </section>
 
-<h3>🎓 Student</h3>
 
-<p>
-Students can view shared farmer problems and provide possible solutions.
-</p>
+  <!-- FARMER -->
 
-</div>
+  <section id="farmer" class="section">
 
+    <h2>👨‍🌾 Farmer Section</h2>
 
-<div class="card">
+    <p class="small-text">
+      Farmers can report crop problems using their preferred language,
+      text, voice description and problem photo.
+    </p>
 
-<h3>👨‍🏫 Professor</h3>
+    <label for="farmerLanguage">
+      Preferred Language
+    </label>
 
-<p>
-Professors can review and verify student solutions.
-</p>
+    <select id="farmerLanguage">
 
-</div>
+      <option value="English">English</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Kannada">Kannada</option>
+      <option value="Tamil">Tamil</option>
+      <option value="Marathi">Marathi</option>
 
-</div>
+    </select>
 
-</section>
 
+    <label for="farmerName">
+      Farmer Name
+    </label>
 
-<!-- FARMER -->
+    <input
+      id="farmerName"
+      type="text"
+      placeholder="Enter your name">
 
-<section class="container" id="farmer">
 
-<h2 class="section-title">
-👨‍🌾 Farmer Section
-</h2>
+    <label for="crop">
+      Crop
+    </label>
 
-<div class="form-box">
+    <input
+      id="crop"
+      type="text"
+      placeholder="Example: Paddy, Cotton, Rice">
 
-<h3>Report a Crop Problem</h3>
 
+    <label for="problemText">
+      Describe Your Crop Problem
+    </label>
 
-<label>Your Preferred Language</label>
+    <textarea
+      id="problemText"
+      placeholder="Explain the crop problem..."></textarea>
 
-<select id="farmerLanguage">
 
-<option value="English">English</option>
-<option value="Telugu">తెలుగు</option>
-<option value="Hindi">हिन्दी</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Kannada">ಕನ್ನಡ</option>
-<option value="Malayalam">മലയാളം</option>
-<option value="Marathi">मराठी</option>
-<option value="Bengali">বাংলা</option>
+    <label for="voiceFile">
+      🎤 Voice Description
+    </label>
 
-</select>
+    <input
+      id="voiceFile"
+      type="file"
+      accept="audio/*">
 
 
-<div class="language-box">
+    <label for="photoFile">
+      📷 Problem Photo
+    </label>
 
-<strong>🌐 Language Support</strong>
+    <input
+      id="photoFile"
+      type="file"
+      accept="image/*">
 
-<p>
-Your original message is always preserved.
-Other users will also receive a translation in their selected language.
-</p>
 
-</div>
+    <label for="phoneNumber">
+      Phone Number
+    </label>
 
+    <input
+      id="phoneNumber"
+      type="tel"
+      placeholder="Enter phone number">
 
-<label>Farmer Name</label>
 
-<input
-type="text"
-id="farmerName"
-placeholder="Enter your name">
+    <label>
+      Sharing Permission
+    </label>
 
+    <div class="radio-group">
 
-<label>Crop</label>
+      <label>
+        <input
+          type="radio"
+          name="sharingConsent"
+          id="allowSharing"
+          value="yes">
+        Allow Sharing
+      </label>
 
-<input
-type="text"
-id="crop"
-placeholder="Example: Rice, Cotton, Maize">
+      <label>
+        <input
+          type="radio"
+          name="sharingConsent"
+          id="declineSharing"
+          value="no"
+          checked>
+        Decline Sharing
+      </label>
 
+    </div>
 
-<label>Problem Description</label>
 
-<textarea
-id="problemText"
-placeholder="Describe your crop problem">
-</textarea>
+    <div class="notice">
 
+      🔒 <strong>Privacy Notice:</strong>
 
-<label>🎙️ Voice Description</label>
+      Your name and phone number will never be shown
+      to students.
 
-<input
-type="file"
-id="voiceFile"
-accept="audio/*">
+      If you choose <strong>Decline Sharing</strong>,
+      your problem will remain private and will not
+      appear in the student public problem list.
 
+    </div>
 
-<label>📷 Problem Photo</label>
 
-<input
-type="file"
-id="photoFile"
-accept="image/*">
+    <button onclick="submitFarmerProblem()">
+      Submit Crop Problem
+    </button>
 
+    <div id="farmerMessage"></div>
 
-<label>Phone Number</label>
 
-<input
-type="tel"
-id="phoneNumber"
-placeholder="Enter phone number">
+    <div class="divider"></div>
 
 
-<div class="privacy-box">
+    <h3>🔎 My Submitted Problems</h3>
 
-<strong>🔒 Privacy & Sharing</strong>
+    <label for="farmerSearchPhone">
+      Enter your phone number
+    </label>
 
-<p>
-Your name and phone number will never be displayed to students.
-You decide whether your crop problem can be shared.
-</p>
+    <input
+      id="farmerSearchPhone"
+      type="tel"
+      placeholder="Phone number used while submitting">
 
-</div>
+    <button onclick="searchFarmerProblems()">
+      Search My Problems
+    </button>
 
+    <div id="farmerProblems"></div>
 
-<label>Sharing Permission</label>
+  </section>
 
 
-<label style="font-weight:normal">
+  <!-- STUDENT -->
 
-<input
-type="radio"
-name="sharingConsent"
-value="yes"
-style="width:auto">
+  <section id="student" class="section">
 
-<strong>Allow Sharing</strong>
+    <h2>👨‍🎓 Student Section</h2>
 
-— Share my crop problem with students to receive solutions.
+    <label for="studentLanguage">
+      Preferred Language
+    </label>
 
-</label>
+    <select id="studentLanguage">
 
+      <option value="English">English</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Kannada">Kannada</option>
+      <option value="Tamil">Tamil</option>
+      <option value="Marathi">Marathi</option>
 
-<label style="font-weight:normal">
+    </select>
 
-<input
-type="radio"
-name="sharingConsent"
-value="no"
-style="width:auto">
 
-<strong>Decline Sharing</strong>
+    <button onclick="loadSharedProblems()">
+      🔄 Load Farmer Problems
+    </button>
 
-— Keep my crop problem private.
+    <div id="studentProblems">
+      <p class="small-text">
+        Click "Load Farmer Problems" to view shared problems.
+      </p>
+    </div>
 
-</label>
 
+    <div class="divider"></div>
 
-<p class="small">
 
-⚠️ If you select Decline Sharing, your problem will NOT appear in the
-student section.
+    <h3>💡 Submit Your Solution</h3>
 
-</p>
 
+    <label for="studentName">
+      Student Name
+    </label>
 
-<button
-class="btn"
-type="button"
-onclick="submitProblem()">
+    <input
+      id="studentName"
+      type="text"
+      placeholder="Enter your name">
 
-Submit Crop Problem
 
-</button>
+    <label for="studentSolutionLanguage">
+      Solution Language
+    </label>
 
+    <select id="studentSolutionLanguage">
 
-<div
-class="success"
-id="successMessage">
+      <option value="English">English</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Kannada">Kannada</option>
+      <option value="Tamil">Tamil</option>
+      <option value="Marathi">Marathi</option>
 
-✅ Crop problem submitted successfully!
+    </select>
 
-<br><br>
 
-<strong>Problem ID:</strong>
+    <label for="problemId">
+      Selected Problem ID
+    </label>
 
-<span id="newProblemId"></span>
+    <input
+      id="problemId"
+      type="text"
+      placeholder="Select a farmer problem above"
+      readonly>
 
-<br><br>
 
-Please save this Problem ID.
+    <label for="solutionText">
+      Your Agricultural Solution
+    </label>
 
-</div>
+    <textarea
+      id="solutionText"
+      placeholder="Write your solution..."></textarea>
 
-</div>
 
+    <button onclick="submitStudentSolution()">
+      Submit Solution
+    </button>
 
-<div class="form-box">
+    <div id="studentMessage"></div>
 
-<h3>🔎 Check My Submitted Problems</h3>
 
-<p class="small">
-Enter the phone number used while submitting the problem.
-</p>
+    <div class="divider"></div>
 
-<input
-type="tel"
-id="farmerSearchPhone"
-placeholder="Enter phone number">
 
+    <h3>📚 View Submitted Solutions</h3>
 
-<button
-class="btn btn-blue"
-onclick="loadFarmerProblems()">
+    <button onclick="loadSolutions()">
+      Load Solutions
+    </button>
 
-View My Problems
+    <div id="studentSolutions"></div>
 
-</button>
+  </section>
 
 
-<div id="farmerProblems"></div>
+  <!-- PROFESSOR -->
 
-</div>
+  <section id="professor" class="section">
 
-</section>
+    <h2>👨‍🏫 Professor Section</h2>
 
+    <div id="professorLoginBox">
 
-<!-- STUDENT -->
+      <label for="professorEmail">
+        Professor Email
+      </label>
 
-<section class="container" id="student">
+      <input
+        id="professorEmail"
+        type="email"
+        placeholder="Professor email">
 
-<h2 class="section-title">
-🎓 Student Section
-</h2>
+      <label for="professorPassword">
+        Password
+      </label>
 
+      <input
+        id="professorPassword"
+        type="password"
+        placeholder="Password">
 
-<div class="form-box">
+      <button onclick="professorLogin()">
+        Professor Login
+      </button>
 
-<h3>Student Preferred Language</h3>
+      <div id="professorLoginMessage"></div>
 
-<select id="studentLanguage">
+    </div>
 
-<option value="English">English</option>
-<option value="Telugu">తెలుగు</option>
-<option value="Hindi">हिन्दी</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Kannada">ಕನ್ನಡ</option>
-<option value="Malayalam">മലയാളം</option>
-<option value="Marathi">मराठी</option>
-<option value="Bengali">বাংলা</option>
 
-</select>
+    <div
+      id="professorDashboard"
+      class="hidden">
 
-<p class="small">
-Farmer's original text and translated text will both be shown.
-</p>
+      <div class="success">
 
-</div>
+        Logged in as Professor.
 
+        <button
+          class="small secondary"
+          onclick="professorLogout()">
+          Logout
+        </button>
 
-<div class="form-box">
+      </div>
 
-<h3>📋 Shared Farmer Problems</h3>
 
-<button
-class="btn btn-blue"
-onclick="loadProblemsForStudents()">
+      <label for="professorName">
+        Professor Name
+      </label>
 
-Refresh Farmer Problems
+      <input
+        id="professorName"
+        type="text"
+        placeholder="Professor name">
 
-</button>
 
-<div id="studentProblems"></div>
+      <label for="professorLanguage">
+        Preferred Language
+      </label>
 
-</div>
+      <select id="professorLanguage">
 
+        <option value="English">English</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Marathi">Marathi</option>
 
-<div class="form-box">
+      </select>
 
-<h3>💡 Submit Student Solution</h3>
 
+      <button onclick="loadProfessorProblems()">
+        📋 Load Farmer Problems
+      </button>
 
-<label>Student Name</label>
+      <div id="professorProblems"></div>
 
-<input
-type="text"
-id="studentName"
-placeholder="Enter your name">
 
+      <div class="divider"></div>
 
-<label>Student Preferred Language</label>
 
-<select id="studentSolutionLanguage">
+      <h3>📝 Student Solutions</h3>
 
-<option value="English">English</option>
-<option value="Telugu">తెలుగు</option>
-<option value="Hindi">हिन्दी</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Kannada">ಕನ್ನಡ</option>
-<option value="Malayalam">മലയാളം</option>
-<option value="Marathi">मराठी</option>
-<option value="Bengali">বাংলা</option>
+      <button onclick="loadProfessorSolutions()">
+        Load Student Solutions
+      </button>
 
-</select>
+      <div id="professorSolutions"></div>
 
+    </div>
 
-<label>Problem ID</label>
+  </section>
 
-<input
-type="text"
-id="problemId"
-placeholder="Enter Problem ID">
 
+  <!-- HOW IT WORKS -->
 
-<label>Solution</label>
+  <section id="how" class="section">
 
-<textarea
-id="solutionText"
-placeholder="Explain your agricultural solution">
-</textarea>
+    <h2>🔄 How AGRI-XCHANGE Works</h2>
 
+    <div class="cards">
 
-<button
-class="btn"
-onclick="submitSolution()">
+      <div class="card">
+        <h3>1️⃣ Farmer</h3>
+        <p>
+          Farmer reports crop problem using text,
+          voice and photo.
+        </p>
+      </div>
 
-Submit Solution
+      <div class="card">
+        <h3>2️⃣ Sharing</h3>
+        <p>
+          Farmer chooses whether the problem can
+          be shared with students.
+        </p>
+      </div>
 
-</button>
+      <div class="card">
+        <h3>3️⃣ Student</h3>
+        <p>
+          Students view shared problems and submit
+          possible agricultural solutions.
+        </p>
+      </div>
 
+      <div class="card">
+        <h3>4️⃣ Professor</h3>
+        <p>
+          Professor reviews and verifies or rejects
+          student solutions.
+        </p>
+      </div>
 
-<div
-class="success"
-id="solutionSuccessMessage">
+      <div class="card">
+        <h3>5️⃣ Notifications</h3>
+        <p>
+          Users receive in-app notifications when
+          important actions happen.
+        </p>
+      </div>
 
-✅ Solution submitted successfully!
-<br>
-It is now waiting for professor verification.
+    </div>
 
-</div>
-
-</div>
-
-
-<div class="form-box">
-
-<h3>📚 Solutions</h3>
-
-<button
-class="btn btn-blue"
-onclick="loadSolutionsForStudents()">
-
-View Solutions
-
-</button>
-
-<div id="studentSolutions"></div>
-
-</div>
-
-</section>
-
-
-<!-- PROFESSOR -->
-
-<section class="container" id="professor">
-
-<h2 class="section-title">
-👨‍🏫 Professor Section
-</h2>
-
-
-<div class="form-box">
-
-<h3>Professor Login</h3>
-
-
-<label>Email</label>
-
-<input
-type="email"
-id="professorEmail"
-placeholder="Professor email">
-
-
-<label>Password</label>
-
-<input
-type="password"
-id="professorPassword"
-placeholder="Password">
-
-
-<button
-class="btn"
-onclick="professorLogin()">
-
-Professor Login
-
-</button>
-
-
-<button
-class="btn btn-danger"
-onclick="professorLogout()">
-
-Logout
-
-</button>
-
-
-<div id="professorLoginStatus"></div>
-
-
-<label>Professor Name</label>
-
-<input
-type="text"
-id="professorName"
-placeholder="Enter professor name">
-
-
-<label>Professor Preferred Language</label>
-
-<select id="professorLanguage">
-
-<option value="English">English</option>
-<option value="Telugu">తెలుగు</option>
-<option value="Hindi">हिन्दी</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Kannada">ಕನ್ನಡ</option>
-<option value="Malayalam">മലയാളം</option>
-<option value="Marathi">मराठी</option>
-<option value="Bengali">বাংলা</option>
-
-</select>
+  </section>
 
 </div>
 
 
-<div class="form-box">
+<footer class="footer">
 
-<h3>📋 Farmer Problems</h3>
+  <strong>AGRI-XCHANGE</strong>
 
-<button
-class="btn btn-blue"
-onclick="loadProfessorProblems()">
+  <br>
 
-Load Farmer Problems
+  Farmer • Student • Professor
 
-</button>
+  <br><br>
 
-<div id="professorProblems"></div>
-
-</div>
-
-
-<div class="form-box">
-
-<h3>✅ Student Solutions</h3>
-
-<button
-class="btn btn-blue"
-onclick="loadProfessorSolutions()">
-
-Load Student Solutions
-
-</button>
-
-<div id="professorSolutions"></div>
-
-</div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-
-<section class="container" id="notifications">
-
-<h2 class="section-title">
-🔔 Notifications
-</h2>
-
-<div class="form-box">
-
-<div id="notificationList">
-
-<p>
-Loading notifications...
-</p>
-
-</div>
-
-<button
-class="btn btn-blue"
-onclick="loadNotifications()">
-
-Refresh Notifications
-
-</button>
-
-<button
-class="btn"
-onclick="markAllNotificationsRead()">
-
-Mark All as Read
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section class="container" id="profile">
-
-<h2 class="section-title">
-👤 Profile
-</h2>
-
-<div class="form-box">
-
-<div class="profile-box">
-
-<p>
-<strong>User ID:</strong>
-</p>
-
-<p
-id="profileUid"
-class="small">
-Loading...
-</p>
-
-<br>
-
-<p>
-<strong>Current Role:</strong>
-</p>
-
-<select id="profileRole">
-
-<option value="farmer">👨‍🌾 Farmer</option>
-<option value="student">🎓 Student</option>
-<option value="professor">👨‍🏫 Professor</option>
-
-</select>
-
-<button
-class="btn"
-onclick="saveProfile()">
-
-Save Profile
-
-</button>
-
-<div id="profileMessage"></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SETTINGS -->
-
-<section class="container" id="settings">
-
-<h2 class="section-title">
-⚙️ Settings
-</h2>
-
-<div class="form-box">
-
-<h3>🔔 Notification Settings</h3>
-
-<label style="font-weight:normal">
-
-<input
-type="checkbox"
-id="notificationSetting"
-checked
-style="width:auto">
-
-Receive website notifications
-
-</label>
-
-
-<h3 style="margin-top:25px;">
-🌐 Language
-</h3>
-
-<select id="settingsLanguage">
-
-<option value="English">English</option>
-<option value="Telugu">తెలుగు</option>
-<option value="Hindi">हिन्दी</option>
-<option value="Tamil">தமிழ்</option>
-<option value="Kannada">ಕನ್ನಡ</option>
-<option value="Malayalam">മലയാളം</option>
-<option value="Marathi">मराठी</option>
-<option value="Bengali">বাংলা</option>
-
-</select>
-
-
-<button
-class="btn"
-onclick="saveSettings()">
-
-Save Settings
-
-</button>
-
-<div id="settingsMessage"></div>
-
-</div>
-
-</section>
-
-
-<!-- HOW IT WORKS -->
-
-<section class="container" id="how">
-
-<h2 class="section-title">
-How AGRI-XCHANGE Works
-</h2>
-
-
-<div class="card-grid">
-
-<div class="card">
-
-<h3>1️⃣ Farmer Reports</h3>
-
-<p>
-Farmer selects a preferred language and submits crop problem,
-photo and voice description.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>2️⃣ Privacy Choice</h3>
-
-<p>
-Farmer chooses Allow Sharing or Decline Sharing.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>3️⃣ Students Help</h3>
-
-<p>
-Only shared problems are shown to students.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>4️⃣ Language Translation</h3>
-
-<p>
-Original text remains visible and a translation is provided
-in the viewer's selected language.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>5️⃣ Professor Review</h3>
-
-<p>
-Professor reviews student solutions.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>6️⃣ Verification</h3>
-
-<p>
-Professor verifies or rejects the solution.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<h3>🌱 AGRI-XCHANGE</h3>
-
-<p>
-Connecting Farmers, Students and Agricultural Knowledge.
-</p>
+  <span class="small-text" style="color:#d8f5df;">
+    Agriculture knowledge sharing and student solution platform.
+  </span>
 
 </footer>
 
@@ -1277,2866 +1156,2547 @@ Connecting Farmers, Students and Agricultural Knowledge.
 <script type="module">
 
 import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-query,
-where,
-doc,
-updateDoc,
-serverTimestamp,
-orderBy
-}
-from
-"https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-
+  getAuth,
+  signInAnonymously,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 import {
-getAuth,
-signInAnonymously,
-signInWithEmailAndPassword,
-signOut
-}
-from
-"https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
+  getFirestore,
+  collection,
+  addDoc,
+  setDoc,
+  getDoc,
+  getDocs,
+  doc,
+  query,
+  where,
+  updateDoc,
+  deleteDoc,
+  serverTimestamp,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 import {
-getStorage,
-ref,
-uploadBytes,
-getDownloadURL
-}
-from
-"https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
-
-
-const firebaseConfig={
-
-apiKey:
-"AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
-
-authDomain:
-"agrixchange-175d0.firebaseapp.com",
-
-projectId:
-"agrixchange-175d0",
-
-storageBucket:
-"agrixchange-175d0.firebasestorage.app",
-
-messagingSenderId:
-"1033959694049",
-
-appId:
-"1:1033959694049:web:2d5cdaf0f5c2e70cffa1a0"
-
-};
-
-
-const app=initializeApp(firebaseConfig);
-
-const db=getFirestore(app);
-
-const auth=getAuth(app);
-
-const storage=getStorage(app);
-
-
-const languageCodes={
-
-English:"en",
-Telugu:"te",
-Hindi:"hi",
-Tamil:"ta",
-Kannada:"kn",
-Malayalam:"ml",
-Marathi:"mr",
-Bengali:"bn"
-
-};
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
 
 
 /* =========================
-AUTH
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
+  authDomain: "agrixchange-175d0.firebaseapp.com",
+  projectId: "agrixchange-175d0",
+  storageBucket: "agrixchange-175d0.firebasestorage.app",
+  messagingSenderId: "1033959694049",
+  appId: "1:1033959694049:web:2d5cdaf0f5c2e70cffa1a0"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const storage = getStorage(app);
+
+
+/* =========================
+   GLOBAL VARIABLES
+========================= */
+
+let currentUser = null;
+
+let notificationUnsubscribe = null;
+
+let currentAccountType = "anonymous";
+
+const PROFESSOR_EMAIL =
+  "kottakhapupreddy@gmail.com";
+
+
+/* =========================
+   HELPERS
+========================= */
+
+const $ = id =>
+  window.document.getElementById(id);
+
+
+function escapeHtml(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function showMessage(id,type,text){
+
+  const box = $(id);
+
+  if(!box) return;
+
+  box.innerHTML =
+    `<div class="${type}">${escapeHtml(text)}</div>`;
+}
+
+
+function generateProblemId(){
+
+  const random =
+    Math.random()
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
+
+  return "AGRI-" + Date.now() + "-" + random;
+}
+
+
+function timestampToDate(ts){
+
+  if(!ts) return null;
+
+  if(typeof ts.toDate === "function"){
+    return ts.toDate();
+  }
+
+  return null;
+}
+
+
+function formatDate(ts){
+
+  const d = timestampToDate(ts);
+
+  if(!d) return "Just now";
+
+  return d.toLocaleString();
+}
+
+
+/* =========================
+   TRANSLATION
+========================= */
+
+async function translateText(text,targetLanguage){
+
+  if(!text){
+    return "";
+  }
+
+  if(targetLanguage === "English"){
+    return text;
+  }
+
+  const langMap = {
+
+    Telugu:"te",
+    Hindi:"hi",
+    Kannada:"kn",
+    Tamil:"ta",
+    Marathi:"mr",
+    English:"en"
+
+  };
+
+  const target =
+    langMap[targetLanguage] || "en";
+
+  try{
+
+    const url =
+      "https://api.mymemory.translated.net/get" +
+      "?q=" +
+      encodeURIComponent(text) +
+      "&langpair=en|" +
+      target;
+
+    const response =
+      await fetch(url);
+
+    const data =
+      await response.json();
+
+    if(
+      data &&
+      data.responseData &&
+      data.responseData.translatedText
+    ){
+      return data.responseData.translatedText;
+    }
+
+  }catch(error){
+
+    console.warn(
+      "Translation failed:",
+      error
+    );
+
+  }
+
+  return text;
+}
+
+
+/* =========================
+   ANONYMOUS LOGIN
 ========================= */
 
 async function startAnonymousLogin(){
 
-try{
+  try{
 
-if(!auth.currentUser){
+    if(
+      auth.currentUser &&
+      !auth.currentUser.isAnonymous
+    ){
+      return;
+    }
 
-await signInAnonymously(auth);
+    if(!auth.currentUser){
+
+      await signInAnonymously(auth);
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    $("authStatus").textContent =
+      "Authentication error";
+
+  }
 
 }
 
-await loadUserProfile();
 
-await loadNotifications();
+/* =========================
+   AUTH STATE
+========================= */
 
-}
+onAuthStateChanged(
+  auth,
+  async user => {
 
-catch(error){
+    currentUser = user;
 
-console.error(
-"Anonymous login error:",
-error
+    if(!user){
+      return;
+    }
+
+    if(user.isAnonymous){
+
+      currentAccountType =
+        "anonymous";
+
+      $("authStatus").textContent =
+        "Anonymous user";
+
+      $("settingsAccount").textContent =
+        "Anonymous user";
+
+    }else{
+
+      currentAccountType =
+        "professor";
+
+      $("authStatus").textContent =
+        "Professor account";
+
+      $("settingsAccount").textContent =
+        "Professor";
+
+    }
+
+    setupNotificationListener(user.uid);
+
+  }
 );
 
-}
+
+/* =========================
+   NOTIFICATION LISTENER
+========================= */
+
+function setupNotificationListener(uid){
+
+  if(notificationUnsubscribe){
+
+    notificationUnsubscribe();
+
+    notificationUnsubscribe = null;
+
+  }
+
+  const enabled =
+    localStorage.getItem(
+      "agrixNotifications"
+    ) !== "off";
+
+  if(!enabled){
+
+    renderNotifications([]);
+
+    return;
+
+  }
+
+
+  try{
+
+    const q =
+      query(
+        collection(db,"notifications"),
+        where(
+          "recipientUid",
+          "==",
+          uid
+        )
+      );
+
+
+    notificationUnsubscribe =
+      onSnapshot(
+        q,
+
+        snapshot => {
+
+          const list =
+            snapshot.docs.map(
+              item => ({
+                id:item.id,
+                ...item.data()
+              })
+            );
+
+          list.sort(
+            (a,b) => {
+
+              const da =
+                timestampToDate(a.createdAt);
+
+              const dbb =
+                timestampToDate(b.createdAt);
+
+              return (
+                (dbb ? dbb.getTime() : 0) -
+                (da ? da.getTime() : 0)
+              );
+
+            }
+          );
+
+          renderNotifications(list);
+
+        },
+
+        error => {
+
+          console.warn(
+            "Notification listener error:",
+            error
+          );
+
+        }
+      );
+
+  }catch(error){
+
+    console.warn(
+      "Notification setup failed:",
+      error
+    );
+
+  }
 
 }
 
+
+/* =========================
+   RENDER NOTIFICATIONS
+========================= */
+
+function renderNotifications(list){
+
+  const container =
+    $("notificationList");
+
+  const badge =
+    $("notificationBadge");
+
+
+  if(!list || list.length === 0){
+
+    container.innerHTML = `
+      <div class="empty-notifications">
+        🔔 No notifications yet.
+      </div>
+    `;
+
+    badge.classList.add("hidden");
+
+    badge.textContent = "0";
+
+    return;
+
+  }
+
+
+  const unread =
+    list.filter(
+      item => item.read !== true
+    ).length;
+
+
+  if(unread > 0){
+
+    badge.textContent =
+      unread > 99 ? "99+" : unread;
+
+    badge.classList.remove("hidden");
+
+  }else{
+
+    badge.classList.add("hidden");
+
+  }
+
+
+  container.innerHTML =
+    list.map(item => {
+
+      const unreadClass =
+        item.read !== true
+          ? "unread"
+          : "";
+
+      return `
+
+        <div
+          class="notification-item ${unreadClass}"
+          onclick="markNotificationRead('${escapeHtml(item.id)}')">
+
+          <div class="notification-title">
+            ${escapeHtml(item.title || "Notification")}
+          </div>
+
+          <div class="notification-message">
+            ${escapeHtml(item.message || "")}
+          </div>
+
+          <div class="notification-time">
+            ${escapeHtml(formatDate(item.createdAt))}
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   NOTIFICATION CREATOR
+========================= */
+
+async function createNotification({
+  recipientUid,
+  recipientRole,
+  type,
+  title,
+  message,
+  relatedProblemId = "",
+  relatedSolutionId = "",
+  senderRole = ""
+}){
+
+  try{
+
+    if(!currentUser){
+      return;
+    }
+
+    if(!recipientUid){
+      return;
+    }
+
+    if(
+      recipientUid === currentUser.uid
+    ){
+      return;
+    }
+
+
+    await addDoc(
+      collection(db,"notifications"),
+      {
+
+        recipientUid:
+          recipientUid,
+
+        recipientRole:
+          recipientRole || "user",
+
+        senderUid:
+          currentUser.uid,
+
+        senderRole:
+          senderRole || currentAccountType,
+
+        type:
+          type || "general",
+
+        title:
+          title || "AGRI-XCHANGE",
+
+        message:
+          message || "",
+
+        relatedProblemId:
+          relatedProblemId || "",
+
+        relatedSolutionId:
+          relatedSolutionId || "",
+
+        read:false,
+
+        createdAt:
+          serverTimestamp()
+
+      }
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Notification could not be created:",
+      error
+    );
+
+    /*
+      Important:
+      Notification failure must not stop
+      the main Farmer/Student/Professor action.
+    */
+
+  }
+
+}
+
+
+/* =========================
+   NOTIFICATION UI
+========================= */
+
+window.openNotifications =
+  function(){
+
+    $("notificationPanel")
+      .classList.remove("hidden");
+
+  };
+
+
+window.closeNotifications =
+  function(){
+
+    $("notificationPanel")
+      .classList.add("hidden");
+
+  };
+
+
+window.markNotificationRead =
+  async function(notificationId){
+
+    try{
+
+      await updateDoc(
+        doc(
+          db,
+          "notifications",
+          notificationId
+        ),
+        {
+          read:true
+        }
+      );
+
+    }catch(error){
+
+      console.warn(error);
+
+    }
+
+  };
+
+
+window.markAllNotificationsRead =
+  async function(){
+
+    if(!currentUser) return;
+
+    try{
+
+      const q =
+        query(
+          collection(db,"notifications"),
+          where(
+            "recipientUid",
+            "==",
+            currentUser.uid
+          )
+        );
+
+      const snapshot =
+        await getDocs(q);
+
+      const tasks = [];
+
+      snapshot.forEach(item => {
+
+        if(item.data().read !== true){
+
+          tasks.push(
+            updateDoc(
+              doc(
+                db,
+                "notifications",
+                item.id
+              ),
+              {
+                read:true
+              }
+            )
+          );
+
+        }
+
+      });
+
+      await Promise.all(tasks);
+
+    }catch(error){
+
+      console.warn(error);
+
+    }
+
+  };
+
+
+window.clearAllNotifications =
+  async function(){
+
+    if(!currentUser) return;
+
+    const confirmDelete =
+      window.confirm(
+        "Clear all notifications?"
+      );
+
+    if(!confirmDelete){
+      return;
+    }
+
+    try{
+
+      const q =
+        query(
+          collection(db,"notifications"),
+          where(
+            "recipientUid",
+            "==",
+            currentUser.uid
+          )
+        );
+
+      const snapshot =
+        await getDocs(q);
+
+      const tasks = [];
+
+      snapshot.forEach(item => {
+
+        tasks.push(
+          deleteDoc(
+            doc(
+              db,
+              "notifications",
+              item.id
+            )
+          )
+        );
+
+      });
+
+      await Promise.all(tasks);
+
+    }catch(error){
+
+      console.warn(error);
+
+    }
+
+  };
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+window.openSettings =
+  function(){
+
+    const enabled =
+      localStorage.getItem(
+        "agrixNotifications"
+      ) !== "off";
+
+    $("notificationSetting").checked =
+      enabled;
+
+    $("settingsModal")
+      .classList.remove("hidden");
+
+  };
+
+
+window.closeSettings =
+  function(){
+
+    $("settingsModal")
+      .classList.add("hidden");
+
+  };
+
+
+window.saveSettings =
+  function(){
+
+    const enabled =
+      $("notificationSetting").checked;
+
+    localStorage.setItem(
+      "agrixNotifications",
+      enabled ? "on" : "off"
+    );
+
+
+    if(currentUser){
+
+      setupNotificationListener(
+        currentUser.uid
+      );
+
+    }
+
+
+    closeSettings();
+
+    alert(
+      "Settings saved successfully."
+    );
+
+  };
+
+
+/* =========================
+   FARMER SUBMIT
+========================= */
+
+window.submitFarmerProblem =
+  async function(){
+
+    if(!currentUser){
+
+      showMessage(
+        "farmerMessage",
+        "error",
+        "Please wait for authentication."
+      );
+
+      return;
+
+    }
+
+
+    const farmerLanguage =
+      $("farmerLanguage").value.trim();
+
+    const farmerName =
+      $("farmerName").value.trim();
+
+    const crop =
+      $("crop").value.trim();
+
+    const problem =
+      $("problemText").value.trim();
+
+    const phoneNumber =
+      $("phoneNumber").value.trim();
+
+    const photoFile =
+      $("photoFile").files[0];
+
+    const voiceFile =
+      $("voiceFile").files[0];
+
+    const consent =
+      window.document.querySelector(
+        'input[name="sharingConsent"]:checked'
+      )?.value || "no";
+
+
+    if(
+      !farmerName ||
+      !crop ||
+      !problem
+    ){
+
+      showMessage(
+        "farmerMessage",
+        "error",
+        "Please fill Farmer Name, Crop and Problem."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      showMessage(
+        "farmerMessage",
+        "success",
+        "Submitting... please wait."
+      );
+
+
+      const problemId =
+        generateProblemId();
+
+
+      let photoUrl = "";
+
+      let voiceUrl = "";
+
+
+      /* PHOTO */
+
+      if(photoFile){
+
+        const photoRef =
+          ref(
+            storage,
+            "problemPhotos/" +
+            currentUser.uid +
+            "/" +
+            problemId +
+            "_" +
+            photoFile.name
+          );
+
+        await uploadBytes(
+          photoRef,
+          photoFile
+        );
+
+        photoUrl =
+          await getDownloadURL(photoRef);
+
+      }
+
+
+      /* VOICE */
+
+      if(voiceFile){
+
+        const voiceRef =
+          ref(
+            storage,
+            "voiceDescriptions/" +
+            currentUser.uid +
+            "/" +
+            problemId +
+            "_" +
+            voiceFile.name
+          );
+
+        await uploadBytes(
+          voiceRef,
+          voiceFile
+        );
+
+        voiceUrl =
+          await getDownloadURL(voiceRef);
+
+      }
+
+
+      /*
+        New records use problemId as
+        Firestore document ID.
+      */
+
+      await setDoc(
+        doc(
+          db,
+          "cropReports",
+          problemId
+        ),
+        {
+
+          problemId,
+
+          farmerUid:
+            currentUser.uid,
+
+          farmerName,
+
+          crop,
+
+          problemDescription:
+            problem,
+
+          phoneNumber,
+
+          farmerLanguage,
+
+          sharingConsent:
+            consent,
+
+          photoUrl,
+
+          voiceUrl,
+
+          hasProblemPhoto:
+            !!photoFile,
+
+          hasVoiceDescription:
+            !!voiceFile,
+
+          status:
+            "Pending",
+
+          createdAt:
+            serverTimestamp()
+
+        }
+      );
+
+
+      /*
+        SHARE WITH STUDENTS
+      */
+
+      if(consent === "yes"){
+
+        await setDoc(
+          doc(
+            db,
+            "sharedProblems",
+            problemId
+          ),
+          {
+
+            problemId,
+
+            farmerUid:
+              currentUser.uid,
+
+            crop,
+
+            problemDescription:
+              problem,
+
+            farmerLanguage,
+
+            sharingConsent:
+              "yes",
+
+            photoUrl,
+
+            voiceUrl,
+
+            hasProblemPhoto:
+              !!photoFile,
+
+            hasVoiceDescription:
+              !!voiceFile,
+
+            status:
+              "Pending",
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      showMessage(
+        "farmerMessage",
+        "success",
+        consent === "yes"
+          ? "Successfully submitted and shared with students."
+          : "Successfully submitted privately. It will not appear to students."
+      );
+
+
+      $("farmerName").value = "";
+      $("crop").value = "";
+      $("problemText").value = "";
+      $("phoneNumber").value = "";
+
+      $("photoFile").value = "";
+      $("voiceFile").value = "";
+
+      $("allowSharing").checked =
+        false;
+
+      $("declineSharing").checked =
+        true;
+
+
+    }catch(error){
+
+      console.error(error);
+
+      showMessage(
+        "farmerMessage",
+        "error",
+        "Submission failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+/* =========================
+   FARMER SEARCH
+========================= */
+
+window.searchFarmerProblems =
+  async function(){
+
+    if(!currentUser){
+
+      showMessage(
+        "farmerMessage",
+        "error",
+        "Please wait for authentication."
+      );
+
+      return;
+
+    }
+
+
+    const phone =
+      $("farmerSearchPhone")
+        .value
+        .trim();
+
+
+    if(!phone){
+
+      showMessage(
+        "farmerMessage",
+        "error",
+        "Please enter your phone number."
+      );
+
+      return;
+
+    }
+
+
+    const container =
+      $("farmerProblems");
+
+    container.innerHTML =
+      `<p class="loading">Searching...</p>`;
+
+
+    try{
+
+      const q =
+        query(
+          collection(db,"cropReports"),
+          where(
+            "farmerUid",
+            "==",
+            currentUser.uid
+          ),
+          where(
+            "phoneNumber",
+            "==",
+            phone
+          )
+        );
+
+
+      const snapshot =
+        await getDocs(q);
+
+
+      if(snapshot.empty){
+
+        container.innerHTML =
+          `<p class="small-text">
+            No problems found for this phone number.
+          </p>`;
+
+        return;
+
+      }
+
+
+      const problems =
+        snapshot.docs.map(
+          item => ({
+            id:item.id,
+            ...item.data()
+          })
+        );
+
+
+      container.innerHTML =
+        problems.map(
+          item => `
+
+          <div class="problem-card">
+
+            <strong>
+              ${escapeHtml(item.problemId)}
+            </strong>
+
+            <p>
+              <b>Crop:</b>
+              ${escapeHtml(item.crop)}
+            </p>
+
+            <p>
+              <b>Problem:</b>
+              ${escapeHtml(item.problemDescription)}
+            </p>
+
+            <p>
+              <b>Sharing:</b>
+              ${item.sharingConsent === "yes"
+                ? "Allowed"
+                : "Private"}
+            </p>
+
+            <p>
+              <b>Status:</b>
+              <span class="status">
+                ${escapeHtml(item.status || "Pending")}
+              </span>
+            </p>
+
+            <p class="small-text">
+              Submitted:
+              ${escapeHtml(formatDate(item.createdAt))}
+            </p>
+
+          </div>
+
+        `
+        ).join("");
+
+
+    }catch(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        `<div class="error">
+          Search failed:
+          ${escapeHtml(error.message)}
+        </div>`;
+
+    }
+
+  };
+
+
+/* =========================
+   STUDENT LOAD PROBLEMS
+========================= */
+
+window.loadSharedProblems =
+  async function(){
+
+    const container =
+      $("studentProblems");
+
+    container.innerHTML =
+      `<p class="loading">
+        Loading shared farmer problems...
+      </p>`;
+
+
+    try{
+
+      const snapshot =
+        await getDocs(
+          collection(
+            db,
+            "sharedProblems"
+          )
+        );
+
+
+      if(snapshot.empty){
+
+        container.innerHTML =
+          `<p class="small-text">
+            No shared farmer problems available.
+          </p>`;
+
+        return;
+
+      }
+
+
+      const studentLanguage =
+        $("studentLanguage").value;
+
+
+      const problems =
+        snapshot.docs.map(
+          item => ({
+            id:item.id,
+            ...item.data()
+          })
+        );
+
+
+      const htmlParts = [];
+
+
+      for(const item of problems){
+
+        const translated =
+          await translateText(
+            item.problemDescription,
+            studentLanguage
+          );
+
+
+        htmlParts.push(`
+
+          <div class="problem-card">
+
+            <strong>
+              ${escapeHtml(item.problemId)}
+            </strong>
+
+            <p>
+              <b>Crop:</b>
+              ${escapeHtml(item.crop)}
+            </p>
+
+            <p>
+              <b>Original Problem:</b><br>
+              ${escapeHtml(item.problemDescription)}
+            </p>
+
+            <p>
+              <b>${escapeHtml(studentLanguage)} Translation:</b><br>
+              ${escapeHtml(translated)}
+            </p>
+
+            <p>
+              <b>Problem Language:</b>
+              ${escapeHtml(item.farmerLanguage || "Unknown")}
+            </p>
+
+            ${
+              item.hasProblemPhoto && item.photoUrl
+              ? `
+                <div class="media-box">
+                  <b>Problem Photo:</b>
+                  <br>
+                  <img
+                    src="${escapeHtml(item.photoUrl)}"
+                    alt="Farmer crop problem">
+                </div>
+              `
+              : ""
+            }
+
+            ${
+              item.hasVoiceDescription && item.voiceUrl
+              ? `
+                <div class="media-box">
+                  <b>Voice Description:</b>
+                  <audio
+                    controls
+                    src="${escapeHtml(item.voiceUrl)}">
+                  </audio>
+                </div>
+              `
+              : ""
+            }
+
+            <div class="problem-actions">
+
+              <button
+                onclick="selectProblem('${escapeHtml(item.problemId)}')">
+                Select Problem
+              </button>
+
+            </div>
+
+          </div>
+
+        `);
+
+      }
+
+
+      container.innerHTML =
+        htmlParts.join("");
+
+
+    }catch(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        `<div class="error">
+          Failed to load problems:
+          ${escapeHtml(error.message)}
+        </div>`;
+
+    }
+
+  };
+
+
+/* =========================
+   SELECT PROBLEM
+========================= */
+
+window.selectProblem =
+  function(problemId){
+
+    $("problemId").value =
+      problemId;
+
+    document
+      .getElementById("student")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+    showMessage(
+      "studentMessage",
+      "success",
+      "Selected problem: " +
+      problemId
+    );
+
+  };
+
+
+/* =========================
+   STUDENT SUBMIT SOLUTION
+========================= */
+
+window.submitStudentSolution =
+  async function(){
+
+    if(!currentUser){
+
+      showMessage(
+        "studentMessage",
+        "error",
+        "Please wait for authentication."
+      );
+
+      return;
+
+    }
+
+
+    const studentName =
+      $("studentName").value.trim();
+
+    const solutionLanguage =
+      $("studentSolutionLanguage").value;
+
+    const problemId =
+      $("problemId").value.trim();
+
+    const solutionText =
+      $("solutionText").value.trim();
+
+
+    if(
+      !studentName ||
+      !problemId ||
+      !solutionText
+    ){
+
+      showMessage(
+        "studentMessage",
+        "error",
+        "Please fill Student Name, select Problem ID and write solution."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      /*
+        Check shared problem
+      */
+
+      const problemRef =
+        doc(
+          db,
+          "sharedProblems",
+          problemId
+        );
+
+      const problemSnap =
+        await getDoc(problemRef);
+
+
+      if(!problemSnap.exists()){
+
+        showMessage(
+          "studentMessage",
+          "error",
+          "Selected problem does not exist."
+        );
+
+        return;
+
+      }
+
+
+      showMessage(
+        "studentMessage",
+        "success",
+        "Submitting solution..."
+      );
+
+
+      /*
+        Save solution
+      */
+
+      const solutionRef =
+        await addDoc(
+          collection(db,"solutions"),
+          {
+
+            problemId,
+
+            studentName,
+
+            studentUid:
+              currentUser.uid,
+
+            solutionText,
+
+            studentLanguage:
+              solutionLanguage,
+
+            status:
+              "Pending",
+
+            votes:
+              0,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+
+      /*
+        Notify farmer
+      */
+
+      const problemData =
+        problemSnap.data();
+
+
+      if(problemData.farmerUid){
+
+        await createNotification({
+
+          recipientUid:
+            problemData.farmerUid,
+
+          recipientRole:
+            "farmer",
+
+          type:
+            "new_solution",
+
+          title:
+            "🌱 New Student Solution",
+
+          message:
+            "A student submitted a solution for your crop problem " +
+            problemId + ".",
+
+          relatedProblemId:
+            problemId,
+
+          relatedSolutionId:
+            solutionRef.id,
+
+          senderRole:
+            "student"
+
+        });
+
+      }
+
+
+      /*
+        Notify professor
+      */
+
+      try{
+
+        const professorSettings =
+          await getDoc(
+            doc(
+              db,
+              "systemSettings",
+              "professor"
+            )
+          );
+
+
+        if(professorSettings.exists()){
+
+          const professorData =
+            professorSettings.data();
+
+
+          if(professorData.uid){
+
+            await createNotification({
+
+              recipientUid:
+                professorData.uid,
+
+              recipientRole:
+                "professor",
+
+              type:
+                "new_solution",
+
+              title:
+                "📝 New Student Solution",
+
+              message:
+                "A new student solution was submitted for " +
+                problemId + ".",
+
+              relatedProblemId:
+                problemId,
+
+              relatedSolutionId:
+                solutionRef.id,
+
+              senderRole:
+                "student"
+
+            });
+
+          }
+
+        }
+
+      }catch(notificationError){
+
+        console.warn(
+          "Professor notification failed:",
+          notificationError
+        );
+
+      }
+
+
+      showMessage(
+        "studentMessage",
+        "success",
+        "Solution submitted successfully. Farmer and professor notifications were processed."
+      );
+
+
+      $("studentName").value = "";
+
+      $("solutionText").value = "";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      showMessage(
+        "studentMessage",
+        "error",
+        "Solution submission failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+/* =========================
+   STUDENT VIEW SOLUTIONS
+========================= */
+
+window.loadSolutions =
+  async function(){
+
+    const container =
+      $("studentSolutions");
+
+    container.innerHTML =
+      `<p class="loading">
+        Loading solutions...
+      </p>`;
+
+
+    try{
+
+      const snapshot =
+        await getDocs(
+          collection(db,"solutions")
+        );
+
+
+      if(snapshot.empty){
+
+        container.innerHTML =
+          `<p class="small-text">
+            No solutions submitted yet.
+          </p>`;
+
+        return;
+
+      }
+
+
+      const studentLanguage =
+        $("studentLanguage").value;
+
+
+      const htmlParts = [];
+
+
+      for(const item of snapshot.docs){
+
+        const data =
+          item.data();
+
+
+        const translated =
+          await translateText(
+            data.solutionText,
+            studentLanguage
+          );
+
+
+        let statusClass = "";
+
+        if(data.status === "Verified"){
+          statusClass = "verified";
+        }
+
+        if(data.status === "Rejected"){
+          statusClass = "rejected";
+        }
+
+
+        htmlParts.push(`
+
+          <div class="solution-card">
+
+            <strong>
+              ${escapeHtml(data.problemId)}
+            </strong>
+
+            <p>
+              <b>Student:</b>
+              ${escapeHtml(data.studentName)}
+            </p>
+
+            <p>
+              <b>Original Solution:</b><br>
+              ${escapeHtml(data.solutionText)}
+            </p>
+
+            <p>
+              <b>${escapeHtml(studentLanguage)} Translation:</b><br>
+              ${escapeHtml(translated)}
+            </p>
+
+            <p>
+              <b>Status:</b>
+
+              <span class="status ${statusClass}">
+                ${escapeHtml(data.status || "Pending")}
+              </span>
+
+            </p>
+
+          </div>
+
+        `);
+
+      }
+
+
+      container.innerHTML =
+        htmlParts.join("");
+
+
+    }catch(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        `<div class="error">
+          Failed to load solutions:
+          ${escapeHtml(error.message)}
+        </div>`;
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR LOGIN
+========================= */
+
+window.professorLogin =
+  async function(){
+
+    const email =
+      $("professorEmail").value.trim();
+
+    const password =
+      $("professorPassword").value;
+
+
+    if(!email || !password){
+
+      showMessage(
+        "professorLoginMessage",
+        "error",
+        "Enter professor email and password."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      showMessage(
+        "professorLoginMessage",
+        "success",
+        "Logging in..."
+      );
+
+
+      const credential =
+        await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+      /*
+        Register professor UID
+        for student notifications.
+      */
+
+      await setDoc(
+        doc(
+          db,
+          "systemSettings",
+          "professor"
+        ),
+        {
+
+          uid:
+            credential.user.uid,
+
+          email:
+            email,
+
+          role:
+            "professor",
+
+          updatedAt:
+            serverTimestamp()
+
+        },
+        {
+          merge:true
+        }
+      );
+
+
+      $("professorLoginBox")
+        .classList.add("hidden");
+
+      $("professorDashboard")
+        .classList.remove("hidden");
+
+
+      $("professorPassword").value = "";
+
+
+      showMessage(
+        "professorLoginMessage",
+        "success",
+        "Professor login successful."
+      );
+
+
+    }catch(error){
+
+      console.error(error);
+
+      showMessage(
+        "professorLoginMessage",
+        "error",
+        "Professor login failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR LOGOUT
+========================= */
+
+window.professorLogout =
+  async function(){
+
+    try{
+
+      await signOut(auth);
+
+      $("professorDashboard")
+        .classList.add("hidden");
+
+      $("professorLoginBox")
+        .classList.remove("hidden");
+
+      await startAnonymousLogin();
+
+    }catch(error){
+
+      console.error(error);
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR LOAD FARMER PROBLEMS
+========================= */
+
+window.loadProfessorProblems =
+  async function(){
+
+    const container =
+      $("professorProblems");
+
+    container.innerHTML =
+      `<p class="loading">
+        Loading farmer problems...
+      </p>`;
+
+
+    try{
+
+      const snapshot =
+        await getDocs(
+          collection(db,"cropReports")
+        );
+
+
+      if(snapshot.empty){
+
+        container.innerHTML =
+          `<p class="small-text">
+            No farmer problems found.
+          </p>`;
+
+        return;
+
+      }
+
+
+      const professorLanguage =
+        $("professorLanguage").value;
+
+
+      const htmlParts = [];
+
+
+      for(const item of snapshot.docs){
+
+        const data =
+          item.data();
+
+
+        const translated =
+          await translateText(
+            data.problemDescription,
+            professorLanguage
+          );
+
+
+        htmlParts.push(`
+
+          <div class="problem-card">
+
+            <strong>
+              ${escapeHtml(data.problemId || item.id)}
+            </strong>
+
+            <p>
+              <b>Farmer:</b>
+              ${escapeHtml(data.farmerName || "Unknown")}
+            </p>
+
+            <p>
+              <b>Phone:</b>
+              ${escapeHtml(data.phoneNumber || "Not provided")}
+            </p>
+
+            <p>
+              <b>Crop:</b>
+              ${escapeHtml(data.crop)}
+            </p>
+
+            <p>
+              <b>Original Problem:</b><br>
+              ${escapeHtml(data.problemDescription)}
+            </p>
+
+            <p>
+              <b>${escapeHtml(professorLanguage)} Translation:</b><br>
+              ${escapeHtml(translated)}
+            </p>
+
+            <p>
+              <b>Sharing:</b>
+              ${data.sharingConsent === "yes"
+                ? "Allowed"
+                : "Private"}
+            </p>
+
+            <p>
+              <b>Status:</b>
+              ${escapeHtml(data.status || "Pending")}
+            </p>
+
+            ${
+              data.hasProblemPhoto && data.photoUrl
+              ? `
+                <div class="media-box">
+                  <img
+                    src="${escapeHtml(data.photoUrl)}"
+                    alt="Crop problem">
+                </div>
+              `
+              : ""
+            }
+
+            ${
+              data.hasVoiceDescription && data.voiceUrl
+              ? `
+                <div class="media-box">
+                  <audio
+                    controls
+                    src="${escapeHtml(data.voiceUrl)}">
+                  </audio>
+                </div>
+              `
+              : ""
+            }
+
+          </div>
+
+        `);
+
+      }
+
+
+      container.innerHTML =
+        htmlParts.join("");
+
+
+    }catch(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        `<div class="error">
+          Failed to load farmer problems:
+          ${escapeHtml(error.message)}
+        </div>`;
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR LOAD SOLUTIONS
+========================= */
+
+window.loadProfessorSolutions =
+  async function(){
+
+    const container =
+      $("professorSolutions");
+
+    container.innerHTML =
+      `<p class="loading">
+        Loading student solutions...
+      </p>`;
+
+
+    try{
+
+      const snapshot =
+        await getDocs(
+          collection(db,"solutions")
+        );
+
+
+      if(snapshot.empty){
+
+        container.innerHTML =
+          `<p class="small-text">
+            No student solutions found.
+          </p>`;
+
+        return;
+
+      }
+
+
+      const professorLanguage =
+        $("professorLanguage").value;
+
+
+      const htmlParts = [];
+
+
+      for(const item of snapshot.docs){
+
+        const data =
+          item.data();
+
+
+        const translated =
+          await translateText(
+            data.solutionText,
+            professorLanguage
+          );
+
+
+        let statusClass = "";
+
+        if(data.status === "Verified"){
+          statusClass = "verified";
+        }
+
+        if(data.status === "Rejected"){
+          statusClass = "rejected";
+        }
+
+
+        htmlParts.push(`
+
+          <div class="solution-card">
+
+            <strong>
+              Solution ID:
+              ${escapeHtml(item.id)}
+            </strong>
+
+            <p>
+              <b>Problem ID:</b>
+              ${escapeHtml(data.problemId)}
+            </p>
+
+            <p>
+              <b>Student:</b>
+              ${escapeHtml(data.studentName)}
+            </p>
+
+            <p>
+              <b>Original Solution:</b><br>
+              ${escapeHtml(data.solutionText)}
+            </p>
+
+            <p>
+              <b>${escapeHtml(professorLanguage)} Translation:</b><br>
+              ${escapeHtml(translated)}
+            </p>
+
+            <p>
+              <b>Status:</b>
+
+              <span class="status ${statusClass}">
+                ${escapeHtml(data.status || "Pending")}
+              </span>
+
+            </p>
+
+
+            <div class="problem-actions">
+
+              ${
+                data.status !== "Verified"
+                ? `
+                  <button
+                    onclick="verifySolution('${escapeHtml(item.id)}')">
+                    ✅ Verify
+                  </button>
+                `
+                : ""
+              }
+
+
+              ${
+                data.status !== "Rejected"
+                ? `
+                  <button
+                    class="danger"
+                    onclick="rejectSolution('${escapeHtml(item.id)}')">
+                    ❌ Reject
+                  </button>
+                `
+                : ""
+              }
+
+            </div>
+
+          </div>
+
+        `);
+
+      }
+
+
+      container.innerHTML =
+        htmlParts.join("");
+
+
+    }catch(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        `<div class="error">
+          Failed to load solutions:
+          ${escapeHtml(error.message)}
+        </div>`;
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR VERIFY
+========================= */
+
+window.verifySolution =
+  async function(solutionId){
+
+    if(!currentUser ||
+       currentUser.isAnonymous){
+
+      alert(
+        "Professor login required."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      const solutionRef =
+        doc(
+          db,
+          "solutions",
+          solutionId
+        );
+
+
+      const solutionSnap =
+        await getDoc(solutionRef);
+
+
+      if(!solutionSnap.exists()){
+
+        alert(
+          "Solution not found."
+        );
+
+        return;
+
+      }
+
+
+      const solutionData =
+        solutionSnap.data();
+
+
+      await updateDoc(
+        solutionRef,
+        {
+
+          status:
+            "Verified",
+
+          verifiedBy:
+            currentUser.uid,
+
+          verifiedAt:
+            serverTimestamp()
+
+        }
+      );
+
+
+      /*
+        Notify student
+      */
+
+      if(solutionData.studentUid){
+
+        await createNotification({
+
+          recipientUid:
+            solutionData.studentUid,
+
+          recipientRole:
+            "student",
+
+          type:
+            "solution_verified",
+
+          title:
+            "✅ Solution Verified",
+
+          message:
+            "Your solution for " +
+            solutionData.problemId +
+            " has been verified by the professor.",
+
+          relatedProblemId:
+            solutionData.problemId,
+
+          relatedSolutionId:
+            solutionId,
+
+          senderRole:
+            "professor"
+
+        });
+
+      }
+
+
+      alert(
+        "Solution verified successfully."
+      );
+
+
+      loadProfessorSolutions();
+
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "Verification failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+/* =========================
+   PROFESSOR REJECT
+========================= */
+
+window.rejectSolution =
+  async function(solutionId){
+
+    if(!currentUser ||
+       currentUser.isAnonymous){
+
+      alert(
+        "Professor login required."
+      );
+
+      return;
+
+    }
+
+
+    const confirmReject =
+      window.confirm(
+        "Are you sure you want to reject this solution?"
+      );
+
+
+    if(!confirmReject){
+      return;
+    }
+
+
+    try{
+
+      const solutionRef =
+        doc(
+          db,
+          "solutions",
+          solutionId
+        );
+
+
+      const solutionSnap =
+        await getDoc(solutionRef);
+
+
+      if(!solutionSnap.exists()){
+
+        alert(
+          "Solution not found."
+        );
+
+        return;
+
+      }
+
+
+      const solutionData =
+        solutionSnap.data();
+
+
+      await updateDoc(
+        solutionRef,
+        {
+
+          status:
+            "Rejected",
+
+          verifiedBy:
+            currentUser.uid,
+
+          verifiedAt:
+            serverTimestamp()
+
+        }
+      );
+
+
+      /*
+        Notify student
+      */
+
+      if(solutionData.studentUid){
+
+        await createNotification({
+
+          recipientUid:
+            solutionData.studentUid,
+
+          recipientRole:
+            "student",
+
+          type:
+            "solution_rejected",
+
+          title:
+            "❌ Solution Rejected",
+
+          message:
+            "Your solution for " +
+            solutionData.problemId +
+            " was rejected by the professor.",
+
+          relatedProblemId:
+            solutionData.problemId,
+
+          relatedSolutionId:
+            solutionId,
+
+          senderRole:
+            "professor"
+
+        });
+
+      }
+
+
+      alert(
+        "Solution rejected."
+      );
+
+
+      loadProfessorSolutions();
+
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "Rejection failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+/* =========================
+   LANGUAGE RELOADS
+========================= */
+
+$("studentLanguage")
+  .addEventListener(
+    "change",
+    () => {
+
+      /*
+        Reload only if student
+        has already loaded problems.
+      */
+
+      loadSharedProblems();
+
+    }
+  );
+
+
+$("professorLanguage")
+  .addEventListener(
+    "change",
+    () => {
+
+      /*
+        Reload professor data if desired.
+      */
+
+    }
+  );
+
+
+/* =========================
+   START APP
+========================= */
 
 startAnonymousLogin();
 
 
 /* =========================
-NAVIGATION
+   CLOSE NOTIFICATION WHEN
+   CLICKING OUTSIDE
 ========================= */
 
-window.goToSection=function(id){
+window.addEventListener(
+  "click",
+  event => {
 
-window.location.hash=id;
+    const panel =
+      $("notificationPanel");
 
-window.document
-.getElementById(id)
-?.scrollIntoView({
-behavior:"smooth"
-});
+    const bell =
+      event.target.closest(
+        ".icon-btn"
+      );
 
-};
 
+    if(
+      !panel.classList.contains("hidden") &&
+      !panel.contains(event.target) &&
+      !bell
+    ){
 
-/* =========================
-ESCAPE
-========================= */
+      panel.classList.add("hidden");
 
-function escapeHtml(value){
+    }
 
-const div=
-window.document.createElement("div");
-
-div.textContent=
-value || "";
-
-return div.innerHTML;
-
-}
-
-
-/* =========================
-TRANSLATION
-========================= */
-
-async function translateText(
-text,
-fromLanguage,
-toLanguage
-){
-
-if(!text)
-return "";
-
-if(
-!fromLanguage ||
-!toLanguage ||
-fromLanguage===toLanguage
-){
-
-return text;
-
-}
-
-try{
-
-const from=
-languageCodes[fromLanguage] || "en";
-
-const to=
-languageCodes[toLanguage] || "en";
-
-const url=
-"https://api.mymemory.translated.net/get?q="+
-encodeURIComponent(text)+
-"&langpair="+
-encodeURIComponent(from+"|"+to);
-
-const response=
-await fetch(url);
-
-if(!response.ok)
-return text;
-
-const data=
-await response.json();
-
-return
-data?.responseData?.translatedText
-||
-text;
-
-}
-
-catch(error){
-
-console.error(error);
-
-return text;
-
-}
-
-}
-
-
-/* =========================
-PROBLEM ID
-========================= */
-
-function generateProblemId(){
-
-return "AGRI-"+
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
-
-}
-
-
-/* =========================
-USER PROFILE
-========================= */
-
-async function loadUserProfile(){
-
-if(!auth.currentUser)
-return;
-
-try{
-
-const q=
-query(
-collection(db,"userProfiles"),
-where(
-"uid",
-"==",
-auth.currentUser.uid
-)
-);
-
-const snapshot=
-await getDocs(q);
-
-
-if(!snapshot.empty){
-
-const data=
-snapshot.docs[0].data();
-
-window.document
-.getElementById("profileRole")
-.value=
-data.role || "farmer";
-
-}
-
-window.document
-.getElementById("profileUid")
-.textContent=
-auth.currentUser.uid;
-
-}
-
-catch(error){
-
-console.error(
-"Profile load error:",
-error
-);
-
-}
-
-}
-
-
-window.saveProfile=async function(){
-
-if(!auth.currentUser)
-return;
-
-const role=
-window.document
-.getElementById("profileRole")
-.value;
-
-try{
-
-const q=
-query(
-collection(db,"userProfiles"),
-where(
-"uid",
-"==",
-auth.currentUser.uid
-)
-);
-
-const snapshot=
-await getDocs(q);
-
-
-if(snapshot.empty){
-
-await addDoc(
-collection(db,"userProfiles"),
-{
-
-uid:
-auth.currentUser.uid,
-
-role,
-
-createdAt:
-serverTimestamp(),
-
-updatedAt:
-serverTimestamp()
-
-}
-);
-
-}
-else{
-
-await updateDoc(
-doc(
-db,
-"userProfiles",
-snapshot.docs[0].id
-),
-{
-
-role,
-
-updatedAt:
-serverTimestamp()
-
-}
-);
-
-}
-
-
-window.document
-.getElementById("profileMessage")
-.innerHTML=
-`<p class="success"
-style="display:block">
-
-✅ Profile saved successfully.
-
-</p>`;
-
-
-}
-
-catch(error){
-
-console.error(error);
-
-window.document
-.getElementById("profileMessage")
-.innerHTML=
-`<div class="error">
-
-❌ Could not save profile.
-
-</div>`;
-
-}
-
-};
-
-
-/* =========================
-SETTINGS
-========================= */
-
-window.saveSettings=function(){
-
-localStorage.setItem(
-"agrix_notification_enabled",
-window.document
-.getElementById("notificationSetting")
-.checked
-);
-
-localStorage.setItem(
-"agrix_language",
-window.document
-.getElementById("settingsLanguage")
-.value
-);
-
-window.document
-.getElementById("settingsMessage")
-.innerHTML=
-`<p class="success"
-style="display:block">
-
-✅ Settings saved.
-
-</p>`;
-
-};
-
-
-function loadLocalSettings(){
-
-const notification=
-localStorage.getItem(
-"agrix_notification_enabled"
-);
-
-if(notification!==null){
-
-window.document
-.getElementById("notificationSetting")
-.checked=
-notification==="true";
-
-}
-
-const language=
-localStorage.getItem(
-"agrix_language"
-);
-
-if(language){
-
-window.document
-.getElementById("settingsLanguage")
-.value=
-language;
-
-}
-
-}
-
-
-/* =========================
-NOTIFICATION CREATION
-========================= */
-
-async function createNotification(
-userUid,
-role,
-title,
-message,
-type
-){
-
-try{
-
-await addDoc(
-collection(db,"notifications"),
-{
-
-userUid:
-userUid || "",
-
-role:
-role || "",
-
-title,
-
-message,
-
-type:
-type || "general",
-
-read:false,
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-}
-
-catch(error){
-
-console.error(
-"Notification creation error:",
-error
-);
-
-}
-
-}
-
-
-/* =========================
-NOTIFICATIONS LOAD
-========================= */
-
-window.loadNotifications=async function(){
-
-if(!auth.currentUser)
-return;
-
-const output=
-window.document
-.getElementById("notificationList");
-
-
-output.innerHTML=
-"<p>Loading notifications...</p>";
-
-
-try{
-
-const userUid=
-auth.currentUser.uid;
-
-
-/*
-User-specific notifications
-*/
-
-const personalQuery=
-query(
-collection(db,"notifications"),
-where(
-"userUid",
-"==",
-userUid
-)
-);
-
-const personal=
-await getDocs(personalQuery);
-
-
-/*
-Role notifications
-*/
-
-let role=
-"farmer";
-
-
-const profileQuery=
-query(
-collection(db,"userProfiles"),
-where(
-"uid",
-"==",
-userUid
-)
-);
-
-const profiles=
-await getDocs(profileQuery);
-
-
-if(!profiles.empty){
-
-role=
-profiles.docs[0].data().role || "farmer";
-
-}
-
-
-const roleQuery=
-query(
-collection(db,"notifications"),
-where(
-"role",
-"==",
-role
-)
-);
-
-const roleSnapshot=
-await getDocs(roleQuery);
-
-
-const notifications=[];
-
-
-/* Personal */
-
-personal.forEach(item=>{
-
-notifications.push({
-
-id:item.id,
-
-...item.data()
-
-});
-
-});
-
-
-/* Role */
-
-roleSnapshot.forEach(item=>{
-
-if(
-!notifications.some(
-x=>x.id===item.id
-)
-){
-
-notifications.push({
-
-id:item.id,
-
-...item.data()
-
-});
-
-}
-
-});
-
-
-if(notifications.length===0){
-
-output.innerHTML=
-"<p>No notifications yet.</p>";
-
-updateNotificationCount(0);
-
-return;
-
-}
-
-
-/*
-Newest first
-*/
-
-notifications.sort(
-(a,b)=>{
-
-const aTime=
-a.createdAt?.seconds || 0;
-
-const bTime=
-b.createdAt?.seconds || 0;
-
-return bTime-aTime;
-
-}
-);
-
-
-output.innerHTML="";
-
-
-let unread=0;
-
-
-notifications.forEach(
-data=>{
-
-if(!data.read){
-
-unread++;
-
-}
-
-
-const item=
-window.document
-.createElement("div");
-
-
-item.className=
-"notification "+
-(
-data.read
-?
-""
-:
-"unread"
-);
-
-
-item.innerHTML=`
-
-<strong>
-${escapeHtml(data.title)}
-</strong>
-
-<p>
-${escapeHtml(data.message)}
-</p>
-
-<p class="notification-time">
-
-${data.read
-?"Read"
-:"🔴 Unread"}
-
-</p>
-
-`;
-
-
-item.onclick=
-async function(){
-
-if(!data.read){
-
-try{
-
-await updateDoc(
-doc(
-db,
-"notifications",
-data.id
-),
-{
-
-read:true
-
-}
-);
-
-loadNotifications();
-
-}
-
-catch(error){
-
-console.error(error);
-
-}
-
-}
-
-};
-
-
-output.appendChild(item);
-
-}
-);
-
-
-updateNotificationCount(
-unread
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load notifications.</p>";
-
-}
-
-};
-
-
-/* =========================
-NOTIFICATION COUNT
-========================= */
-
-function updateNotificationCount(count){
-
-const badge=
-window.document
-.getElementById("notificationCount");
-
-
-if(count>0){
-
-badge.textContent=
-count>99
-?
-"99+"
-:
-count;
-
-badge.style.display=
-"flex";
-
-}
-
-else{
-
-badge.style.display=
-"none";
-
-}
-
-}
-
-
-/* =========================
-MARK ALL READ
-========================= */
-
-window.markAllNotificationsRead=
-async function(){
-
-if(!auth.currentUser)
-return;
-
-try{
-
-const personalQuery=
-query(
-collection(db,"notifications"),
-where(
-"userUid",
-"==",
-auth.currentUser.uid
-)
-);
-
-const snapshot=
-await getDocs(personalQuery);
-
-
-for(
-const item of snapshot.docs
-){
-
-if(
-item.data().read===false
-){
-
-await updateDoc(
-doc(
-db,
-"notifications",
-item.id
-),
-{
-
-read:true
-
-}
-);
-
-}
-
-}
-
-
-await loadNotifications();
-
-alert(
-"✅ Notifications marked as read."
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"Unable to update notifications."
-);
-
-}
-
-};
-
-
-/* =========================
-FARMER SUBMIT
-========================= */
-
-window.submitProblem=async function(){
-
-await startAnonymousLogin();
-
-
-const farmer=
-window.document
-.getElementById("farmerName")
-.value.trim();
-
-
-const crop=
-window.document
-.getElementById("crop")
-.value.trim();
-
-
-const problem=
-window.document
-.getElementById("problemText")
-.value.trim();
-
-
-const phone=
-window.document
-.getElementById("phoneNumber")
-.value.trim();
-
-
-const farmerLanguage=
-window.document
-.getElementById("farmerLanguage")
-.value;
-
-
-const consent=
-window.document
-.querySelector(
-'input[name="sharingConsent"]:checked'
-);
-
-
-const photoFile=
-window.document
-.getElementById("photoFile")
-.files[0];
-
-
-const voiceFile=
-window.document
-.getElementById("voiceFile")
-.files[0];
-
-
-if(
-!farmer ||
-!crop ||
-!problem ||
-!phone
-){
-
-alert(
-"Please fill all required farmer details."
-);
-
-return;
-
-}
-
-
-if(!consent){
-
-alert(
-"Please select Allow Sharing or Decline Sharing."
-);
-
-return;
-
-}
-
-
-const problemId=
-generateProblemId();
-
-
-try{
-
-let photoUrl="";
-
-let voiceUrl="";
-
-
-/* PHOTO */
-
-if(photoFile){
-
-const photoRef=
-ref(
-storage,
-"problemPhotos/"+
-problemId+"_"+photoFile.name
-);
-
-await uploadBytes(
-photoRef,
-photoFile
-);
-
-photoUrl=
-await getDownloadURL(photoRef);
-
-}
-
-
-/* VOICE */
-
-if(voiceFile){
-
-const voiceRef=
-ref(
-storage,
-"voiceDescriptions/"+
-problemId+"_"+voiceFile.name
-);
-
-await uploadBytes(
-voiceRef,
-voiceFile
-);
-
-voiceUrl=
-await getDownloadURL(voiceRef);
-
-}
-
-
-/* PRIVATE RECORD */
-
-await addDoc(
-collection(db,"cropReports"),
-{
-
-problemId,
-
-farmerUid:
-auth.currentUser.uid,
-
-farmerName:
-farmer,
-
-crop,
-
-problemDescription:
-problem,
-
-phoneNumber:
-phone,
-
-farmerLanguage,
-
-sharingConsent:
-consent.value,
-
-photoUrl,
-
-voiceUrl,
-
-hasProblemPhoto:
-!!photoFile,
-
-hasVoiceDescription:
-!!voiceFile,
-
-status:
-"Pending",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-/* SHARED RECORD */
-
-if(consent.value==="yes"){
-
-await addDoc(
-collection(db,"sharedProblems"),
-{
-
-problemId,
-
-farmerUid:
-auth.currentUser.uid,
-
-crop,
-
-problemDescription:
-problem,
-
-farmerLanguage,
-
-sharingConsent:
-"yes",
-
-photoUrl,
-
-voiceUrl,
-
-hasProblemPhoto:
-!!photoFile,
-
-hasVoiceDescription:
-!!voiceFile,
-
-status:
-"Pending",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-/*
-Notify students
-*/
-
-await createNotification(
-"",
-"student",
-"🌾 New Farmer Problem",
-"A new crop problem has been shared and is available for student solutions.",
-"new_problem"
-);
-
-}
-
-
-/*
-Notify farmer
-*/
-
-await createNotification(
-auth.currentUser.uid,
-"",
-"✅ Problem Submitted",
-"Your crop problem "+problemId+" was submitted successfully.",
-"problem_submitted"
-);
-
-
-window.document
-.getElementById("successMessage")
-.style.display="block";
-
-
-window.document
-.getElementById("newProblemId")
-.textContent=
-problemId;
-
-
-alert(
-"✅ Problem submitted successfully!\n\nProblem ID: "+
-problemId
-);
-
-
-window.document
-.getElementById("farmerName")
-.value="";
-
-window.document
-.getElementById("crop")
-.value="";
-
-window.document
-.getElementById("problemText")
-.value="";
-
-window.document
-.getElementById("phoneNumber")
-.value="";
-
-window.document
-.getElementById("photoFile")
-.value="";
-
-window.document
-.getElementById("voiceFile")
-.value="";
-
-window.document
-.querySelectorAll(
-'input[name="sharingConsent"]'
-)
-.forEach(
-x=>x.checked=false
-);
-
-await loadNotifications();
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"❌ Submission failed:\n"+
-error.message
-);
-
-}
-
-};
-
-
-/* =========================
-FARMER SEARCH
-========================= */
-
-window.loadFarmerProblems=async function(){
-
-await startAnonymousLogin();
-
-
-const phone=
-window.document
-.getElementById("farmerSearchPhone")
-.value.trim();
-
-
-const output=
-window.document
-.getElementById("farmerProblems");
-
-
-if(!phone){
-
-alert(
-"Enter your phone number."
-);
-
-return;
-
-}
-
-
-output.innerHTML=
-"<p>Loading...</p>";
-
-
-try{
-
-const q=
-query(
-collection(db,"cropReports"),
-where(
-"farmerUid",
-"==",
-auth.currentUser.uid
-),
-where(
-"phoneNumber",
-"==",
-phone
-)
-);
-
-
-const snapshot=
-await getDocs(q);
-
-
-if(snapshot.empty){
-
-output.innerHTML=
-"<p>No problems found.</p>";
-
-return;
-
-}
-
-
-output.innerHTML="";
-
-
-snapshot.forEach(item=>{
-
-const data=item.data();
-
-
-output.innerHTML+=`
-
-<div class="problem-card">
-
-<div class="problem-id">
-
-Problem ID:
-${escapeHtml(data.problemId)}
-
-</div>
-
-<p>
-<strong>Crop:</strong>
-${escapeHtml(data.crop)}
-</p>
-
-<p>
-<strong>Problem:</strong>
-${escapeHtml(data.problemDescription)}
-</p>
-
-<p>
-<strong>Sharing:</strong>
-${data.sharingConsent==="yes"
-?"Allowed"
-:"Private"}
-</p>
-
-<p>
-<strong>Status:</strong>
-
-<span class="status">
-
-${escapeHtml(data.status || "Pending")}
-
-</span>
-
-</p>
-
-${
-data.photoUrl
-?
-`<img class="media-preview"
-src="${data.photoUrl}"
-alt="Problem photo">`
-:""
-}
-
-${
-data.voiceUrl
-?
-`<audio controls src="${data.voiceUrl}"></audio>`
-:""
-}
-
-</div>
-
-`;
-
-});
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load your problems.</p>";
-
-}
-
-};
-
-
-/* =========================
-STUDENT PROBLEMS
-========================= */
-
-window.loadProblemsForStudents=async function(){
-
-await startAnonymousLogin();
-
-
-const output=
-window.document
-.getElementById("studentProblems");
-
-
-const selectedLanguage=
-window.document
-.getElementById("studentLanguage")
-.value;
-
-
-output.innerHTML=
-"<p>Loading shared problems...</p>";
-
-
-try{
-
-const snapshot=
-await getDocs(
-collection(db,"sharedProblems")
-);
-
-
-if(snapshot.empty){
-
-output.innerHTML=
-"<p>No shared farmer problems available.</p>";
-
-return;
-
-}
-
-
-output.innerHTML="";
-
-
-for(
-const item of snapshot.docs
-){
-
-const data=item.data();
-
-
-const translated=
-await translateText(
-
-data.problemDescription,
-
-data.farmerLanguage,
-
-selectedLanguage
-
-);
-
-
-output.innerHTML+=`
-
-<div class="problem-card">
-
-<div class="problem-id">
-
-Problem ID:
-${escapeHtml(data.problemId)}
-
-</div>
-
-<p>
-
-<strong>Crop:</strong>
-
-${escapeHtml(data.crop)}
-
-</p>
-
-
-<div class="original">
-
-<strong>
-
-Original
-(${escapeHtml(data.farmerLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(data.problemDescription)}
-
-</div>
-
-
-<div class="translated">
-
-<strong>
-
-Translation
-(${escapeHtml(selectedLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(translated)}
-
-</div>
-
-
-${
-data.photoUrl
-?
-`
-
-<p>
-<strong>📷 Problem Photo</strong>
-</p>
-
-<img
-class="media-preview"
-src="${data.photoUrl}"
-alt="Crop problem">
-
-`
-:""
-}
-
-
-${
-data.voiceUrl
-?
-`
-
-<p>
-<strong>🎙️ Voice Description</strong>
-</p>
-
-<audio
-controls
-src="${data.voiceUrl}">
-</audio>
-
-`
-:""
-}
-
-
-<p>
-
-<strong>Status:</strong>
-
-<span class="status">
-
-${escapeHtml(data.status || "Pending")}
-
-</span>
-
-</p>
-
-
-<button
-class="btn"
-onclick="selectProblem('${escapeHtml(data.problemId)}')">
-
-Solve This Problem
-
-</button>
-
-</div>
-
-`;
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load shared problems.</p>";
-
-}
-
-};
-
-
-/* =========================
-SELECT PROBLEM
-========================= */
-
-window.selectProblem=function(problemId){
-
-window.document
-.getElementById("problemId")
-.value=
-problemId;
-
-window.location.hash=
-"student";
-
-window.document
-.getElementById("solutionText")
-.focus();
-
-};
-
-
-/* =========================
-STUDENT SOLUTION
-========================= */
-
-window.submitSolution=async function(){
-
-await startAnonymousLogin();
-
-
-const studentName=
-window.document
-.getElementById("studentName")
-.value.trim();
-
-
-const problemId=
-window.document
-.getElementById("problemId")
-.value.trim();
-
-
-const solutionText=
-window.document
-.getElementById("solutionText")
-.value.trim();
-
-
-const studentLanguage=
-window.document
-.getElementById("studentSolutionLanguage")
-.value;
-
-
-if(
-!studentName ||
-!problemId ||
-!solutionText
-){
-
-alert(
-"Please fill Student Name, Problem ID and Solution."
-);
-
-return;
-
-}
-
-
-try{
-
-const q=
-query(
-collection(db,"sharedProblems"),
-where(
-"problemId",
-"==",
-problemId
-)
-);
-
-
-const problems=
-await getDocs(q);
-
-
-if(problems.empty){
-
-alert(
-"Problem ID not found."
-);
-
-return;
-
-}
-
-
-/*
-Get farmer UID
-*/
-
-const sharedProblem=
-problems.docs[0].data();
-
-const farmerUid=
-sharedProblem.farmerUid || "";
-
-
-const solutionRef=
-await addDoc(
-collection(db,"solutions"),
-{
-
-problemId,
-
-studentName,
-
-studentUid:
-auth.currentUser.uid,
-
-solutionText,
-
-studentLanguage,
-
-status:
-"Pending",
-
-votes:0,
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-
-/*
-Notify professor
-*/
-
-await createNotification(
-"",
-"professor",
-"💡 New Student Solution",
-"A new student solution is waiting for professor verification.",
-"new_solution"
-);
-
-
-/*
-Notify farmer
-*/
-
-if(farmerUid){
-
-await createNotification(
-farmerUid,
-"",
-"💡 New Solution Received",
-"A student has submitted a solution for your crop problem.",
-"new_solution"
-);
-
-}
-
-
-window.document
-.getElementById(
-"solutionSuccessMessage"
-)
-.style.display="block";
-
-
-alert(
-"✅ Solution submitted successfully."
-);
-
-
-window.document
-.getElementById("studentName")
-.value="";
-
-window.document
-.getElementById("problemId")
-.value="";
-
-window.document
-.getElementById("solutionText")
-.value="";
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"❌ Solution submission failed:\n"+
-error.message
-);
-
-}
-
-};
-
-
-/* =========================
-STUDENT SOLUTIONS
-========================= */
-
-window.loadSolutionsForStudents=async function(){
-
-await startAnonymousLogin();
-
-
-const output=
-window.document
-.getElementById("studentSolutions");
-
-
-const selectedLanguage=
-window.document
-.getElementById("studentLanguage")
-.value;
-
-
-output.innerHTML=
-"<p>Loading solutions...</p>";
-
-
-try{
-
-const snapshot=
-await getDocs(
-collection(db,"solutions")
-);
-
-
-if(snapshot.empty){
-
-output.innerHTML=
-"<p>No solutions found.</p>";
-
-return;
-
-}
-
-
-output.innerHTML="";
-
-
-for(
-const item of snapshot.docs
-){
-
-const data=item.data();
-
-
-const translated=
-await translateText(
-
-data.solutionText,
-
-data.studentLanguage,
-
-selectedLanguage
-
-);
-
-
-const statusClass=
-data.status==="Verified"
-?
-"verified"
-:
-data.status==="Rejected"
-?
-"rejected"
-:
-"";
-
-
-output.innerHTML+=`
-
-<div class="solution-card">
-
-<p>
-
-<strong>
-Problem ID:
-</strong>
-
-${escapeHtml(data.problemId)}
-
-</p>
-
-
-<p>
-
-<strong>
-Student:
-</strong>
-
-${escapeHtml(data.studentName)}
-
-</p>
-
-
-<div class="original">
-
-<strong>
-
-Original
-(${escapeHtml(data.studentLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(data.solutionText)}
-
-</div>
-
-
-<div class="translated">
-
-<strong>
-
-Translation
-(${escapeHtml(selectedLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(translated)}
-
-</div>
-
-
-<p>
-
-<strong>Status:</strong>
-
-<span class="status ${statusClass}">
-
-${escapeHtml(data.status || "Pending")}
-
-</span>
-
-</p>
-
-
-<p>
-
-<strong>Votes:</strong>
-
-${Number(data.votes || 0)}
-
-</p>
-
-</div>
-
-`;
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load solutions.</p>";
-
-}
-
-};
-
-
-/* =========================
-PROFESSOR LOGIN
-========================= */
-
-window.professorLogin=async function(){
-
-const email=
-window.document
-.getElementById("professorEmail")
-.value.trim();
-
-
-const password=
-window.document
-.getElementById("professorPassword")
-.value;
-
-
-const status=
-window.document
-.getElementById("professorLoginStatus");
-
-
-if(!email || !password){
-
-alert(
-"Enter professor email and password."
-);
-
-return;
-
-}
-
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-
-status.innerHTML=
-`<p class="success"
-style="display:block">
-
-✅ Professor logged in successfully.
-
-</p>`;
-
-
-await saveProfessorProfile();
-
-await loadNotifications();
-
-alert(
-"Professor login successful."
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-status.innerHTML=
-`<div class="error">
-
-❌ Login failed.
-
-</div>`;
-
-}
-
-};
-
-
-/* =========================
-PROFESSOR PROFILE
-========================= */
-
-async function saveProfessorProfile(){
-
-if(!auth.currentUser)
-return;
-
-try{
-
-const q=
-query(
-collection(db,"userProfiles"),
-where(
-"uid",
-"==",
-auth.currentUser.uid
-)
-);
-
-const snapshot=
-await getDocs(q);
-
-
-if(snapshot.empty){
-
-await addDoc(
-collection(db,"userProfiles"),
-{
-
-uid:
-auth.currentUser.uid,
-
-role:
-"professor",
-
-email:
-auth.currentUser.email || "",
-
-createdAt:
-serverTimestamp()
-
-}
-);
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-}
-
-}
-
-
-/* =========================
-PROFESSOR LOGOUT
-========================= */
-
-window.professorLogout=async function(){
-
-try{
-
-await signOut(auth);
-
-await startAnonymousLogin();
-
-window.document
-.getElementById(
-"professorLoginStatus"
-)
-.innerHTML=
-"<p>Professor logged out.</p>";
-
-alert(
-"Professor logged out."
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-}
-
-};
-
-
-/* =========================
-PROFESSOR PROBLEMS
-========================= */
-
-window.loadProfessorProblems=async function(){
-
-if(
-!auth.currentUser ||
-auth.currentUser.isAnonymous
-){
-
-alert(
-"Please login as professor first."
-);
-
-return;
-
-}
-
-
-const output=
-window.document
-.getElementById("professorProblems");
-
-
-const selectedLanguage=
-window.document
-.getElementById("professorLanguage")
-.value;
-
-
-output.innerHTML=
-"<p>Loading...</p>";
-
-
-try{
-
-const snapshot=
-await getDocs(
-collection(db,"cropReports")
-);
-
-
-if(snapshot.empty){
-
-output.innerHTML=
-"<p>No farmer problems found.</p>";
-
-return;
-
-}
-
-
-output.innerHTML="";
-
-
-for(
-const item of snapshot.docs
-){
-
-const data=item.data();
-
-
-const translated=
-await translateText(
-
-data.problemDescription,
-
-data.farmerLanguage,
-
-selectedLanguage
-
-);
-
-
-output.innerHTML+=`
-
-<div class="problem-card">
-
-<div class="problem-id">
-
-Problem ID:
-${escapeHtml(data.problemId)}
-
-</div>
-
-
-<p>
-
-<strong>Farmer:</strong>
-
-${escapeHtml(data.farmerName)}
-
-</p>
-
-
-<p>
-
-<strong>Phone:</strong>
-
-${escapeHtml(data.phoneNumber)}
-
-</p>
-
-
-<p>
-
-<strong>Crop:</strong>
-
-${escapeHtml(data.crop)}
-
-</p>
-
-
-<div class="original">
-
-<strong>
-
-Original
-(${escapeHtml(data.farmerLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(data.problemDescription)}
-
-</div>
-
-
-<div class="translated">
-
-<strong>
-
-Translation
-(${escapeHtml(selectedLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(translated)}
-
-</div>
-
-
-<p>
-
-<strong>Sharing:</strong>
-
-${data.sharingConsent==="yes"
-?"Allowed"
-:"Declined"}
-
-</p>
-
-
-<p>
-
-<strong>Status:</strong>
-
-<span class="status">
-
-${escapeHtml(data.status || "Pending")}
-
-</span>
-
-</p>
-
-</div>
-
-`;
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load professor data.</p>";
-
-}
-
-};
-
-
-/* =========================
-PROFESSOR SOLUTIONS
-========================= */
-
-window.loadProfessorSolutions=async function(){
-
-if(
-!auth.currentUser ||
-auth.currentUser.isAnonymous
-){
-
-alert(
-"Professor login required."
-);
-
-return;
-
-}
-
-
-const output=
-window.document
-.getElementById("professorSolutions");
-
-
-const selectedLanguage=
-window.document
-.getElementById("professorLanguage")
-.value;
-
-
-output.innerHTML=
-"<p>Loading...</p>";
-
-
-try{
-
-const snapshot=
-await getDocs(
-collection(db,"solutions")
-);
-
-
-if(snapshot.empty){
-
-output.innerHTML=
-"<p>No solutions found.</p>";
-
-return;
-
-}
-
-
-output.innerHTML="";
-
-
-for(
-const item of snapshot.docs
-){
-
-const data=item.data();
-
-
-const translated=
-await translateText(
-
-data.solutionText,
-
-data.studentLanguage,
-
-selectedLanguage
-
-);
-
-
-const status=
-data.status || "Pending";
-
-
-const statusClass=
-status==="Verified"
-?
-"verified"
-:
-status==="Rejected"
-?
-"rejected"
-:
-"";
-
-
-output.innerHTML+=`
-
-<div class="solution-card">
-
-<p>
-
-<strong>
-Problem ID:
-</strong>
-
-${escapeHtml(data.problemId)}
-
-</p>
-
-
-<p>
-
-<strong>
-Student:
-</strong>
-
-${escapeHtml(data.studentName)}
-
-</p>
-
-
-<div class="original">
-
-<strong>
-
-Original
-(${escapeHtml(data.studentLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(data.solutionText)}
-
-</div>
-
-
-<div class="translated">
-
-<strong>
-
-Translation
-(${escapeHtml(selectedLanguage)}):
-
-</strong>
-
-<br>
-
-${escapeHtml(translated)}
-
-</div>
-
-
-<p>
-
-<strong>Status:</strong>
-
-<span class="status ${statusClass}">
-
-${escapeHtml(status)}
-
-</span>
-
-</p>
-
-
-${
-status==="Pending"
-?
-
-`
-
-<button
-class="btn"
-onclick="verifySolution('${item.id}')">
-
-✅ Verify
-
-</button>
-
-
-<button
-class="btn btn-danger"
-onclick="rejectSolution('${item.id}')">
-
-❌ Reject
-
-</button>
-
-`
-
-:
-
-`
-
-<p class="small">
-
-This solution has already been reviewed.
-
-</p>
-
-`
-
-}
-
-</div>
-
-`;
-
-}
-
-}
-
-catch(error){
-
-console.error(error);
-
-output.innerHTML=
-"<p>Unable to load solutions.</p>";
-
-}
-
-};
-
-
-/* =========================
-VERIFY
-========================= */
-
-window.verifySolution=async function(solutionId){
-
-if(
-!auth.currentUser ||
-auth.currentUser.isAnonymous
-){
-
-alert(
-"Professor login required."
-);
-
-return;
-
-}
-
-
-const professor=
-window.document
-.getElementById("professorName")
-.value.trim();
-
-
-if(!professor){
-
-alert(
-"Enter professor name."
-);
-
-return;
-
-}
-
-
-try{
-
-const solutionDoc=
-await getDocs(
-query(
-collection(db,"solutions"),
-where(
-"studentUid",
-"!=",
-""
-)
-)
-);
-
-
-/*
-Find target solution
-*/
-
-let target=null;
-
-
-solutionDoc.forEach(
-item=>{
-
-if(item.id===solutionId){
-
-target={
-id:item.id,
-...item.data()
-};
-
-}
-
-}
-);
-
-
-await updateDoc(
-
-doc(
-db,
-"solutions",
-solutionId
-),
-
-{
-
-status:"Verified",
-
-verifiedBy:professor,
-
-verifiedAt:
-serverTimestamp()
-
-}
-
-);
-
-
-/*
-Notify student
-*/
-
-if(target?.studentUid){
-
-await createNotification(
-target.studentUid,
-"",
-"✅ Solution Verified",
-"Your solution for Problem ID "+target.problemId+" has been verified by the professor.",
-"verified"
-);
-
-}
-
-
-alert(
-"✅ Solution verified."
-);
-
-
-window.loadProfessorSolutions();
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"Verification failed:\n"+
-error.message
-);
-
-}
-
-};
-
-
-/* =========================
-REJECT
-========================= */
-
-window.rejectSolution=async function(solutionId){
-
-if(
-!auth.currentUser ||
-auth.currentUser.isAnonymous
-){
-
-alert(
-"Professor login required."
-);
-
-return;
-
-}
-
-
-const professor=
-window.document
-.getElementById("professorName")
-.value.trim();
-
-
-if(!professor){
-
-alert(
-"Enter professor name."
-);
-
-return;
-
-}
-
-
-try{
-
-const snapshot=
-await getDocs(
-collection(db,"solutions")
-);
-
-
-let target=null;
-
-
-snapshot.forEach(
-item=>{
-
-if(item.id===solutionId){
-
-target={
-id:item.id,
-...item.data()
-};
-
-}
-
-}
-);
-
-
-await updateDoc(
-
-doc(
-db,
-"solutions",
-solutionId
-),
-
-{
-
-status:"Rejected",
-
-verifiedBy:professor,
-
-verifiedAt:
-serverTimestamp()
-
-}
-
-);
-
-
-/*
-Notify student
-*/
-
-if(target?.studentUid){
-
-await createNotification(
-target.studentUid,
-"",
-"❌ Solution Rejected",
-"Your solution for Problem ID "+target.problemId+" was rejected by the professor.",
-"rejected"
-);
-
-}
-
-
-alert(
-"❌ Solution rejected."
-);
-
-
-window.loadProfessorSolutions();
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"Rejection failed:\n"+
-error.message
-);
-
-}
-
-};
-
-
-/* =========================
-LANGUAGE CHANGE
-========================= */
-
-window.document
-.getElementById("studentLanguage")
-.addEventListener(
-"change",
-()=>{
-
-window.loadProblemsForStudents();
-
-window.loadSolutionsForStudents();
-
-}
-);
-
-
-window.document
-.getElementById("professorLanguage")
-.addEventListener(
-"change",
-()=>{
-
-if(
-auth.currentUser &&
-!auth.currentUser.isAnonymous
-){
-
-window.loadProfessorProblems();
-
-window.loadProfessorSolutions();
-
-}
-
-}
-);
-
-
-/* =========================
-INITIAL SETTINGS
-========================= */
-
-loadLocalSettings();
-
-
-/* Refresh notification count */
-
-setTimeout(
-()=>{
-
-if(auth.currentUser){
-
-loadNotifications();
-
-}
-
-},
-3000
-);
-
-
-/*
-Check notifications periodically.
-*/
-
-setInterval(
-()=>{
-
-if(auth.currentUser){
-
-loadNotifications();
-
-}
-
-},
-30000
+  }
 );
 
 </script>
