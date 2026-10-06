@@ -31,7 +31,7 @@ header{
 }
 
 nav{
-  max-width:1100px;
+  max-width:1150px;
   margin:auto;
   display:flex;
   justify-content:space-between;
@@ -48,7 +48,28 @@ nav{
 nav a{
   color:white;
   text-decoration:none;
-  margin:5px 8px;
+  margin:5px 7px;
+  font-weight:bold;
+}
+
+.nav-btn{
+  position:relative;
+  display:inline-block;
+}
+
+.red-count{
+  position:absolute;
+  top:-10px;
+  right:-8px;
+  background:#e53935;
+  color:white;
+  border-radius:50%;
+  min-width:20px;
+  height:20px;
+  font-size:11px;
+  display:none;
+  align-items:center;
+  justify-content:center;
   font-weight:bold;
 }
 
@@ -97,6 +118,48 @@ h2{
 .card h3{
   color:#176b2c;
   margin-bottom:10px;
+}
+
+.dashboard{
+  background:#ffffff;
+  border-radius:16px;
+  padding:25px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
+.dashboard-title{
+  color:#176b2c;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.dashboard-item{
+  border:1px solid #d7e8d7;
+  background:#f7fff7;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.dashboard-item:hover{
+  transform:translateY(-2px);
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.dashboard-item .icon{
+  font-size:30px;
+  display:block;
+  margin-bottom:6px;
 }
 
 .form-box{
@@ -262,6 +325,32 @@ audio{
   margin-top:10px;
 }
 
+.notification{
+  background:white;
+  border-left:5px solid #176b2c;
+  padding:15px;
+  margin:10px 0;
+  border-radius:8px;
+  box-shadow:0 2px 7px rgba(0,0,0,.07);
+}
+
+.notification.unread{
+  background:#eef9ef;
+  border-left-color:#e53935;
+}
+
+.notification-time{
+  color:#777;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.profile-box{
+  background:#eef8ee;
+  padding:18px;
+  border-radius:10px;
+}
+
 .hidden{
   display:none;
 }
@@ -285,11 +374,15 @@ nav{
 }
 
 nav a{
-  font-size:13px;
+  font-size:12px;
 }
 
 .container{
   padding:30px 15px;
+}
+
+.dashboard-grid{
+  grid-template-columns:repeat(2,1fr);
 }
 
 }
@@ -310,10 +403,21 @@ nav a{
 <div>
 
 <a href="#home">Home</a>
+
 <a href="#farmer">Farmer</a>
+
 <a href="#student">Student</a>
+
 <a href="#professor">Professor</a>
-<a href="#how">How It Works</a>
+
+<a href="#notifications" class="nav-btn">
+🔔
+<span id="notificationCount" class="red-count">0</span>
+</a>
+
+<a href="#profile">👤</a>
+
+<a href="#settings">⚙️</a>
 
 </div>
 
@@ -321,6 +425,8 @@ nav a{
 
 </header>
 
+
+<!-- HOME -->
 
 <section class="hero" id="home">
 
@@ -335,6 +441,98 @@ before they are considered final.
 </section>
 
 
+<!-- ROLE DASHBOARD -->
+
+<section class="container">
+
+<div class="dashboard">
+
+<div class="dashboard-title">
+🌱 AGRI-XCHANGE Dashboard
+</div>
+
+<p class="small">
+Select your role to open the appropriate section.
+</p>
+
+<div class="dashboard-grid">
+
+<div
+class="dashboard-item"
+onclick="goToSection('farmer')">
+
+<span class="icon">👨‍🌾</span>
+
+<strong>Farmer</strong>
+
+<br>
+
+<span class="small">
+Report & Track
+</span>
+
+</div>
+
+
+<div
+class="dashboard-item"
+onclick="goToSection('student')">
+
+<span class="icon">🎓</span>
+
+<strong>Student</strong>
+
+<br>
+
+<span class="small">
+Problems & Solutions
+</span>
+
+</div>
+
+
+<div
+class="dashboard-item"
+onclick="goToSection('professor')">
+
+<span class="icon">👨‍🏫</span>
+
+<strong>Professor</strong>
+
+<br>
+
+<span class="small">
+Review & Verify
+</span>
+
+</div>
+
+
+<div
+class="dashboard-item"
+onclick="goToSection('notifications')">
+
+<span class="icon">🔔</span>
+
+<strong>Notifications</strong>
+
+<br>
+
+<span class="small">
+Updates
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- USERS -->
+
 <section class="container">
 
 <div class="section-title">
@@ -344,24 +542,35 @@ before they are considered final.
 <div class="card-grid">
 
 <div class="card">
+
 <h3>👨‍🌾 Farmer</h3>
+
 <p>
 Farmers can report crop problems using text, photo and voice description.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>🎓 Student</h3>
+
 <p>
 Students can view shared farmer problems and provide possible solutions.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>👨‍🏫 Professor</h3>
+
 <p>
 Professors can review and verify student solutions.
 </p>
+
 </div>
 
 </div>
@@ -821,6 +1030,156 @@ Load Student Solutions
 </section>
 
 
+<!-- NOTIFICATIONS -->
+
+<section class="container" id="notifications">
+
+<h2 class="section-title">
+🔔 Notifications
+</h2>
+
+<div class="form-box">
+
+<div id="notificationList">
+
+<p>
+Loading notifications...
+</p>
+
+</div>
+
+<button
+class="btn btn-blue"
+onclick="loadNotifications()">
+
+Refresh Notifications
+
+</button>
+
+<button
+class="btn"
+onclick="markAllNotificationsRead()">
+
+Mark All as Read
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="container" id="profile">
+
+<h2 class="section-title">
+👤 Profile
+</h2>
+
+<div class="form-box">
+
+<div class="profile-box">
+
+<p>
+<strong>User ID:</strong>
+</p>
+
+<p
+id="profileUid"
+class="small">
+Loading...
+</p>
+
+<br>
+
+<p>
+<strong>Current Role:</strong>
+</p>
+
+<select id="profileRole">
+
+<option value="farmer">👨‍🌾 Farmer</option>
+<option value="student">🎓 Student</option>
+<option value="professor">👨‍🏫 Professor</option>
+
+</select>
+
+<button
+class="btn"
+onclick="saveProfile()">
+
+Save Profile
+
+</button>
+
+<div id="profileMessage"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section class="container" id="settings">
+
+<h2 class="section-title">
+⚙️ Settings
+</h2>
+
+<div class="form-box">
+
+<h3>🔔 Notification Settings</h3>
+
+<label style="font-weight:normal">
+
+<input
+type="checkbox"
+id="notificationSetting"
+checked
+style="width:auto">
+
+Receive website notifications
+
+</label>
+
+
+<h3 style="margin-top:25px;">
+🌐 Language
+</h3>
+
+<select id="settingsLanguage">
+
+<option value="English">English</option>
+<option value="Telugu">తెలుగు</option>
+<option value="Hindi">हिन्दी</option>
+<option value="Tamil">தமிழ்</option>
+<option value="Kannada">ಕನ್ನಡ</option>
+<option value="Malayalam">മലയാളം</option>
+<option value="Marathi">मराठी</option>
+<option value="Bengali">বাংলা</option>
+
+</select>
+
+
+<button
+class="btn"
+onclick="saveSettings()">
+
+Save Settings
+
+</button>
+
+<div id="settingsMessage"></div>
+
+</div>
+
+</section>
+
+
 <!-- HOW IT WORKS -->
 
 <section class="container" id="how">
@@ -933,7 +1292,8 @@ query,
 where,
 doc,
 updateDoc,
-serverTimestamp
+serverTimestamp,
+orderBy
 }
 from
 "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
@@ -1005,6 +1365,10 @@ Bengali:"bn"
 };
 
 
+/* =========================
+AUTH
+========================= */
+
 async function startAnonymousLogin(){
 
 try{
@@ -1014,6 +1378,10 @@ if(!auth.currentUser){
 await signInAnonymously(auth);
 
 }
+
+await loadUserProfile();
+
+await loadNotifications();
 
 }
 
@@ -1032,16 +1400,26 @@ error
 startAnonymousLogin();
 
 
-function generateProblemId(){
+/* =========================
+NAVIGATION
+========================= */
 
-return "AGRI-"+
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
+window.goToSection=function(id){
 
-}
+window.location.hash=id;
 
+window.document
+.getElementById(id)
+?.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+
+/* =========================
+ESCAPE
+========================= */
 
 function escapeHtml(value){
 
@@ -1055,6 +1433,10 @@ return div.innerHTML;
 
 }
 
+
+/* =========================
+TRANSLATION
+========================= */
 
 async function translateText(
 text,
@@ -1083,25 +1465,20 @@ languageCodes[fromLanguage] || "en";
 const to=
 languageCodes[toLanguage] || "en";
 
-
 const url=
 "https://api.mymemory.translated.net/get?q="+
 encodeURIComponent(text)+
 "&langpair="+
 encodeURIComponent(from+"|"+to);
 
-
 const response=
 await fetch(url);
-
 
 if(!response.ok)
 return text;
 
-
 const data=
 await response.json();
-
 
 return
 data?.responseData?.translatedText
@@ -1119,6 +1496,673 @@ return text;
 }
 
 }
+
+
+/* =========================
+PROBLEM ID
+========================= */
+
+function generateProblemId(){
+
+return "AGRI-"+
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase();
+
+}
+
+
+/* =========================
+USER PROFILE
+========================= */
+
+async function loadUserProfile(){
+
+if(!auth.currentUser)
+return;
+
+try{
+
+const q=
+query(
+collection(db,"userProfiles"),
+where(
+"uid",
+"==",
+auth.currentUser.uid
+)
+);
+
+const snapshot=
+await getDocs(q);
+
+
+if(!snapshot.empty){
+
+const data=
+snapshot.docs[0].data();
+
+window.document
+.getElementById("profileRole")
+.value=
+data.role || "farmer";
+
+}
+
+window.document
+.getElementById("profileUid")
+.textContent=
+auth.currentUser.uid;
+
+}
+
+catch(error){
+
+console.error(
+"Profile load error:",
+error
+);
+
+}
+
+}
+
+
+window.saveProfile=async function(){
+
+if(!auth.currentUser)
+return;
+
+const role=
+window.document
+.getElementById("profileRole")
+.value;
+
+try{
+
+const q=
+query(
+collection(db,"userProfiles"),
+where(
+"uid",
+"==",
+auth.currentUser.uid
+)
+);
+
+const snapshot=
+await getDocs(q);
+
+
+if(snapshot.empty){
+
+await addDoc(
+collection(db,"userProfiles"),
+{
+
+uid:
+auth.currentUser.uid,
+
+role,
+
+createdAt:
+serverTimestamp(),
+
+updatedAt:
+serverTimestamp()
+
+}
+);
+
+}
+else{
+
+await updateDoc(
+doc(
+db,
+"userProfiles",
+snapshot.docs[0].id
+),
+{
+
+role,
+
+updatedAt:
+serverTimestamp()
+
+}
+);
+
+}
+
+
+window.document
+.getElementById("profileMessage")
+.innerHTML=
+`<p class="success"
+style="display:block">
+
+✅ Profile saved successfully.
+
+</p>`;
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+window.document
+.getElementById("profileMessage")
+.innerHTML=
+`<div class="error">
+
+❌ Could not save profile.
+
+</div>`;
+
+}
+
+};
+
+
+/* =========================
+SETTINGS
+========================= */
+
+window.saveSettings=function(){
+
+localStorage.setItem(
+"agrix_notification_enabled",
+window.document
+.getElementById("notificationSetting")
+.checked
+);
+
+localStorage.setItem(
+"agrix_language",
+window.document
+.getElementById("settingsLanguage")
+.value
+);
+
+window.document
+.getElementById("settingsMessage")
+.innerHTML=
+`<p class="success"
+style="display:block">
+
+✅ Settings saved.
+
+</p>`;
+
+};
+
+
+function loadLocalSettings(){
+
+const notification=
+localStorage.getItem(
+"agrix_notification_enabled"
+);
+
+if(notification!==null){
+
+window.document
+.getElementById("notificationSetting")
+.checked=
+notification==="true";
+
+}
+
+const language=
+localStorage.getItem(
+"agrix_language"
+);
+
+if(language){
+
+window.document
+.getElementById("settingsLanguage")
+.value=
+language;
+
+}
+
+}
+
+
+/* =========================
+NOTIFICATION CREATION
+========================= */
+
+async function createNotification(
+userUid,
+role,
+title,
+message,
+type
+){
+
+try{
+
+await addDoc(
+collection(db,"notifications"),
+{
+
+userUid:
+userUid || "",
+
+role:
+role || "",
+
+title,
+
+message,
+
+type:
+type || "general",
+
+read:false,
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}
+
+catch(error){
+
+console.error(
+"Notification creation error:",
+error
+);
+
+}
+
+}
+
+
+/* =========================
+NOTIFICATIONS LOAD
+========================= */
+
+window.loadNotifications=async function(){
+
+if(!auth.currentUser)
+return;
+
+const output=
+window.document
+.getElementById("notificationList");
+
+
+output.innerHTML=
+"<p>Loading notifications...</p>";
+
+
+try{
+
+const userUid=
+auth.currentUser.uid;
+
+
+/*
+User-specific notifications
+*/
+
+const personalQuery=
+query(
+collection(db,"notifications"),
+where(
+"userUid",
+"==",
+userUid
+)
+);
+
+const personal=
+await getDocs(personalQuery);
+
+
+/*
+Role notifications
+*/
+
+let role=
+"farmer";
+
+
+const profileQuery=
+query(
+collection(db,"userProfiles"),
+where(
+"uid",
+"==",
+userUid
+)
+);
+
+const profiles=
+await getDocs(profileQuery);
+
+
+if(!profiles.empty){
+
+role=
+profiles.docs[0].data().role || "farmer";
+
+}
+
+
+const roleQuery=
+query(
+collection(db,"notifications"),
+where(
+"role",
+"==",
+role
+)
+);
+
+const roleSnapshot=
+await getDocs(roleQuery);
+
+
+const notifications=[];
+
+
+/* Personal */
+
+personal.forEach(item=>{
+
+notifications.push({
+
+id:item.id,
+
+...item.data()
+
+});
+
+});
+
+
+/* Role */
+
+roleSnapshot.forEach(item=>{
+
+if(
+!notifications.some(
+x=>x.id===item.id
+)
+){
+
+notifications.push({
+
+id:item.id,
+
+...item.data()
+
+});
+
+}
+
+});
+
+
+if(notifications.length===0){
+
+output.innerHTML=
+"<p>No notifications yet.</p>";
+
+updateNotificationCount(0);
+
+return;
+
+}
+
+
+/*
+Newest first
+*/
+
+notifications.sort(
+(a,b)=>{
+
+const aTime=
+a.createdAt?.seconds || 0;
+
+const bTime=
+b.createdAt?.seconds || 0;
+
+return bTime-aTime;
+
+}
+);
+
+
+output.innerHTML="";
+
+
+let unread=0;
+
+
+notifications.forEach(
+data=>{
+
+if(!data.read){
+
+unread++;
+
+}
+
+
+const item=
+window.document
+.createElement("div");
+
+
+item.className=
+"notification "+
+(
+data.read
+?
+""
+:
+"unread"
+);
+
+
+item.innerHTML=`
+
+<strong>
+${escapeHtml(data.title)}
+</strong>
+
+<p>
+${escapeHtml(data.message)}
+</p>
+
+<p class="notification-time">
+
+${data.read
+?"Read"
+:"🔴 Unread"}
+
+</p>
+
+`;
+
+
+item.onclick=
+async function(){
+
+if(!data.read){
+
+try{
+
+await updateDoc(
+doc(
+db,
+"notifications",
+data.id
+),
+{
+
+read:true
+
+}
+);
+
+loadNotifications();
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+};
+
+
+output.appendChild(item);
+
+}
+);
+
+
+updateNotificationCount(
+unread
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+output.innerHTML=
+"<p>Unable to load notifications.</p>";
+
+}
+
+};
+
+
+/* =========================
+NOTIFICATION COUNT
+========================= */
+
+function updateNotificationCount(count){
+
+const badge=
+window.document
+.getElementById("notificationCount");
+
+
+if(count>0){
+
+badge.textContent=
+count>99
+?
+"99+"
+:
+count;
+
+badge.style.display=
+"flex";
+
+}
+
+else{
+
+badge.style.display=
+"none";
+
+}
+
+}
+
+
+/* =========================
+MARK ALL READ
+========================= */
+
+window.markAllNotificationsRead=
+async function(){
+
+if(!auth.currentUser)
+return;
+
+try{
+
+const personalQuery=
+query(
+collection(db,"notifications"),
+where(
+"userUid",
+"==",
+auth.currentUser.uid
+)
+);
+
+const snapshot=
+await getDocs(personalQuery);
+
+
+for(
+const item of snapshot.docs
+){
+
+if(
+item.data().read===false
+){
+
+await updateDoc(
+doc(
+db,
+"notifications",
+item.id
+),
+{
+
+read:true
+
+}
+);
+
+}
+
+}
+
+
+await loadNotifications();
+
+alert(
+"✅ Notifications marked as read."
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Unable to update notifications."
+);
+
+}
+
+};
 
 
 /* =========================
@@ -1228,12 +2272,10 @@ storage,
 problemId+"_"+photoFile.name
 );
 
-
 await uploadBytes(
 photoRef,
 photoFile
 );
-
 
 photoUrl=
 await getDownloadURL(photoRef);
@@ -1252,12 +2294,10 @@ storage,
 problemId+"_"+voiceFile.name
 );
 
-
 await uploadBytes(
 voiceRef,
 voiceFile
 );
-
 
 voiceUrl=
 await getDownloadURL(voiceRef);
@@ -1265,7 +2305,7 @@ await getDownloadURL(voiceRef);
 }
 
 
-/* PRIVATE FARMER RECORD */
+/* PRIVATE RECORD */
 
 await addDoc(
 collection(db,"cropReports"),
@@ -1312,7 +2352,7 @@ serverTimestamp()
 );
 
 
-/* PUBLIC SHARED RECORD */
+/* SHARED RECORD */
 
 if(consent.value==="yes"){
 
@@ -1322,6 +2362,9 @@ collection(db,"sharedProblems"),
 
 problemId,
 
+farmerUid:
+auth.currentUser.uid,
+
 crop,
 
 problemDescription:
@@ -1329,7 +2372,6 @@ problem,
 
 farmerLanguage,
 
-/* FIXED: REQUIRED BY FIRESTORE RULE */
 sharingConsent:
 "yes",
 
@@ -1352,7 +2394,33 @@ serverTimestamp()
 }
 );
 
+
+/*
+Notify students
+*/
+
+await createNotification(
+"",
+"student",
+"🌾 New Farmer Problem",
+"A new crop problem has been shared and is available for student solutions.",
+"new_problem"
+);
+
 }
+
+
+/*
+Notify farmer
+*/
+
+await createNotification(
+auth.currentUser.uid,
+"",
+"✅ Problem Submitted",
+"Your crop problem "+problemId+" was submitted successfully.",
+"problem_submitted"
+);
 
 
 window.document
@@ -1376,31 +2444,25 @@ window.document
 .getElementById("farmerName")
 .value="";
 
-
 window.document
 .getElementById("crop")
 .value="";
-
 
 window.document
 .getElementById("problemText")
 .value="";
 
-
 window.document
 .getElementById("phoneNumber")
 .value="";
-
 
 window.document
 .getElementById("photoFile")
 .value="";
 
-
 window.document
 .getElementById("voiceFile")
 .value="";
-
 
 window.document
 .querySelectorAll(
@@ -1409,6 +2471,8 @@ window.document
 .forEach(
 x=>x.checked=false
 );
+
+await loadNotifications();
 
 }
 
@@ -1427,7 +2491,7 @@ error.message
 
 
 /* =========================
-FARMER PRIVATE SEARCH
+FARMER SEARCH
 ========================= */
 
 window.loadFarmerProblems=async function(){
@@ -1508,9 +2572,7 @@ output.innerHTML+=`
 <div class="problem-id">
 
 Problem ID:
-${escapeHtml(
-data.problemId
-)}
+${escapeHtml(data.problemId)}
 
 </div>
 
@@ -1536,9 +2598,7 @@ ${data.sharingConsent==="yes"
 
 <span class="status">
 
-${escapeHtml(
-data.status || "Pending"
-)}
+${escapeHtml(data.status || "Pending")}
 
 </span>
 
@@ -1651,9 +2711,7 @@ output.innerHTML+=`
 <div class="problem-id">
 
 Problem ID:
-${escapeHtml(
-data.problemId
-)}
+${escapeHtml(data.problemId)}
 
 </div>
 
@@ -1671,17 +2729,13 @@ ${escapeHtml(data.crop)}
 <strong>
 
 Original
-(${escapeHtml(
-data.farmerLanguage
-)}):
+(${escapeHtml(data.farmerLanguage)}):
 
 </strong>
 
 <br>
 
-${escapeHtml(
-data.problemDescription
-)}
+${escapeHtml(data.problemDescription)}
 
 </div>
 
@@ -1691,9 +2745,7 @@ data.problemDescription
 <strong>
 
 Translation
-(${escapeHtml(
-selectedLanguage
-)}):
+(${escapeHtml(selectedLanguage)}):
 
 </strong>
 
@@ -1748,9 +2800,7 @@ src="${data.voiceUrl}">
 
 <span class="status">
 
-${escapeHtml(
-data.status || "Pending"
-)}
+${escapeHtml(data.status || "Pending")}
 
 </span>
 
@@ -1759,9 +2809,7 @@ data.status || "Pending"
 
 <button
 class="btn"
-onclick="selectProblem('${escapeHtml(
-data.problemId
-)}')">
+onclick="selectProblem('${escapeHtml(data.problemId)}')">
 
 Solve This Problem
 
@@ -1797,7 +2845,6 @@ window.document
 .getElementById("problemId")
 .value=
 problemId;
-
 
 window.location.hash=
 "student";
@@ -1885,6 +2932,18 @@ return;
 }
 
 
+/*
+Get farmer UID
+*/
+
+const sharedProblem=
+problems.docs[0].data();
+
+const farmerUid=
+sharedProblem.farmerUid || "";
+
+
+const solutionRef=
 await addDoc(
 collection(db,"solutions"),
 {
@@ -1912,6 +2971,36 @@ serverTimestamp()
 );
 
 
+/*
+Notify professor
+*/
+
+await createNotification(
+"",
+"professor",
+"💡 New Student Solution",
+"A new student solution is waiting for professor verification.",
+"new_solution"
+);
+
+
+/*
+Notify farmer
+*/
+
+if(farmerUid){
+
+await createNotification(
+farmerUid,
+"",
+"💡 New Solution Received",
+"A student has submitted a solution for your crop problem.",
+"new_solution"
+);
+
+}
+
+
 window.document
 .getElementById(
 "solutionSuccessMessage"
@@ -1928,11 +3017,9 @@ window.document
 .getElementById("studentName")
 .value="";
 
-
 window.document
 .getElementById("problemId")
 .value="";
-
 
 window.document
 .getElementById("solutionText")
@@ -2040,9 +3127,7 @@ output.innerHTML+=`
 Problem ID:
 </strong>
 
-${escapeHtml(
-data.problemId
-)}
+${escapeHtml(data.problemId)}
 
 </p>
 
@@ -2053,9 +3138,7 @@ data.problemId
 Student:
 </strong>
 
-${escapeHtml(
-data.studentName
-)}
+${escapeHtml(data.studentName)}
 
 </p>
 
@@ -2065,17 +3148,13 @@ data.studentName
 <strong>
 
 Original
-(${escapeHtml(
-data.studentLanguage
-)}):
+(${escapeHtml(data.studentLanguage)}):
 
 </strong>
 
 <br>
 
-${escapeHtml(
-data.solutionText
-)}
+${escapeHtml(data.solutionText)}
 
 </div>
 
@@ -2085,9 +3164,7 @@ data.solutionText
 <strong>
 
 Translation
-(${escapeHtml(
-selectedLanguage
-)}):
+(${escapeHtml(selectedLanguage)}):
 
 </strong>
 
@@ -2104,9 +3181,7 @@ ${escapeHtml(translated)}
 
 <span class="status ${statusClass}">
 
-${escapeHtml(
-data.status || "Pending"
-)}
+${escapeHtml(data.status || "Pending")}
 
 </span>
 
@@ -2193,6 +3268,10 @@ style="display:block">
 </p>`;
 
 
+await saveProfessorProfile();
+
+await loadNotifications();
+
 alert(
 "Professor login successful."
 );
@@ -2216,6 +3295,65 @@ status.innerHTML=
 
 
 /* =========================
+PROFESSOR PROFILE
+========================= */
+
+async function saveProfessorProfile(){
+
+if(!auth.currentUser)
+return;
+
+try{
+
+const q=
+query(
+collection(db,"userProfiles"),
+where(
+"uid",
+"==",
+auth.currentUser.uid
+)
+);
+
+const snapshot=
+await getDocs(q);
+
+
+if(snapshot.empty){
+
+await addDoc(
+collection(db,"userProfiles"),
+{
+
+uid:
+auth.currentUser.uid,
+
+role:
+"professor",
+
+email:
+auth.currentUser.email || "",
+
+createdAt:
+serverTimestamp()
+
+}
+);
+
+}
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* =========================
 PROFESSOR LOGOUT
 ========================= */
 
@@ -2226,7 +3364,6 @@ try{
 await signOut(auth);
 
 await startAnonymousLogin();
-
 
 window.document
 .getElementById(
@@ -2332,9 +3469,7 @@ output.innerHTML+=`
 <div class="problem-id">
 
 Problem ID:
-${escapeHtml(
-data.problemId
-)}
+${escapeHtml(data.problemId)}
 
 </div>
 
@@ -2343,9 +3478,7 @@ data.problemId
 
 <strong>Farmer:</strong>
 
-${escapeHtml(
-data.farmerName
-)}
+${escapeHtml(data.farmerName)}
 
 </p>
 
@@ -2354,9 +3487,7 @@ data.farmerName
 
 <strong>Phone:</strong>
 
-${escapeHtml(
-data.phoneNumber
-)}
+${escapeHtml(data.phoneNumber)}
 
 </p>
 
@@ -2365,9 +3496,7 @@ data.phoneNumber
 
 <strong>Crop:</strong>
 
-${escapeHtml(
-data.crop
-)}
+${escapeHtml(data.crop)}
 
 </p>
 
@@ -2377,17 +3506,13 @@ data.crop
 <strong>
 
 Original
-(${escapeHtml(
-data.farmerLanguage
-)}):
+(${escapeHtml(data.farmerLanguage)}):
 
 </strong>
 
 <br>
 
-${escapeHtml(
-data.problemDescription
-)}
+${escapeHtml(data.problemDescription)}
 
 </div>
 
@@ -2397,9 +3522,7 @@ data.problemDescription
 <strong>
 
 Translation
-(${escapeHtml(
-selectedLanguage
-)}):
+(${escapeHtml(selectedLanguage)}):
 
 </strong>
 
@@ -2427,9 +3550,7 @@ ${data.sharingConsent==="yes"
 
 <span class="status">
 
-${escapeHtml(
-data.status || "Pending"
-)}
+${escapeHtml(data.status || "Pending")}
 
 </span>
 
@@ -2467,7 +3588,7 @@ auth.currentUser.isAnonymous
 ){
 
 alert(
-"Please login as professor first."
+"Professor login required."
 );
 
 return;
@@ -2556,9 +3677,7 @@ output.innerHTML+=`
 Problem ID:
 </strong>
 
-${escapeHtml(
-data.problemId
-)}
+${escapeHtml(data.problemId)}
 
 </p>
 
@@ -2569,9 +3688,7 @@ data.problemId
 Student:
 </strong>
 
-${escapeHtml(
-data.studentName
-)}
+${escapeHtml(data.studentName)}
 
 </p>
 
@@ -2581,17 +3698,13 @@ data.studentName
 <strong>
 
 Original
-(${escapeHtml(
-data.studentLanguage
-)}):
+(${escapeHtml(data.studentLanguage)}):
 
 </strong>
 
 <br>
 
-${escapeHtml(
-data.solutionText
-)}
+${escapeHtml(data.solutionText)}
 
 </div>
 
@@ -2601,9 +3714,7 @@ data.solutionText
 <strong>
 
 Translation
-(${escapeHtml(
-selectedLanguage
-)}):
+(${escapeHtml(selectedLanguage)}):
 
 </strong>
 
@@ -2725,6 +3836,42 @@ return;
 
 try{
 
+const solutionDoc=
+await getDocs(
+query(
+collection(db,"solutions"),
+where(
+"studentUid",
+"!=",
+""
+)
+)
+);
+
+
+/*
+Find target solution
+*/
+
+let target=null;
+
+
+solutionDoc.forEach(
+item=>{
+
+if(item.id===solutionId){
+
+target={
+id:item.id,
+...item.data()
+};
+
+}
+
+}
+);
+
+
 await updateDoc(
 
 doc(
@@ -2745,6 +3892,23 @@ serverTimestamp()
 }
 
 );
+
+
+/*
+Notify student
+*/
+
+if(target?.studentUid){
+
+await createNotification(
+target.studentUid,
+"",
+"✅ Solution Verified",
+"Your solution for Problem ID "+target.problemId+" has been verified by the professor.",
+"verified"
+);
+
+}
 
 
 alert(
@@ -2809,6 +3973,31 @@ return;
 
 try{
 
+const snapshot=
+await getDocs(
+collection(db,"solutions")
+);
+
+
+let target=null;
+
+
+snapshot.forEach(
+item=>{
+
+if(item.id===solutionId){
+
+target={
+id:item.id,
+...item.data()
+};
+
+}
+
+}
+);
+
+
 await updateDoc(
 
 doc(
@@ -2829,6 +4018,23 @@ serverTimestamp()
 }
 
 );
+
+
+/*
+Notify student
+*/
+
+if(target?.studentUid){
+
+await createNotification(
+target.studentUid,
+"",
+"❌ Solution Rejected",
+"Your solution for Problem ID "+target.problemId+" was rejected by the professor.",
+"rejected"
+);
+
+}
 
 
 alert(
@@ -2890,6 +4096,47 @@ window.loadProfessorSolutions();
 }
 
 }
+);
+
+
+/* =========================
+INITIAL SETTINGS
+========================= */
+
+loadLocalSettings();
+
+
+/* Refresh notification count */
+
+setTimeout(
+()=>{
+
+if(auth.currentUser){
+
+loadNotifications();
+
+}
+
+},
+3000
+);
+
+
+/*
+Check notifications periodically.
+*/
+
+setInterval(
+()=>{
+
+if(auth.currentUser){
+
+loadNotifications();
+
+}
+
+},
+30000
 );
 
 </script>
