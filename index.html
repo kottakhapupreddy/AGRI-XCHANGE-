@@ -4,294 +4,2167 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AGRI-XCHANGE | Agriculture Knowledge Exchange</title>
+
 <style>
-:root{--green:#176b3a;--light:#f2f8f3;--dark:#123524;--gold:#e9b949;--red:#b42318;--blue:#175cd3}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7faf8;color:#172b1f}
-header{background:var(--green);color:#fff;padding:14px 5%;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0002}
-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-size:22px;font-weight:800}
-nav a{color:white;text-decoration:none;margin:4px 8px;font-weight:600}.lang{padding:8px;border-radius:8px;border:0}
-.hero{padding:60px 6%;background:linear-gradient(135deg,#e7f6eb,#fff);text-align:center}.hero h1{font-size:42px;margin:5px}.hero p{font-size:18px;max-width:800px;margin:15px auto;line-height:1.6}
-.container{max-width:1150px;margin:auto;padding:28px 16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.card{background:white;border-radius:16px;padding:22px;box-shadow:0 3px 16px #00000012;margin-bottom:18px}.role{border-top:5px solid var(--green)}
-h2{color:var(--green)}h3{margin-top:4px}label{display:block;font-weight:700;margin-top:12px}
-input,textarea,select{width:100%;padding:11px;margin-top:6px;border:1px solid #cbd5ce;border-radius:9px;font-size:15px}textarea{min-height:100px;resize:vertical}
-button{background:var(--green);color:white;border:0;border-radius:9px;padding:11px 16px;margin-top:14px;font-weight:700;cursor:pointer}button.secondary{background:#475467}button.blue{background:var(--blue)}button.red{background:var(--red)}button.gold{background:#9a6700}
-.status{padding:10px;border-radius:9px;background:#eef7f0;margin-top:10px;white-space:pre-wrap}.hidden{display:none!important}.small{font-size:13px;color:#667085}.success{color:#087443;font-weight:700}.error{color:#b42318;font-weight:700}
-.problem,.solution{border:1px solid #d9e3dc;border-radius:12px;padding:15px;margin:10px 0;background:#fbfefb}.originalBox,.translatedBox{padding:10px 12px;border-radius:9px;margin:8px 0}.originalBox{background:#f5f7f6;border-left:4px solid #667085}.translatedBox{background:#eef8f0;border-left:4px solid var(--green)}.originalBox p,.translatedBox p{margin:7px 0;line-height:1.55}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#e7f6eb;font-size:12px;font-weight:700;margin:2px}
-footer{background:#123524;color:white;text-align:center;padding:28px;margin-top:35px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{background:#dceee1;color:#123524}.tabs button.active{background:var(--green);color:#fff}
-@media(max-width:600px){.hero h1{font-size:30px}nav{justify-content:center}}
+:root{
+  --green:#176b3a;
+  --light:#f2f8f3;
+  --dark:#123524;
+  --gold:#e9b949;
+  --red:#b42318;
+  --blue:#175cd3;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7faf8;
+  color:#172b1f;
+}
+
+header{
+  background:var(--green);
+  color:#fff;
+  padding:14px 5%;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 10px #0002;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.brand{
+  font-size:22px;
+  font-weight:800;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:4px 8px;
+  font-weight:600;
+}
+
+.lang{
+  padding:8px;
+  border-radius:8px;
+  border:0;
+}
+
+.hero{
+  padding:60px 6%;
+  background:linear-gradient(135deg,#e7f6eb,#fff);
+  text-align:center;
+}
+
+.hero h1{
+  font-size:42px;
+  margin:5px;
+}
+
+.hero p{
+  font-size:18px;
+  max-width:800px;
+  margin:15px auto;
+  line-height:1.6;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:28px 16px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 3px 16px #00000012;
+  margin-bottom:18px;
+}
+
+.role{
+  border-top:5px solid var(--green);
+}
+
+h2{
+  color:var(--green);
+}
+
+h3{
+  margin-top:4px;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-top:12px;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:11px;
+  margin-top:6px;
+  border:1px solid #cbd5ce;
+  border-radius:9px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button{
+  background:var(--green);
+  color:white;
+  border:0;
+  border-radius:9px;
+  padding:11px 16px;
+  margin-top:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button.secondary{
+  background:#475467;
+}
+
+button.blue{
+  background:var(--blue);
+}
+
+button.red{
+  background:var(--red);
+}
+
+button.gold{
+  background:#9a6700;
+}
+
+.status{
+  padding:10px;
+  border-radius:9px;
+  background:#eef7f0;
+  margin-top:10px;
+  white-space:pre-wrap;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.small{
+  font-size:13px;
+  color:#667085;
+}
+
+.success{
+  color:#087443;
+  font-weight:700;
+}
+
+.error{
+  color:#b42318;
+  font-weight:700;
+}
+
+.problem,.solution{
+  border:1px solid #d9e3dc;
+  border-radius:12px;
+  padding:15px;
+  margin:10px 0;
+  background:#fbfefb;
+}
+
+.originalBox,.translatedBox{
+  padding:10px 12px;
+  border-radius:9px;
+  margin:8px 0;
+}
+
+.originalBox{
+  background:#f5f7f6;
+  border-left:4px solid #667085;
+}
+
+.translatedBox{
+  background:#eef8f0;
+  border-left:4px solid var(--green);
+}
+
+.originalBox p,.translatedBox p{
+  margin:7px 0;
+  line-height:1.55;
+}
+
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  background:#e7f6eb;
+  font-size:12px;
+  font-weight:700;
+  margin:2px;
+}
+
+footer{
+  background:#123524;
+  color:white;
+  text-align:center;
+  padding:28px;
+  margin-top:35px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tabs button{
+  background:#dceee1;
+  color:#123524;
+}
+
+.tabs button.active{
+  background:var(--green);
+  color:#fff;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:30px;
+  }
+
+  nav{
+    justify-content:center;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <nav>
+
 <div class="brand">🌱 AGRI-XCHANGE</div>
+
 <div>
 <a href="#home" data-i="home">Home</a>
 <a href="#roles" data-i="roles">Users</a>
 <a href="#how" data-i="how">How It Works</a>
 </div>
+
 <select id="languageSelect" class="lang" aria-label="Language"></select>
+
 </nav>
 </header>
 
+
 <section class="hero" id="home">
+
 <h1 data-i="title">AGRI-XCHANGE</h1>
-<p data-i="tagline">A multilingual agriculture knowledge exchange connecting farmers, students and professors.</p>
-<div class="badge">🌾 Farmer</div><div class="badge">🎓 Student</div><div class="badge">👨‍🏫 Professor</div>
+
+<p data-i="tagline">
+A multilingual agriculture knowledge exchange connecting farmers, students and professors.
+</p>
+
+<div class="badge">🌾 Farmer</div>
+<div class="badge">🎓 Student</div>
+<div class="badge">👨‍🏫 Professor</div>
+
 </section>
+
 
 <main class="container">
+
 <section id="roles">
+
 <h2 data-i="rolesTitle">Choose your role</h2>
+
 <div class="grid">
-<div class="card role"><h3>👨‍🌾 <span data-i="farmer">Farmer</span></h3><p data-i="farmerDesc">Report a crop problem, receive verified solutions and give feedback.</p><button onclick="showRole('farmerPanel')">Open Farmer</button></div>
-<div class="card role"><h3>🎓 <span data-i="student">Student</span></h3><p data-i="studentDesc">Study real farmer problems and submit practical solutions.</p><button onclick="showRole('studentPanel')">Open Student</button></div>
-<div class="card role"><h3>👨‍🏫 <span data-i="professor">Professor</span></h3><p data-i="profDesc">Review student solutions and verify or reject them.</p><button onclick="showRole('profPanel')">Open Professor</button></div>
+
+<div class="card role">
+
+<h3>👨‍🌾 <span data-i="farmer">Farmer</span></h3>
+
+<p data-i="farmerDesc">
+Report a crop problem, receive verified solutions and give feedback.
+</p>
+
+<button onclick="showRole('farmerPanel')">
+Open Farmer
+</button>
+
+</div>
+
+
+<div class="card role">
+
+<h3>🎓 <span data-i="student">Student</span></h3>
+
+<p data-i="studentDesc">
+Study real farmer problems and submit practical solutions.
+</p>
+
+<button onclick="showRole('studentPanel')">
+Open Student
+</button>
+
+</div>
+
+
+<div class="card role">
+
+<h3>👨‍🏫 <span data-i="professor">Professor</span></h3>
+
+<p data-i="profDesc">
+Review student solutions and verify or reject them.
+</p>
+
+<button onclick="showRole('profPanel')">
+Open Professor
+</button>
+
+</div>
+
 </div>
 </section>
+
+
 
 <section id="farmerPanel" class="card hidden">
+
 <h2>👨‍🌾 <span data-i="farmer">Farmer</span></h2>
-<div class="tabs"><button onclick="farmerTab('report')" class="active">Report Problem</button><button onclick="farmerTab('my')">My Problems & Solutions</button></div>
+
+<div class="tabs">
+
+<button onclick="farmerTab('report')" class="active">
+Report Problem
+</button>
+
+<button onclick="farmerTab('my')">
+My Problems & Solutions
+</button>
+
+</div>
+
+
 <div id="farmerReport">
-<label>Name</label><input id="farmerName">
-<label>Crop</label><input id="crop">
-<label>Problem</label><textarea id="problemText" placeholder="You can write in your selected language."></textarea>
-<label>Voice Description</label><input id="voiceFile" type="file" accept="audio/*">
-<label>Problem Photo</label><input id="photoFile" type="file" accept="image/*">
-<label>Phone number</label><input id="phoneNumber" inputmode="numeric">
-<label><input id="consent" type="checkbox" style="width:auto"> I agree to use this information for AGRI-XCHANGE.</label>
-<button onclick="submitProblem()">Submit Problem</button>
+
+<label>Name</label>
+<input id="farmerName">
+
+<label>Crop</label>
+<input id="crop">
+
+<label>Problem</label>
+<textarea id="problemText"
+placeholder="You can write in your selected language."></textarea>
+
+<label>Voice Description</label>
+<input id="voiceFile" type="file" accept="audio/*">
+
+<label>Problem Photo</label>
+<input id="photoFile" type="file" accept="image/*">
+
+<label>Phone number</label>
+<input id="phoneNumber" inputmode="numeric">
+
+<label>
+<input id="consent" type="checkbox" style="width:auto">
+I agree to use this information for AGRI-XCHANGE.
+</label>
+
+<button onclick="submitProblem()">
+Submit Problem
+</button>
+
 <div id="farmerSubmitMsg" class="status"></div>
+
 </div>
+
+
 <div id="farmerMy" class="hidden">
-<label>Phone number used during submission</label><input id="lookupPhone">
-<button onclick="loadMyProblems()">View My Problems</button>
+
+<label>Phone number used during submission</label>
+
+<input id="lookupPhone">
+
+<button onclick="loadMyProblems()">
+View My Problems
+</button>
+
 <div id="myProblems"></div>
+
 </div>
+
 </section>
+
+
 
 <section id="studentPanel" class="card hidden">
+
 <h2>🎓 <span data-i="student">Student</span></h2>
-<button onclick="loadProblems()">Refresh Farmer Problems</button>
+
+<button onclick="loadProblems()">
+Refresh Farmer Problems
+</button>
+
 <div id="studentProblems"></div>
+
 <hr>
+
 <h3>Submit Solution</h3>
-<label>Your name</label><input id="studentName">
-<label>Problem ID</label><input id="solutionProblemId" readonly>
-<label>Solution</label><textarea id="solutionText"></textarea>
-<button onclick="submitSolution()">Submit Solution</button>
+
+<label>Your name</label>
+<input id="studentName">
+
+<label>Problem ID</label>
+<input id="solutionProblemId" readonly>
+
+<label>Solution</label>
+<textarea id="solutionText"></textarea>
+
+<button onclick="submitSolution()">
+Submit Solution
+</button>
+
 <div id="studentMsg" class="status"></div>
+
 <h3>Solutions & Voting</h3>
+
 <div id="studentSolutions"></div>
+
 </section>
+
+
 
 <section id="profPanel" class="card hidden">
+
 <h2>👨‍🏫 <span data-i="professor">Professor</span></h2>
-<p class="small">Professor access requires the configured professor email/passcode in this project. Do not publish the passcode in a real production deployment.</p>
-<label>Professor email</label><input id="profEmail" type="email">
-<label>Professor passcode</label><input id="profPass" type="password">
-<button onclick="profLogin()">Professor Login</button>
+
+<p class="small">
+Professor access requires the configured professor email/passcode in this project.
+</p>
+
+<label>Professor email</label>
+<input id="profEmail" type="email">
+
+<label>Professor passcode</label>
+<input id="profPass" type="password">
+
+<button onclick="profLogin()">
+Professor Login
+</button>
+
 <div id="profMsg" class="status"></div>
+
 <div id="profContent" class="hidden">
-<button onclick="loadProfessorData()">Refresh Review Queue</button>
+
+<button onclick="loadProfessorData()">
+Refresh Review Queue
+</button>
+
 <div id="profProblems"></div>
+
 <div id="profSolutions"></div>
+
 </div>
+
 </section>
+
+
 
 <section id="how" class="card">
-<h2 data-i="howTitle">How AGRI-XCHANGE works</h2>
+
+<h2 data-i="howTitle">
+How AGRI-XCHANGE works
+</h2>
+
 <ol>
-<li>Farmer selects a preferred language and reports a crop problem.</li>
-<li>The system creates a unique Problem ID.</li>
-<li>Students see the problem in their selected language and submit solutions in their own language.</li>
-<li>AGRI-XCHANGE translates stored messages for the person viewing them.</li>
-<li>Other students can vote on useful solutions.</li>
-<li>A professor reviews, verifies or rejects a solution.</li>
-<li>The farmer sees the verified solution in the farmer's selected language and can rate it.</li>
+
+<li>
+Farmer selects a preferred language and reports a crop problem.
+</li>
+
+<li>
+The system creates a unique Problem ID.
+</li>
+
+<li>
+Students see the problem in their selected language and submit solutions in their own language.
+</li>
+
+<li>
+AGRI-XCHANGE translates stored messages for the person viewing them.
+</li>
+
+<li>
+Other students can vote on useful solutions.
+</li>
+
+<li>
+A professor reviews, verifies or rejects a solution.
+</li>
+
+<li>
+The farmer sees the verified solution in the farmer's selected language and can rate it.
+</li>
+
 </ol>
-<p class="small">Important: automatic translation is an assistance layer. Agricultural recommendations should be checked by a qualified professional before field use.</p>
+
+<p class="small">
+Important: automatic translation is an assistance layer.
+Agricultural recommendations should be checked by a qualified professional before field use.
+</p>
+
 </section>
+
 </main>
 
-<footer>© 2026 AGRI-XCHANGE · Agriculture Knowledge Exchange</footer>
+
+<footer>
+© 2026 AGRI-XCHANGE · Agriculture Knowledge Exchange
+</footer>
+
+
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, where } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
-import { getAuth, signInWithEmailAndPassword, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
-const firebaseConfig={
- apiKey:"AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
- authDomain:"agrixchange-175d0.firebaseapp.com",
- projectId:"agrixchange-175d0",
- storageBucket:"agrixchange-175d0.firebasestorage.app",
- messagingSenderId:"1033959694049",
- appId:"1:1033959694049:web:4eaa141cafda31c3ffa1a0"
-};
-const app=initializeApp(firebaseConfig);
-const db=getFirestore(app), storage=getStorage(app), auth=getAuth(app);\ntry{ await signInAnonymously(auth); }catch(e){ console.warn("Anonymous student session unavailable:",e.message); }
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
 
-const LANGS={
-en:"English",te:"తెలుగు",hi:"हिन्दी",ta:"தமிழ்",kn:"ಕನ್ನಡ",ml:"മലയാളം",mr:"मराठी",bn:"বাংলা",gu:"ગુજરાતી",pa:"ਪੰਜਾਬੀ",or:"ଓଡ଼ିଆ",as:"অসমীয়া",ur:"اردو"
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  serverTimestamp,
+  doc,
+  updateDoc,
+  where
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",
+
+  authDomain:
+    "agrixchange-175d0.firebaseapp.com",
+
+  projectId:
+    "agrixchange-175d0",
+
+  storageBucket:
+    "agrixchange-175d0.firebasestorage.app",
+
+  messagingSenderId:
+    "1033959694049",
+
+  appId:
+    "1:1033959694049:web:2d5cdaf0f5c2e70cffa1a0"
 };
-const UI={
-en:{home:"Home",roles:"Users",how:"How It Works",title:"AGRI-XCHANGE",tagline:"A multilingual agriculture knowledge exchange connecting farmers, students and professors.",rolesTitle:"Choose your role",farmer:"Farmer",student:"Student",professor:"Professor",farmerDesc:"Report a crop problem, receive verified solutions and give feedback.",studentDesc:"Study real farmer problems and submit practical solutions.",profDesc:"Review student solutions and verify or reject them.",howTitle:"How AGRI-XCHANGE works"},
-te:{home:"హోమ్",roles:"యూజర్లు",how:"ఎలా పనిచేస్తుంది",title:"AGRI-XCHANGE",tagline:"రైతులు, విద్యార్థులు మరియు ప్రొఫెసర్లను కలిపే బహుభాషా వ్యవసాయ జ్ఞాన వేదిక.",rolesTitle:"మీ పాత్రను ఎంచుకోండి",farmer:"రైతు",student:"విద్యార్థి",professor:"ప్రొఫెసర్",farmerDesc:"పంట సమస్యను పంపండి, ధృవీకరించిన పరిష్కారాలను పొందండి మరియు ఫీడ్‌బ్యాక్ ఇవ్వండి.",studentDesc:"రైతుల సమస్యలను చూసి ఉపయోగకరమైన పరిష్కారాలను పంపండి.",profDesc:"విద్యార్థుల పరిష్కారాలను పరిశీలించి ధృవీకరించండి లేదా తిరస్కరించండి.",howTitle:"AGRI-XCHANGE ఎలా పనిచేస్తుంది"},
-hi:{home:"होम",roles:"उपयोगकर्ता",how:"कैसे काम करता है",title:"AGRI-XCHANGE",tagline:"किसानों, छात्रों और प्रोफेसरों को जोड़ने वाला बहुभाषी कृषि ज्ञान मंच.",rolesTitle:"अपनी भूमिका चुनें",farmer:"किसान",student:"छात्र",professor:"प्रोफेसर",farmerDesc:"फसल की समस्या भेजें, सत्यापित समाधान पाएं और प्रतिक्रिया दें.",studentDesc:"किसानों की समस्याएं देखें और उपयोगी समाधान भेजें.",profDesc:"छात्रों के समाधान की समीक्षा करके सत्यापित या अस्वीकार करें.",howTitle:"AGRI-XCHANGE कैसे काम करता है"}
+
+
+/* =========================================================
+   INITIALIZE FIREBASE
+========================================================= */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const storage = getStorage(app);
+
+const auth = getAuth(app);
+
+
+/* =========================================================
+   ANONYMOUS LOGIN
+   FIXED VERSION
+========================================================= */
+
+try {
+
+  await signInAnonymously(auth);
+
+  console.log("Anonymous Firebase login successful.");
+
+} catch(e) {
+
+  console.warn(
+    "Anonymous student session unavailable:",
+    e.message
+  );
+
+}
+
+
+/* =========================================================
+   LANGUAGES
+========================================================= */
+
+const LANGS = {
+
+  en:"English",
+  te:"తెలుగు",
+  hi:"हिन्दी",
+  ta:"தமிழ்",
+  kn:"ಕನ್ನಡ",
+  ml:"മലയാളം",
+  mr:"मराठी",
+  bn:"বাংলা",
+  gu:"ગુજરાતી",
+  pa:"ਪੰਜਾਬੀ",
+  or:"ଓଡ଼ିଆ",
+  as:"অসমীয়া",
+  ur:"اردو"
+
 };
-const $=id=>document.getElementById(id);
-Object.entries(LANGS).forEach(([k,v])=>{$("languageSelect").add(new Option(v,k));});
-let currentLang=localStorage.getItem("agriLang")||"en";
-$("languageSelect").value=currentLang;
+
+
+/* =========================================================
+   UI TRANSLATIONS
+========================================================= */
+
+const UI = {
+
+en:{
+home:"Home",
+roles:"Users",
+how:"How It Works",
+title:"AGRI-XCHANGE",
+tagline:"A multilingual agriculture knowledge exchange connecting farmers, students and professors.",
+rolesTitle:"Choose your role",
+farmer:"Farmer",
+student:"Student",
+professor:"Professor",
+farmerDesc:"Report a crop problem, receive verified solutions and give feedback.",
+studentDesc:"Study real farmer problems and submit practical solutions.",
+profDesc:"Review student solutions and verify or reject them.",
+howTitle:"How AGRI-XCHANGE works"
+},
+
+te:{
+home:"హోమ్",
+roles:"యూజర్లు",
+how:"ఎలా పనిచేస్తుంది",
+title:"AGRI-XCHANGE",
+tagline:"రైతులు, విద్యార్థులు మరియు ప్రొఫెసర్లను కలిపే బహుభాషా వ్యవసాయ జ్ఞాన వేదిక.",
+rolesTitle:"మీ పాత్రను ఎంచుకోండి",
+farmer:"రైతు",
+student:"విద్యార్థి",
+professor:"ప్రొఫెసర్",
+farmerDesc:"పంట సమస్యను పంపండి, ధృవీకరించిన పరిష్కారాలను పొందండి మరియు ఫీడ్‌బ్యాక్ ఇవ్వండి.",
+studentDesc:"రైతుల సమస్యలను చూసి ఉపయోగకరమైన పరిష్కారాలను పంపండి.",
+profDesc:"విద్యార్థుల పరిష్కారాలను పరిశీలించి ధృవీకరించండి లేదా తిరస్కరించండి.",
+howTitle:"AGRI-XCHANGE ఎలా పనిచేస్తుంది"
+},
+
+hi:{
+home:"होम",
+roles:"उपयोगकर्ता",
+how:"कैसे काम करता है",
+title:"AGRI-XCHANGE",
+tagline:"किसानों, छात्रों और प्रोफेसरों को जोड़ने वाला बहुभाषी कृषि ज्ञान मंच.",
+rolesTitle:"अपनी भूमिका चुनें",
+farmer:"किसान",
+student:"छात्र",
+professor:"प्रोफेसर",
+farmerDesc:"फसल की समस्या भेजें, सत्यापित समाधान पाएं और प्रतिक्रिया दें.",
+studentDesc:"किसानों की समस्याएं देखें और उपयोगी समाधान भेजें.",
+profDesc:"छात्रों के समाधान की समीक्षा करके सत्यापित या अस्वीकार करें.",
+howTitle:"AGRI-XCHANGE कैसे काम करता है"
+}
+
+};
+
+
+/* =========================================================
+   BASIC HELPERS
+========================================================= */
+
+const $ = id => document.getElementById(id);
+
+
+function esc(s=""){
+
+  return String(s).replace(
+    /[&<>"']/g,
+
+    m => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m])
+  );
+
+}
+
+
+function setMsg(id,text,ok=false){
+
+  $(id).textContent = text;
+
+  $(id).className =
+    "status " + (ok ? "success" : "error");
+
+}
+
+
+function idCode(){
+
+  return "AGRI-" +
+    Math.random()
+      .toString(36)
+      .slice(2,8)
+      .toUpperCase();
+
+}
+
+
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
+
+Object.entries(LANGS).forEach(([key,value]) => {
+
+  $("languageSelect").add(
+    new Option(value,key)
+  );
+
+});
+
+
+let currentLang =
+  localStorage.getItem("agriLang") || "en";
+
+
+$("languageSelect").value = currentLang;
+
 
 function applyUI(){
- const d=UI[currentLang]||UI.en;
- document.querySelectorAll("[data-i]").forEach(e=>{if(d[e.dataset.i])e.textContent=d[e.dataset.i]});
- document.documentElement.lang=currentLang;
-}
-$("languageSelect").onchange=()=>{currentLang=$("languageSelect").value;localStorage.setItem("agriLang",currentLang);applyUI()};
-applyUI();
 
-window.showRole=id=>{document.querySelectorAll("#farmerPanel,#studentPanel,#profPanel").forEach(x=>x.classList.add("hidden"));$(id).classList.remove("hidden");location.hash=id};
-window.farmerTab=t=>{$("farmerReport").classList.toggle("hidden",t!=="report");$("farmerMy").classList.toggle("hidden",t!=="my")};
+  const d = UI[currentLang] || UI.en;
 
-function idCode(){return "AGRI-"+Math.random().toString(36).slice(2,8).toUpperCase()}
-function esc(s=""){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function setMsg(id,text,ok=false){$(id).textContent=text;$(id).className="status "+(ok?"success":"error")}
+  document
+    .querySelectorAll("[data-i]")
+    .forEach(element => {
 
-async function translateText(text,source,target){
- if(!text || source===target) return text;
- try{
-  const u="https://api.mymemory.translated.net/get?q="+encodeURIComponent(text)+"&langpair="+encodeURIComponent(source+"|"+target);
-  const r=await fetch(u);
-  const j=await r.json();
-  return j?.responseData?.translatedText || text;
- }catch(e){ return text; }
-}
-function langName(code){return LANGS[code]||code||"Unknown language";}
-async function twoLanguageHTML(text,source){
- source=source||"en";
- const translated=await translateText(text,source,currentLang);
- const same=source===currentLang;
- return `<div class="originalBox"><b>Original — ${esc(langName(source))}</b><p>${esc(text)}</p></div>
-         ${same?"":`<div class="translatedBox"><b>Your selected language — ${esc(langName(currentLang))}</b><p>${esc(translated)}</p></div>`}`;
-}
-async function uploadOptional(file,folder,id){
- if(!file)return "";
- const r=ref(storage,folder+"/"+id+"_"+Date.now()+"_"+file.name);
- await uploadBytes(r,file);
- return await getDownloadURL(r);
+      if(d[element.dataset.i]){
+
+        element.textContent =
+          d[element.dataset.i];
+
+      }
+
+    });
+
+  document.documentElement.lang =
+    currentLang;
+
 }
 
-window.submitProblem=async()=>{
- if(!$("consent").checked)return setMsg("farmerSubmitMsg","Please accept the consent checkbox.");
- const name=$("farmerName").value.trim(),crop=$("crop").value.trim(),problem=$("problemText").value.trim(),phone=$("phoneNumber").value.trim();
- if(!name||!crop||!problem||!phone)return setMsg("farmerSubmitMsg","Please fill name, crop, problem and phone number.");
- try{
-  const problemId=idCode();
-  const voiceUrl=await uploadOptional($("voiceFile").files[0],"voiceDescriptions",problemId);
-  const photoUrl=await uploadOptional($("photoFile").files[0],"problemPhotos",problemId);
-  await addDoc(collection(db,"cropReports"),{
-   problemId,farmerName:name,crop,problemDescription:problem,phoneNumber:phone,
-   farmerLanguage:currentLang,status:"Pending",createdAt:serverTimestamp(),
-   hasVoiceDescription:!!voiceUrl,hasProblemPhoto:!!photoUrl,voiceUrl,photoUrl
-  });
-  setMsg("farmerSubmitMsg","Problem submitted successfully. Your Problem ID is "+problemId,true);
-  $("farmerName").value=$("crop").value=$("problemText").value=$("phoneNumber").value="";
-  $("voiceFile").value=$("photoFile").value="";
- }catch(e){setMsg("farmerSubmitMsg","Submission failed: "+e.message)}
+
+$("languageSelect").onchange = () => {
+
+  currentLang =
+    $("languageSelect").value;
+
+  localStorage.setItem(
+    "agriLang",
+    currentLang
+  );
+
+  applyUI();
+
 };
 
-window.loadProblems=async()=>{
- const box=$("studentProblems");box.innerHTML="Loading...";
- try{
-  const snap=await getDocs(query(collection(db,"cropReports"),orderBy("createdAt","desc")));
-  box.innerHTML="";
-  for(const d of snap.docs){
-   const x=d.data(); const message=await twoLanguageHTML(x.problemDescription,x.farmerLanguage||"en");
-   const div=document.createElement("div");div.className="problem";
-   div.innerHTML=`<b>${esc(x.problemId)}</b> <span class="badge">${esc(x.status||"Pending")}</span><br><b>${esc(x.crop)}</b>${message}<button onclick="selectProblem('${esc(x.problemId)}')">Use this Problem</button>`;
-   box.appendChild(div);
+
+/* =========================================================
+   ROLE NAVIGATION
+========================================================= */
+
+window.showRole = function(id){
+
+  document
+    .querySelectorAll(
+      "#farmerPanel,#studentPanel,#profPanel"
+    )
+    .forEach(panel => {
+
+      panel.classList.add("hidden");
+
+    });
+
+
+  const selectedPanel = $(id);
+
+  if(selectedPanel){
+
+    selectedPanel.classList.remove("hidden");
+
+    location.hash = id;
+
+    selectedPanel.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
   }
- }catch(e){box.innerHTML="<p class='error'>"+esc(e.message)+"</p>"}
+
 };
 
-window.selectProblem=id=>{$("solutionProblemId").value=id;window.scrollTo({top:$("studentPanel").offsetTop,behavior:"smooth"})};
 
-window.submitSolution=async()=>{
- const student=$("studentName").value.trim(),pid=$("solutionProblemId").value.trim(),text=$("solutionText").value.trim();
- if(!student||!pid||!text)return setMsg("studentMsg","Please enter your name, Problem ID and solution.");
- try{
-  await addDoc(collection(db,"solutions"),{studentName:student,problemId:pid,solutionText:text,studentLanguage:currentLang,status:"Pending",createdAt:serverTimestamp(),votes:0});
-  setMsg("studentMsg","Solution submitted successfully.",true);$("solutionText").value="";
-  loadStudentSolutions();
- }catch(e){setMsg("studentMsg","Failed: "+e.message)}
+window.farmerTab = function(tab){
+
+  $("farmerReport")
+    .classList
+    .toggle(
+      "hidden",
+      tab !== "report"
+    );
+
+  $("farmerMy")
+    .classList
+    .toggle(
+      "hidden",
+      tab !== "my"
+    );
+
 };
+
+
+/* =========================================================
+   TRANSLATION
+========================================================= */
+
+async function translateText(
+  text,
+  source,
+  target
+){
+
+  if(
+    !text ||
+    !source ||
+    source === target
+  ){
+
+    return text;
+
+  }
+
+
+  try{
+
+    const url =
+      "https://api.mymemory.translated.net/get?q=" +
+      encodeURIComponent(text) +
+      "&langpair=" +
+      encodeURIComponent(
+        source + "|" + target
+      );
+
+
+    const response =
+      await fetch(url);
+
+
+    const data =
+      await response.json();
+
+
+    return (
+      data?.responseData?.translatedText ||
+      text
+    );
+
+
+  }catch(error){
+
+    console.warn(
+      "Translation failed:",
+      error.message
+    );
+
+    return text;
+
+  }
+
+}
+
+
+function langName(code){
+
+  return (
+    LANGS[code] ||
+    code ||
+    "Unknown language"
+  );
+
+}
+
+
+async function twoLanguageHTML(
+  text,
+  source
+){
+
+  source = source || "en";
+
+  const translated =
+    await translateText(
+      text,
+      source,
+      currentLang
+    );
+
+
+  const same =
+    source === currentLang;
+
+
+  return `
+
+    <div class="originalBox">
+
+      <b>
+        Original — ${esc(langName(source))}
+      </b>
+
+      <p>${esc(text)}</p>
+
+    </div>
+
+    ${
+      same
+      ? ""
+      :
+      `
+      <div class="translatedBox">
+
+        <b>
+          Your selected language —
+          ${esc(langName(currentLang))}
+        </b>
+
+        <p>${esc(translated)}</p>
+
+      </div>
+      `
+    }
+
+  `;
+
+}
+
+
+/* =========================================================
+   OPTIONAL STORAGE UPLOAD
+========================================================= */
+
+async function uploadOptional(
+  file,
+  folder,
+  id
+){
+
+  if(!file){
+
+    return "";
+
+  }
+
+
+  const storageRef =
+    ref(
+      storage,
+      folder +
+      "/" +
+      id +
+      "_" +
+      Date.now() +
+      "_" +
+      file.name
+    );
+
+
+  await uploadBytes(
+    storageRef,
+    file
+  );
+
+
+  return await getDownloadURL(
+    storageRef
+  );
+
+}
+
+
+/* =========================================================
+   FARMER - SUBMIT PROBLEM
+========================================================= */
+
+window.submitProblem = async function(){
+
+  if(!$("consent").checked){
+
+    return setMsg(
+      "farmerSubmitMsg",
+      "Please accept the consent checkbox."
+    );
+
+  }
+
+
+  const name =
+    $("farmerName").value.trim();
+
+  const crop =
+    $("crop").value.trim();
+
+  const problem =
+    $("problemText").value.trim();
+
+  const phone =
+    $("phoneNumber").value.trim();
+
+
+  if(
+    !name ||
+    !crop ||
+    !problem ||
+    !phone
+  ){
+
+    return setMsg(
+      "farmerSubmitMsg",
+      "Please fill name, crop, problem and phone number."
+    );
+
+  }
+
+
+  try{
+
+    const problemId =
+      idCode();
+
+
+    let voiceUrl = "";
+
+    let photoUrl = "";
+
+
+    /*
+      Storage is optional.
+      Since you have NOT upgraded Storage,
+      don't select photo/voice during testing.
+    */
+
+    if($("voiceFile").files.length > 0){
+
+      voiceUrl =
+        await uploadOptional(
+          $("voiceFile").files[0],
+          "voiceDescriptions",
+          problemId
+        );
+
+    }
+
+
+    if($("photoFile").files.length > 0){
+
+      photoUrl =
+        await uploadOptional(
+          $("photoFile").files[0],
+          "problemPhotos",
+          problemId
+        );
+
+    }
+
+
+    await addDoc(
+      collection(db,"cropReports"),
+      {
+
+        problemId,
+
+        farmerName:name,
+
+        crop,
+
+        problemDescription:problem,
+
+        phoneNumber:phone,
+
+        farmerLanguage:currentLang,
+
+        status:"Pending",
+
+        createdAt:serverTimestamp(),
+
+        hasVoiceDescription:
+          !!voiceUrl,
+
+        hasProblemPhoto:
+          !!photoUrl,
+
+        voiceUrl,
+
+        photoUrl
+
+      }
+    );
+
+
+    setMsg(
+      "farmerSubmitMsg",
+      "Problem submitted successfully. Your Problem ID is " +
+      problemId,
+      true
+    );
+
+
+    $("farmerName").value = "";
+
+    $("crop").value = "";
+
+    $("problemText").value = "";
+
+    $("phoneNumber").value = "";
+
+    $("voiceFile").value = "";
+
+    $("photoFile").value = "";
+
+
+  }catch(error){
+
+    console.error(error);
+
+    setMsg(
+      "farmerSubmitMsg",
+      "Submission failed: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   STUDENT - LOAD FARMER PROBLEMS
+========================================================= */
+
+window.loadProblems = async function(){
+
+  const box =
+    $("studentProblems");
+
+
+  box.innerHTML =
+    "Loading...";
+
+
+  try{
+
+    const snap =
+      await getDocs(
+        query(
+          collection(db,"cropReports"),
+          orderBy(
+            "createdAt",
+            "desc"
+          )
+        )
+      );
+
+
+    box.innerHTML = "";
+
+
+    if(snap.empty){
+
+      box.innerHTML =
+        "<p>No farmer problems found.</p>";
+
+      return;
+
+    }
+
+
+    for(const document of snap.docs){
+
+      const data =
+        document.data();
+
+
+      const message =
+        await twoLanguageHTML(
+          data.problemDescription,
+          data.farmerLanguage || "en"
+        );
+
+
+      const div =
+        document.createElement("div");
+
+
+      div.className =
+        "problem";
+
+
+      div.innerHTML = `
+
+        <b>
+          ${esc(data.problemId)}
+        </b>
+
+        <span class="badge">
+          ${esc(data.status || "Pending")}
+        </span>
+
+        <br>
+
+        <b>
+          ${esc(data.crop)}
+        </b>
+
+        ${message}
+
+        <button
+          onclick="selectProblem('${esc(data.problemId)}')"
+        >
+          Use this Problem
+        </button>
+
+      `;
+
+
+      box.appendChild(div);
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML =
+      "<p class='error'>" +
+      esc(error.message) +
+      "</p>";
+
+  }
+
+};
+
+
+/* =========================================================
+   STUDENT - SELECT PROBLEM
+========================================================= */
+
+window.selectProblem = function(id){
+
+  $("solutionProblemId").value =
+    id;
+
+
+  $("solutionText").focus();
+
+
+  $("solutionText")
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+};
+
+
+/* =========================================================
+   STUDENT - SUBMIT SOLUTION
+========================================================= */
+
+window.submitSolution = async function(){
+
+  const student =
+    $("studentName").value.trim();
+
+  const problemId =
+    $("solutionProblemId").value.trim();
+
+  const solution =
+    $("solutionText").value.trim();
+
+
+  if(
+    !student ||
+    !problemId ||
+    !solution
+  ){
+
+    return setMsg(
+      "studentMsg",
+      "Please enter your name, Problem ID and solution."
+    );
+
+  }
+
+
+  try{
+
+    await addDoc(
+      collection(db,"solutions"),
+      {
+
+        studentName:student,
+
+        problemId,
+
+        solutionText:solution,
+
+        studentLanguage:currentLang,
+
+        status:"Pending",
+
+        createdAt:serverTimestamp(),
+
+        votes:0
+
+      }
+    );
+
+
+    setMsg(
+      "studentMsg",
+      "Solution submitted successfully.",
+      true
+    );
+
+
+    $("solutionText").value = "";
+
+
+    loadStudentSolutions();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    setMsg(
+      "studentMsg",
+      "Failed: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   STUDENT - LOAD SOLUTIONS
+========================================================= */
 
 async function loadStudentSolutions(){
- const box=$("studentSolutions");box.innerHTML="Loading...";
- try{
-  const snap=await getDocs(query(collection(db,"solutions"),orderBy("createdAt","desc")));box.innerHTML="";
-  for(const d of snap.docs){const x=d.data();const message=await twoLanguageHTML(x.solutionText,x.studentLanguage||"en");
-   const div=document.createElement("div");div.className="solution";
-   div.innerHTML=`<b>${esc(x.problemId)}</b> <span class="badge">${esc(x.status||"Pending")}</span>${message}<button onclick="voteSolution('${d.id}',${Number(x.votes||0)})">👍 ${Number(x.votes||0)}</button>`;
-   box.appendChild(div);
+
+  const box =
+    $("studentSolutions");
+
+
+  box.innerHTML =
+    "Loading...";
+
+
+  try{
+
+    const snap =
+      await getDocs(
+        query(
+          collection(db,"solutions"),
+          orderBy(
+            "createdAt",
+            "desc"
+          )
+        )
+      );
+
+
+    box.innerHTML = "";
+
+
+    if(snap.empty){
+
+      box.innerHTML =
+        "<p>No solutions submitted yet.</p>";
+
+      return;
+
+    }
+
+
+    for(const document of snap.docs){
+
+      const data =
+        document.data();
+
+
+      const message =
+        await twoLanguageHTML(
+          data.solutionText,
+          data.studentLanguage || "en"
+        );
+
+
+      const div =
+        document.createElement("div");
+
+
+      div.className =
+        "solution";
+
+
+      const votes =
+        Number(data.votes || 0);
+
+
+      div.innerHTML = `
+
+        <b>
+          ${esc(data.problemId)}
+        </b>
+
+        <span class="badge">
+          ${esc(data.status || "Pending")}
+        </span>
+
+        ${message}
+
+        <button
+          onclick="voteSolution('${document.id}',${votes})"
+        >
+          👍 ${votes}
+        </button>
+
+      `;
+
+
+      box.appendChild(div);
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML =
+      "<p class='error'>" +
+      esc(error.message) +
+      "</p>";
+
   }
- }catch(e){box.innerHTML="<p class='error'>"+esc(e.message)+"</p>"}
+
 }
-window.voteSolution=async(id,v)=>{try{await updateDoc(doc(db,"solutions",id),{votes:v+1});loadStudentSolutions()}catch(e){alert("Voting failed: "+e.message)}};
 
-window.loadMyProblems=async()=>{
- const phone=$("lookupPhone").value.trim();if(!phone)return;
- const box=$("myProblems");box.innerHTML="Loading...";
- try{
-  const ps=await getDocs(query(collection(db,"cropReports"),where("phoneNumber","==",phone)));box.innerHTML="";
-  for(const d of ps.docs){
-   const p=d.data();let message=await twoLanguageHTML(p.problemDescription,p.farmerLanguage||"en");let html=`<div class="problem"><b>${esc(p.problemId)}</b><span class="badge">${esc(p.status)}</span>${message}`;
-   if(p.photoUrl)html+=`<p><a target="_blank" href="${p.photoUrl}">📷 View photo</a></p>`;
-   if(p.voiceUrl)html+=`<p><audio controls src="${p.voiceUrl}"></audio></p>`;
-   const ss=await getDocs(query(collection(db,"solutions"),where("problemId","==",p.problemId)));
-   for(const s of ss.docs){const x=s.data();if(x.status!=="Verified")continue;const tx=await twoLanguageHTML(x.solutionText,x.studentLanguage||"en");
-    html+=`<div class="solution"><b>Verified solution</b>${tx}<button class="gold" onclick="rateSolution('${s.id}',5)">⭐ Helpful</button><button class="secondary" onclick="rateSolution('${s.id}',1)">Not helpful</button></div>`;
-   }html+="</div>";box.insertAdjacentHTML("beforeend",html);
+
+/* =========================================================
+   STUDENT - VOTE
+========================================================= */
+
+window.voteSolution =
+async function(id,votes){
+
+  try{
+
+    await updateDoc(
+      doc(db,"solutions",id),
+      {
+        votes:votes + 1
+      }
+    );
+
+
+    loadStudentSolutions();
+
+
+  }catch(error){
+
+    alert(
+      "Voting failed: " +
+      error.message
+    );
+
   }
- }catch(e){box.innerHTML="<p class='error'>"+esc(e.message)+"</p>"}
-};
-window.rateSolution=async(id,r)=>{try{await updateDoc(doc(db,"solutions",id),{farmerRating:r});alert("Thank you for your feedback.")}catch(e){alert(e.message)}};
 
-window.profLogin=async()=>{
- const email=$("profEmail").value.trim(),pass=$("profPass").value;
- if(!email||!pass)return setMsg("profMsg","Enter professor email and passcode.");
- try{
-  await signInWithEmailAndPassword(auth,email,pass);
-  setMsg("profMsg","Professor login successful.",true);$("profContent").classList.remove("hidden");loadProfessorData();
- }catch(e){setMsg("profMsg","Login failed. Check professor account details.")}
 };
 
-window.loadProfessorData=async()=>{
- if(!auth.currentUser)return;
- const pb=$("profProblems"),sb=$("profSolutions");pb.innerHTML="Loading...";sb.innerHTML="";
- try{
-  const ps=await getDocs(query(collection(db,"cropReports"),orderBy("createdAt","desc")));pb.innerHTML="<h3>Farmer Problems</h3>";
-  for(const d of ps.docs){const x=d.data();const tx=await twoLanguageHTML(x.problemDescription,x.farmerLanguage||"en");pb.insertAdjacentHTML("beforeend",`<div class="problem"><b>${esc(x.problemId)}</b><span class="badge">${esc(x.status)}</span>${tx}</div>`)}
-  const ss=await getDocs(query(collection(db,"solutions"),orderBy("createdAt","desc")));sb.innerHTML="<h3>Solutions awaiting review</h3>";
-  for(const d of ss.docs){const x=d.data();const tx=await twoLanguageHTML(x.solutionText,x.studentLanguage||"en");
-   const div=document.createElement("div");div.className="solution";div.innerHTML=`<b>${esc(x.problemId)}</b><span class="badge">${esc(x.status)}</span>${tx}<p class="small">Student: ${esc(x.studentName)}</p>`;
-   if(x.status==="Pending"){const v=document.createElement("button");v.textContent="Verify";v.onclick=()=>reviewSolution(d.id,"Verified");const r=document.createElement("button");r.textContent="Reject";r.className="red";r.onclick=()=>reviewSolution(d.id,"Rejected");div.append(v,r)}sb.appendChild(div);
+
+/* =========================================================
+   FARMER - MY PROBLEMS
+========================================================= */
+
+window.loadMyProblems =
+async function(){
+
+  const phone =
+    $("lookupPhone")
+      .value
+      .trim();
+
+
+  if(!phone){
+
+    return;
+
   }
- }catch(e){pb.innerHTML="<p class='error'>"+esc(e.message)+"</p>"}
+
+
+  const box =
+    $("myProblems");
+
+
+  box.innerHTML =
+    "Loading...";
+
+
+  try{
+
+    const problems =
+      await getDocs(
+        query(
+          collection(db,"cropReports"),
+          where(
+            "phoneNumber",
+            "==",
+            phone
+          )
+        )
+      );
+
+
+    box.innerHTML = "";
+
+
+    if(problems.empty){
+
+      box.innerHTML =
+        "<p>No problems found for this phone number.</p>";
+
+      return;
+
+    }
+
+
+    for(const document of problems.docs){
+
+      const problem =
+        document.data();
+
+
+      let message =
+        await twoLanguageHTML(
+          problem.problemDescription,
+          problem.farmerLanguage || "en"
+        );
+
+
+      let html = `
+
+        <div class="problem">
+
+          <b>
+            ${esc(problem.problemId)}
+          </b>
+
+          <span class="badge">
+            ${esc(problem.status || "Pending")}
+          </span>
+
+          ${message}
+
+      `;
+
+
+      if(problem.photoUrl){
+
+        html += `
+
+          <p>
+            <a
+              target="_blank"
+              href="${esc(problem.photoUrl)}"
+            >
+              📷 View photo
+            </a>
+          </p>
+
+        `;
+
+      }
+
+
+      if(problem.voiceUrl){
+
+        html += `
+
+          <p>
+            <audio
+              controls
+              src="${esc(problem.voiceUrl)}"
+            ></audio>
+          </p>
+
+        `;
+
+      }
+
+
+      const solutions =
+        await getDocs(
+          query(
+            collection(db,"solutions"),
+            where(
+              "problemId",
+              "==",
+              problem.problemId
+            )
+          )
+        );
+
+
+      for(
+        const solutionDocument
+        of solutions.docs
+      ){
+
+        const solution =
+          solutionDocument.data();
+
+
+        if(
+          solution.status !==
+          "Verified"
+        ){
+
+          continue;
+
+        }
+
+
+        const translated =
+          await twoLanguageHTML(
+            solution.solutionText,
+            solution.studentLanguage || "en"
+          );
+
+
+        html += `
+
+          <div class="solution">
+
+            <b>
+              Verified solution
+            </b>
+
+            ${translated}
+
+            <button
+              class="gold"
+              onclick="rateSolution('${solutionDocument.id}',5)"
+            >
+              ⭐ Helpful
+            </button>
+
+            <button
+              class="secondary"
+              onclick="rateSolution('${solutionDocument.id}',1)"
+            >
+              Not helpful
+            </button>
+
+          </div>
+
+        `;
+
+      }
+
+
+      html += "</div>";
+
+      box.insertAdjacentHTML(
+        "beforeend",
+        html
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML =
+      "<p class='error'>" +
+      esc(error.message) +
+      "</p>";
+
+  }
+
 };
-window.reviewSolution=async(id,status)=>{
- if(!auth.currentUser)return;
- try{await updateDoc(doc(db,"solutions",id),{status,verifiedBy:auth.currentUser.email,verifiedAt:serverTimestamp()});loadProfessorData()}catch(e){alert(e.message)}
+
+
+/* =========================================================
+   FARMER - RATE SOLUTION
+========================================================= */
+
+window.rateSolution =
+async function(id,rating){
+
+  try{
+
+    await updateDoc(
+      doc(db,"solutions",id),
+      {
+        farmerRating:rating
+      }
+    );
+
+
+    alert(
+      "Thank you for your feedback."
+    );
+
+
+  }catch(error){
+
+    alert(
+      error.message
+    );
+
+  }
+
 };
-loadStudentSolutions();
+
+
+/* =========================================================
+   PROFESSOR LOGIN
+========================================================= */
+
+window.profLogin =
+async function(){
+
+  const email =
+    $("profEmail")
+      .value
+      .trim();
+
+  const password =
+    $("profPass")
+      .value;
+
+
+  if(!email || !password){
+
+    return setMsg(
+      "profMsg",
+      "Enter professor email and passcode."
+    );
+
+  }
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+
+    setMsg(
+      "profMsg",
+      "Professor login successful.",
+      true
+    );
+
+
+    $("profContent")
+      .classList
+      .remove("hidden");
+
+
+    loadProfessorData();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    setMsg(
+      "profMsg",
+      "Login failed. Check professor account details."
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   PROFESSOR - LOAD DATA
+========================================================= */
+
+window.loadProfessorData =
+async function(){
+
+  if(!auth.currentUser){
+
+    return;
+
+  }
+
+
+  const problemsBox =
+    $("profProblems");
+
+  const solutionsBox =
+    $("profSolutions");
+
+
+  problemsBox.innerHTML =
+    "Loading...";
+
+  solutionsBox.innerHTML =
+    "";
+
+
+  try{
+
+    const problems =
+      await getDocs(
+        query(
+          collection(db,"cropReports"),
+          orderBy(
+            "createdAt",
+            "desc"
+          )
+        )
+      );
+
+
+    problemsBox.innerHTML =
+      "<h3>Farmer Problems</h3>";
+
+
+    for(
+      const document
+      of problems.docs
+    ){
+
+      const data =
+        document.data();
+
+
+      const translated =
+        await twoLanguageHTML(
+          data.problemDescription,
+          data.farmerLanguage || "en"
+        );
+
+
+      problemsBox.insertAdjacentHTML(
+        "beforeend",
+
+        `
+
+        <div class="problem">
+
+          <b>
+            ${esc(data.problemId)}
+          </b>
+
+          <span class="badge">
+            ${esc(data.status || "Pending")}
+          </span>
+
+          ${translated}
+
+        </div>
+
+        `
+
+      );
+
+    }
+
+
+    const solutions =
+      await getDocs(
+        query(
+          collection(db,"solutions"),
+          orderBy(
+            "createdAt",
+            "desc"
+          )
+        )
+      );
+
+
+    solutionsBox.innerHTML =
+      "<h3>Solutions awaiting review</h3>";
+
+
+    for(
+      const document
+      of solutions.docs
+    ){
+
+      const data =
+        document.data();
+
+
+      const translated =
+        await twoLanguageHTML(
+          data.solutionText,
+          data.studentLanguage || "en"
+        );
+
+
+      const div =
+        document.createElement("div");
+
+
+      div.className =
+        "solution";
+
+
+      div.innerHTML = `
+
+        <b>
+          ${esc(data.problemId)}
+        </b>
+
+        <span class="badge">
+          ${esc(data.status || "Pending")}
+        </span>
+
+        ${translated}
+
+        <p class="small">
+          Student:
+          ${esc(data.studentName)}
+        </p>
+
+      `;
+
+
+      if(
+        data.status ===
+        "Pending"
+      ){
+
+        const verify =
+          document.createElement("button");
+
+
+        verify.textContent =
+          "Verify";
+
+
+        verify.onclick =
+          () => reviewSolution(
+            document.id,
+            "Verified"
+          );
+
+
+        const reject =
+          document.createElement("button");
+
+
+        reject.textContent =
+          "Reject";
+
+
+        reject.className =
+          "red";
+
+
+        reject.onclick =
+          () => reviewSolution(
+            document.id,
+            "Rejected"
+          );
+
+
+        div.appendChild(
+          verify
+        );
+
+        div.appendChild(
+          reject
+        );
+
+      }
+
+
+      solutionsBox.appendChild(
+        div
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+    problemsBox.innerHTML =
+      "<p class='error'>" +
+      esc(error.message) +
+      "</p>";
+
+  }
+
+};
+
+
+/* =========================================================
+   PROFESSOR - VERIFY / REJECT
+========================================================= */
+
+window.reviewSolution =
+async function(
+  solutionId,
+  status
+){
+
+  if(!auth.currentUser){
+
+    return;
+
+  }
+
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "solutions",
+        solutionId
+      ),
+      {
+
+        status,
+
+        verifiedBy:
+          auth.currentUser.email,
+
+        verifiedAt:
+          serverTimestamp()
+
+      }
+    );
+
+
+    loadProfessorData();
+
+
+  }catch(error){
+
+    alert(
+      "Update failed: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   INITIAL UI
+========================================================= */
+
+applyUI();
+
+
+/*
+  Load existing solutions silently.
+  Errors won't stop the role buttons.
+*/
+
+try{
+
+  await loadStudentSolutions();
+
+}catch(error){
+
+  console.warn(
+    "Initial solution loading skipped:",
+    error.message
+  );
+
+}
+
 </script>
+
 </body>
 </html>
