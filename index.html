@@ -1267,7 +1267,6 @@ await getDownloadURL(voiceRef);
 
 /* PRIVATE FARMER RECORD */
 
-const privateRef=
 await addDoc(
 collection(db,"cropReports"),
 {
@@ -1329,6 +1328,10 @@ problemDescription:
 problem,
 
 farmerLanguage,
+
+/* FIXED: REQUIRED BY FIRESTORE RULE */
+sharingConsent:
+"yes",
 
 photoUrl,
 
