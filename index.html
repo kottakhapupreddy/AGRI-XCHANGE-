@@ -50,6 +50,7 @@ label{display:block;font-weight:bold;margin-top:14px;margin-bottom:5px}input,tex
 <label for="problemText">Problem Description</label><textarea id="problemText" placeholder="Describe your crop problem"></textarea>
 <label for="voiceFile">🎙️ Voice Description</label><input type="file" id="voiceFile" accept="audio/*">
 <label for="photoFile">📷 Problem Photo</label><input type="file" id="photoFile" accept="image/*">
+<label for="videoFile">🎥 Problem Video (optional, max 25 MB)</label><input type="file" id="videoFile" accept="video/*">
 <label for="phoneNumber">Phone Number</label><input type="tel" id="phoneNumber" placeholder="Enter phone number">
 <div class="privacy-box"><strong>🔒 Privacy & Sharing</strong><p>Your name and phone number are not copied into the student-facing shared problem. Only share a problem if you consent.</p></div>
 <label class="inline-radio"><input type="radio" name="sharingConsent" value="yes"><span><strong>Allow Sharing</strong> — Share my crop problem with students to receive solutions.</span></label>
@@ -85,10 +86,20 @@ label{display:block;font-weight:bold;margin-top:14px;margin-bottom:5px}input,tex
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import {getFirestore,collection,addDoc,getDocs,getDoc,query,where,doc,setDoc,updateDoc,serverTimestamp,onSnapshot} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-import {getStorage,ref,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
 
 const firebaseConfig={apiKey:"AIzaSyChSAPNZY0S3UP_xv8OE_Z7Z7YUDqNW0pY",authDomain:"agrixchange-175d0.firebaseapp.com",projectId:"agrixchange-175d0",storageBucket:"agrixchange-175d0.firebasestorage.app",messagingSenderId:"1033959694049",appId:"1:1033959694049:web:2d5cdaf0f5c2e70cffa1a0"};
-const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app),storage=getStorage(app);
+const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app);
+const CLOUDINARY_CLOUD_NAME="q3jc8dt1";
+const CLOUDINARY_UPLOAD_PRESET="agrixchange_upload";
+async function uploadToCloudinary(file,resourceType){
+ const endpoint=`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload`;
+ const form=new FormData();form.append("file",file);form.append("upload_preset",CLOUDINARY_UPLOAD_PRESET);
+ const response=await fetch(endpoint,{method:"POST",body:form});
+ const result=await response.json();
+ if(!response.ok)throw new Error(result?.error?.message||"Cloudinary upload failed");
+ if(!result.secure_url)throw new Error("Cloudinary did not return a media URL");
+ return result.secure_url;
+}
 const PROFESSOR_EMAIL="kottakhapupreddy@gmail.com";
 const languageCodes={English:"en",Telugu:"te",Hindi:"hi",Tamil:"ta",Kannada:"kn",Malayalam:"ml",Marathi:"mr",Bengali:"bn"};
 let notificationUnsubscribe=null,notificationUid=null,authReady=false;
@@ -231,23 +242,25 @@ window.submitProblem=async()=>{
  $("farmerSubmitError").innerHTML="";$("successMessage").classList.add("hidden");
  try{
   await ensureAnonymous();
-  const farmer=$("farmerName").value.trim(),crop=$("crop").value.trim(),problem=$("problemText").value.trim(),phone=$("phoneNumber").value.trim(),lang=$("farmerLanguage").value,consent=document.querySelector('input[name="sharingConsent"]:checked'),photo=$("photoFile").files[0],voice=$("voiceFile").files[0];
+  const farmer=$("farmerName").value.trim(),crop=$("crop").value.trim(),problem=$("problemText").value.trim(),phone=$("phoneNumber").value.trim(),lang=$("farmerLanguage").value,consent=document.querySelector('input[name="sharingConsent"]:checked'),photo=$("photoFile").files[0],voice=$("voiceFile").files[0],video=$("videoFile").files[0];
   if(!farmer||!crop||!problem||!phone){alert("Please fill all required farmer details.");return}
   if(!consent){alert("Please choose Allow Sharing or Decline Sharing.");return}
   if(photo&&photo.size>8*1024*1024){alert("Photo is too large. Please choose a file under 8 MB.");return}
   if(voice&&voice.size>12*1024*1024){alert("Audio is too large. Please choose a file under 12 MB.");return}
-  const problemId=makeProblemId();let photoUrl="",voiceUrl="";
-  if(photo){const r=ref(storage,`problemPhotos/${problemId}_${Date.now()}_${photo.name.replace(/[^\w.-]/g,"_")}`);await uploadBytes(r,photo);photoUrl=await getDownloadURL(r)}
-  if(voice){const r=ref(storage,`voiceDescriptions/${problemId}_${Date.now()}_${voice.name.replace(/[^\w.-]/g,"_")}`);await uploadBytes(r,voice);voiceUrl=await getDownloadURL(r)}
-  await setDoc(doc(db,"cropReports",problemId),{problemId,farmerUid:auth.currentUser.uid,farmerName:farmer,crop,problemDescription:problem,phoneNumber:phone,farmerLanguage:lang,sharingConsent:consent.value,photoUrl,voiceUrl,hasProblemPhoto:!!photo,hasVoiceDescription:!!voice,status:"Pending",createdAt:serverTimestamp()});
+  if(video&&video.size>25*1024*1024){alert("Video is too large. Please choose a file under 25 MB.");return}
+  const problemId=makeProblemId();let photoUrl="",voiceUrl="",videoUrl="";
+  if(photo)photoUrl=await uploadToCloudinary(photo,"image");
+  if(voice)voiceUrl=await uploadToCloudinary(voice,"video");
+  if(video)videoUrl=await uploadToCloudinary(video,"video");
+  await setDoc(doc(db,"cropReports",problemId),{problemId,farmerUid:auth.currentUser.uid,farmerName:farmer,crop,problemDescription:problem,phoneNumber:phone,farmerLanguage:lang,sharingConsent:consent.value,photoUrl,voiceUrl,videoUrl,hasProblemPhoto:!!photo,hasVoiceDescription:!!voice,hasProblemVideo:!!video,status:"Pending",createdAt:serverTimestamp()});
   let noticeSummary="";
   if(consent.value==="yes"){
-   await setDoc(doc(db,"sharedProblems",problemId),{problemId,farmerUid:auth.currentUser.uid,crop,problemDescription:problem,farmerLanguage:lang,sharingConsent:"yes",photoUrl,voiceUrl,hasProblemPhoto:!!photo,hasVoiceDescription:!!voice,status:"Pending",createdAt:serverTimestamp()});
+   await setDoc(doc(db,"sharedProblems",problemId),{problemId,farmerUid:auth.currentUser.uid,crop,problemDescription:problem,farmerLanguage:lang,sharingConsent:"yes",photoUrl,voiceUrl,videoUrl,hasProblemPhoto:!!photo,hasVoiceDescription:!!voice,hasProblemVideo:!!video,status:"Pending",createdAt:serverTimestamp()});
    try{const result=await notifyStudents({title:"🌾 New Farmer Problem",message:"A new crop problem has been shared and is available for student solutions.",type:"new_problem",relatedProblemId:problemId});noticeSummary=result.registered===0?" No student profiles are registered yet; students should save Profile → Student on their own devices.":result.sent===0?" Student notification could not be delivered; check notification create rules.":` Notified ${result.sent} registered student account(s).`}catch(e){console.error(e);noticeSummary=" Problem shared, but student notification could not be sent."}
   }
   $("newProblemId").textContent=problemId;$("successMessage").classList.remove("hidden");
   alert("Problem submitted successfully.\nProblem ID: "+problemId+noticeSummary);
-  ["farmerName","crop","problemText","phoneNumber","photoFile","voiceFile"].forEach(id=>$(id).value="");
+  ["farmerName","crop","problemText","phoneNumber","photoFile","voiceFile","videoFile"].forEach(id=>$(id).value="");
   document.querySelectorAll('input[name="sharingConsent"]').forEach(x=>x.checked=false);
  }catch(e){console.error(e);showError("farmerSubmitError","Submission failed: "+e.message)}
 };
@@ -258,7 +271,7 @@ window.loadFarmerProblems=async()=>{
   const snap=await getDocs(query(collection(db,"cropReports"),where("farmerUid","==",auth.currentUser.uid),where("phoneNumber","==",phone)));
   if(snap.empty){out.innerHTML="<p>No problems found for this account and phone number. Use the same browser/device used to submit.</p>";return}
   out.innerHTML="";
-  snap.forEach(d=>{const x=d.data(),el=document.createElement("div");el.className="problem-card";el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId)}</div><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><p><strong>Problem:</strong> ${escapeHtml(x.problemDescription)}</p><p><strong>Sharing:</strong> ${x.sharingConsent==="yes"?"Allowed":"Private"}</p><p><strong>Status:</strong> ${escapeHtml(x.status||"Pending")}</p>${x.photoUrl?`<img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Problem photo">`:""}${x.voiceUrl?`<audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}`;out.appendChild(el)});
+  snap.forEach(d=>{const x=d.data(),el=document.createElement("div");el.className="problem-card";el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId)}</div><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><p><strong>Problem:</strong> ${escapeHtml(x.problemDescription)}</p><p><strong>Sharing:</strong> ${x.sharingConsent==="yes"?"Allowed":"Private"}</p><p><strong>Status:</strong> ${escapeHtml(x.status||"Pending")}</p>${x.photoUrl?`<img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Problem photo">`:""}${x.voiceUrl?`<audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}${x.videoUrl?`<p><strong>🎥 Problem Video</strong></p><video class="media-preview" controls playsinline src="${escapeHtml(x.videoUrl)}"></video>`:""}`;out.appendChild(el)});
  }catch(e){console.error(e);showError("farmerProblems","Unable to load problems: "+e.message)}
 };
 window.loadProblemsForStudents=async()=>{
@@ -266,7 +279,7 @@ window.loadProblemsForStudents=async()=>{
   await ensureAnonymous();const out=$("studentProblems"),lang=$("studentLanguage").value;out.innerHTML="<p>Loading shared problems…</p>";
   const snap=await getDocs(collection(db,"sharedProblems"));if(snap.empty){out.innerHTML="<p>No shared farmer problems available.</p>";return}out.innerHTML="";
   for(const d of snap.docs){const x=d.data(),translated=await translateText(x.problemDescription,x.farmerLanguage,lang),el=document.createElement("div");el.className="problem-card";
-   el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId||d.id)}</div><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><div class="original"><strong>Original (${escapeHtml(x.farmerLanguage)}):</strong><br>${escapeHtml(x.problemDescription)}</div><div class="translated"><strong>Translation (${escapeHtml(lang)}):</strong><br>${escapeHtml(translated)}</div>${x.photoUrl?`<p><strong>📷 Problem Photo</strong></p><img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Crop problem">`:""}${x.voiceUrl?`<p><strong>🎙️ Voice Description</strong></p><audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}<p><strong>Status:</strong> <span class="status">${escapeHtml(x.status||"Pending")}</span></p>`;
+   el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId||d.id)}</div><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><div class="original"><strong>Original (${escapeHtml(x.farmerLanguage)}):</strong><br>${escapeHtml(x.problemDescription)}</div><div class="translated"><strong>Translation (${escapeHtml(lang)}):</strong><br>${escapeHtml(translated)}</div>${x.photoUrl?`<p><strong>📷 Problem Photo</strong></p><img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Crop problem">`:""}${x.voiceUrl?`<p><strong>🎙️ Voice Description</strong></p><audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}${x.videoUrl?`<p><strong>🎥 Problem Video</strong></p><video class="media-preview" controls playsinline src="${escapeHtml(x.videoUrl)}"></video>`:""}<p><strong>Status:</strong> <span class="status">${escapeHtml(x.status||"Pending")}</span></p>`;
    const btn=document.createElement("button");btn.className="btn";btn.textContent="Solve This Problem";btn.onclick=()=>{ $("problemId").value=x.problemId||d.id;goToSection("student");$("solutionText").focus()};el.appendChild(btn);out.appendChild(el);
   }
  }catch(e){console.error(e);showError("studentProblems","Unable to load shared problems: "+e.message)}
@@ -313,7 +326,7 @@ window.loadProfessorProblems=async()=>{
  if(!isProfessor()){alert("Please login as professor first.");return}
  try{
   const out=$("professorProblems"),lang=$("professorLanguage").value;out.innerHTML="<p>Loading…</p>";const snap=await getDocs(collection(db,"cropReports"));if(snap.empty){out.innerHTML="<p>No farmer problems found.</p>";return}out.innerHTML="";
-  for(const d of snap.docs){const x=d.data(),translated=await translateText(x.problemDescription,x.farmerLanguage,lang),el=document.createElement("div");el.className="problem-card";el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId)}</div><p><strong>Farmer:</strong> ${escapeHtml(x.farmerName)}</p><p><strong>Phone:</strong> ${escapeHtml(x.phoneNumber)}</p><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><div class="original"><strong>Original (${escapeHtml(x.farmerLanguage)}):</strong><br>${escapeHtml(x.problemDescription)}</div><div class="translated"><strong>Translation (${escapeHtml(lang)}):</strong><br>${escapeHtml(translated)}</div><p><strong>Sharing:</strong> ${x.sharingConsent==="yes"?"Allowed":"Declined"}</p><p><strong>Status:</strong> ${escapeHtml(x.status||"Pending")}</p>${x.photoUrl?`<img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Crop problem">`:""}${x.voiceUrl?`<audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}`;out.appendChild(el)}
+  for(const d of snap.docs){const x=d.data(),translated=await translateText(x.problemDescription,x.farmerLanguage,lang),el=document.createElement("div");el.className="problem-card";el.innerHTML=`<div class="problem-id">Problem ID: ${escapeHtml(x.problemId)}</div><p><strong>Farmer:</strong> ${escapeHtml(x.farmerName)}</p><p><strong>Phone:</strong> ${escapeHtml(x.phoneNumber)}</p><p><strong>Crop:</strong> ${escapeHtml(x.crop)}</p><div class="original"><strong>Original (${escapeHtml(x.farmerLanguage)}):</strong><br>${escapeHtml(x.problemDescription)}</div><div class="translated"><strong>Translation (${escapeHtml(lang)}):</strong><br>${escapeHtml(translated)}</div><p><strong>Sharing:</strong> ${x.sharingConsent==="yes"?"Allowed":"Declined"}</p><p><strong>Status:</strong> ${escapeHtml(x.status||"Pending")}</p>${x.photoUrl?`<img class="media-preview" src="${escapeHtml(x.photoUrl)}" alt="Crop problem">`:""}${x.voiceUrl?`<audio controls src="${escapeHtml(x.voiceUrl)}"></audio>`:""}${x.videoUrl?`<p><strong>🎥 Problem Video</strong></p><video class="media-preview" controls playsinline src="${escapeHtml(x.videoUrl)}"></video>`:""}`;out.appendChild(el)}
  }catch(e){console.error(e);showError("professorProblems","Unable to load problems: "+e.message)}
 };
 window.loadProfessorSolutions=async()=>{
